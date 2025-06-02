@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Mon Jun  2 13:54:39 2025\n"
+"POT-Creation-Date: Mon Jun  2 11:35:26 2025\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -74,13 +74,37 @@ msgstr ""
 msgid "This introduction text is shown when one first enters a world."
 msgstr ""
 
-#: Game
-msgid "Hello World Game"
+#: Game.Levels.LogicalStructure.L01_intro
+msgid "Introduction to Proofs in Lean"
+msgstr ""
+
+#: Game.Levels.LogicalStructure.L01_intro
+msgid "Following along with Example 1.1.1, let's prove a basic theorem within Lean."
+msgstr ""
+
+#: Game.Levels.LogicalStructure.L01_intro
+msgid "Let $a$, $b$, $c \\in \\mathbb{Z}$.  If $c$ divides $b$ and $b$\n"
+"    divides $a$, then $c$ divides $a$."
+msgstr ""
+
+#: Game.Levels.LogicalStructure.L01_intro
+msgid "todo"
+msgstr ""
+
+#: Game.Levels.LogicalStructure
+msgid "Chapter 1: Logical Structure"
+msgstr ""
+
+#: Game.Levels.LogicalStructure
+msgid "todo"
 msgstr ""
 
 #: Game
-msgid "This text appears on the starting page where one selects the world/level to play.\n"
-"You can use markdown."
+msgid "Infinite Descent in Lean"
+msgstr ""
+
+#: Game
+msgid "An adaptation of [Infinite Descent into Pure Mathematics](https://infinitedescent.xyz) into Lean."
 msgstr ""
 
 #: Game

@@ -1,5 +1,6 @@
 import Game.Levels.DemoWorld
 import Game.Levels.MyWorld
+import Game.Levels.LogicalStructure
 
 -- Here's what we'll put on the title screen
 Title "Infinite Descent in Lean"
