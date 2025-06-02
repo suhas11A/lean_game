@@ -2,11 +2,10 @@ import Game.Levels.DemoWorld
 import Game.Levels.MyWorld
 
 -- Here's what we'll put on the title screen
-Title "Hello World Game"
+Title "Infinite Descent in Lean"
 Introduction
 "
-This text appears on the starting page where one selects the world/level to play.
-You can use markdown.
+An adaptation of [Infinite Descent into Pure Mathematics](https://infinitedescent.xyz) into Lean.
 "
 
 Info "
