@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Tue Jun  3 10:46:14 2025\n"
+"POT-Creation-Date: Tue Jun  3 15:00:15 2025\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -190,6 +190,63 @@ msgid "Welcome to Set World!\n"
 "(To enter the symbol ⊆, type `\\sub`, followed by a space.)\n"
 "\n"
 "Click on 'Start' below to get started."
+msgstr ""
+
+#: Game.Levels.Functions.L01_extensionality
+msgid "Extensionality"
+msgstr ""
+
+#: Game.Levels.Functions.L01_extensionality
+msgid "Before we go into any theorems, let’s go over how to use function\n"
+"extensionality in Lean.  This requires the use of a new tactic,\n"
+"`funext`.\n"
+"\n"
+"Typing `funext x` will use function extensionality to prove that two\n"
+"functions are equal.  When you use it, `x` will be introduced as a\n"
+"natural number and the goal `f = g` will be replaced by `f x = g x`.\n"
+"You can replace `x` by any other name.  Try typing `funext x` now."
+msgstr ""
+
+#: Game.Levels.Functions.L01_extensionality
+msgid "The functions $f,g : ℕ → ℕ$ defined by $f(x) = 2x$ and $g(x) = x+x$ are equal."
+msgstr ""
+
+#: Game.Levels.Functions.L01_extensionality
+msgid "Great, we applied function extensionality and can proceed with the\n"
+"proof.  You can unfold the definition of a function within Lean with\n"
+"the dsimp tactic; try `dsimp [f]` and `dsimp [g]` to see what they do.\n"
+"\n"
+"Or, you can just complete the proof right now with the `ring` tactic."
+msgstr ""
+
+#: Game.Levels.Functions.L01_extensionality
+msgid "Now, use the `ring` tactic to complete the proof."
+msgstr ""
+
+#: Game.Levels.Functions.L01_extensionality
+msgid ""
+msgstr ""
+
+#: Game.Levels.Functions
+msgid "Chapter 3: Functions"
+msgstr ""
+
+#: Game.Levels.Functions
+msgid "In this world, we will follow Chapter 3 of Infinite Descent, which\n"
+"focuses on functions.  Functions in Lean are defined slightly\n"
+"differently from the way they are defined in the textbook; they are\n"
+"given as algorithms rather than lists of inputs and outputs, but the\n"
+"relevant theorems are all the same.\n"
+"\n"
+"In Lean, the type of a function with domain $X$ and codomain $Y$ is `X\n"
+"→ Y`.  So, if you have a line that says `f : ℤ → ℕ` in the Objects\n"
+"section of a proof you are doing, then you know that $f$ is a function\n"
+"from the integers to the natural numbers.\n"
+"\n"
+"To write the value of a function at a point, just write the function\n"
+"name followed by the argument; for instance, `f 2` denotes the\n"
+"mathematical expression $f(2)$.  You can use parentheses if needed;\n"
+"for instance, `f (2 + 2)` denotes $f(2+2)$."
 msgstr ""
 
 #: Game

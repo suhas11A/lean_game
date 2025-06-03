@@ -1,5 +1,6 @@
 import Game.Levels.LogicalStructure
 import Game.Levels.Sets
+import Game.Levels.Functions
 
 -- Here's what we'll put on the title screen
 Title "Infinite Descent in Lean"
@@ -17,6 +18,7 @@ For example: Game version, Credits, Link to Github and Zulip, etc.
 Use markdown.
 "
 Dependency LogicalStructure → Sets
+Dependency Sets → Functions
 
 /-! Information to be displayed on the servers landing page. -/
 Languages "English"
