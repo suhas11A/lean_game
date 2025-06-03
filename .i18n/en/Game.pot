@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Mon Jun  2 17:12:53 2025\n"
+"POT-Creation-Date: Tue Jun  3 10:46:14 2025\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -18,60 +18,6 @@ msgstr ""
 
 #: GameServer.RpcHandlers
 msgid "intermediate goal solved! 🎉"
-msgstr ""
-
-#: Game.Levels.DemoWorld.L01_HelloWorld
-msgid "Hello World"
-msgstr ""
-
-#: Game.Levels.DemoWorld.L01_HelloWorld
-msgid "This text is shown as first message when the level is played.\n"
-"You can insert hints in the proof below. They will appear in this side panel\n"
-"depending on the proof a user provides."
-msgstr ""
-
-#: Game.Levels.DemoWorld.L01_HelloWorld
-msgid "You can either start using `«{h}»` or `«{g}»`."
-msgstr ""
-
-#: Game.Levels.DemoWorld.L01_HelloWorld
-msgid "You should use `«{h}»` now."
-msgstr ""
-
-#: Game.Levels.DemoWorld.L01_HelloWorld
-msgid "You should use `«{g}»` now."
-msgstr ""
-
-#: Game.Levels.DemoWorld.L01_HelloWorld
-msgid "This last message appears if the level is solved."
-msgstr ""
-
-#: Game.Levels.DemoWorld
-msgid "Demo World"
-msgstr ""
-
-#: Game.Levels.DemoWorld
-msgid "This introduction is shown before one enters level 1 of the demo world. Use markdown."
-msgstr ""
-
-#: Game.Levels.MyWorld.L01_hello
-msgid "Hello World"
-msgstr ""
-
-#: Game.Levels.MyWorld.L01_hello
-msgid "A message shown at the beginning of the level. Use it to explain any new concepts."
-msgstr ""
-
-#: Game.Levels.MyWorld.L01_hello
-msgid "The message shown when the level is completed"
-msgstr ""
-
-#: Game.Levels.MyWorld
-msgid "My First World"
-msgstr ""
-
-#: Game.Levels.MyWorld
-msgid "This introduction text is shown when one first enters a world."
 msgstr ""
 
 #: Game.Levels.LogicalStructure.L01_intro
@@ -195,6 +141,55 @@ msgstr ""
 
 #: Game.Levels.LogicalStructure
 msgid "todo"
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Introduction to Subsets"
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Following along with Example 2.1.16, let's prove a basic set theorem using Lean.\n"
+"\n"
+"To prove A ⊆ B, we need to show that if something is an element of A, then it is also an element of B i.e we\n"
+"need to prove `x ∈ A → x ∈ B`\n"
+"(To enter the symbol ⊆ type `\\sub`, and for ∈ type `\\mem` or `\\in`).\n"
+"\n"
+"To prove tha goal the first tactic you're going to use is `intro`. Type in `intro x hx` to get started, this will introduce a new\n"
+"hypotheses named `hx` with new variable `x` that is needed to prove the goal. Read the documentation on the right by clicking on `intro`.\n"
+"Alternatively you could execute `intro x` to first introduce a new variable `x` into goal and then introduce a new hypotheses."
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Suppose A is a set. Then A⊆A."
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Now that we have a goal that matches one of the hypotheses. We use `exact` tactic to close the goal. Read the documentation on the right by clicking on `exact`."
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Congratulations! You have completed your first proof in Sets using LEAN!"
+msgstr ""
+
+#: Game.Levels.Sets
+msgid "Chapter 2: Sets"
+msgstr ""
+
+#: Game.Levels.Sets
+msgid "Welcome to Set World!\n"
+"\n"
+"The elements of the sets in this level will come from a universe called `U`.\n"
+"To specify that an object `x` belongs to the universe `U`, we write `x : U`.\n"
+"To specify that `A` is a set of objects from `U`, we write `A : Set U`.\n"
+"(The terminology used in Lean is that `x` has type `U` and `A` has type `Set U`.)\n"
+"To say that `x` is an element of `A`, we write `x ∈ A`.\n"
+"(You can enter the symbol `∈` by typing `\\mem` or `\\in`.)\n"
+"\n"
+"\n"
+"The notation A ⊆ B means that A is a subset of B.\n"
+"(To enter the symbol ⊆, type `\\sub`, followed by a space.)\n"
+"\n"
+"Click on 'Start' below to get started."
 msgstr ""
 
 #: Game
