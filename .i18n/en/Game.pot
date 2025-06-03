@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Mon Jun  2 13:57:10 2025\n"
+"POT-Creation-Date: Tue Jun  3 01:10:37 2025\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -18,60 +18,6 @@ msgstr ""
 
 #: GameServer.RpcHandlers
 msgid "intermediate goal solved! 🎉"
-msgstr ""
-
-#: Game.Levels.DemoWorld.L01_HelloWorld
-msgid "Hello World"
-msgstr ""
-
-#: Game.Levels.DemoWorld.L01_HelloWorld
-msgid "This text is shown as first message when the level is played.\n"
-"You can insert hints in the proof below. They will appear in this side panel\n"
-"depending on the proof a user provides."
-msgstr ""
-
-#: Game.Levels.DemoWorld.L01_HelloWorld
-msgid "You can either start using `«{h}»` or `«{g}»`."
-msgstr ""
-
-#: Game.Levels.DemoWorld.L01_HelloWorld
-msgid "You should use `«{h}»` now."
-msgstr ""
-
-#: Game.Levels.DemoWorld.L01_HelloWorld
-msgid "You should use `«{g}»` now."
-msgstr ""
-
-#: Game.Levels.DemoWorld.L01_HelloWorld
-msgid "This last message appears if the level is solved."
-msgstr ""
-
-#: Game.Levels.DemoWorld
-msgid "Demo World"
-msgstr ""
-
-#: Game.Levels.DemoWorld
-msgid "This introduction is shown before one enters level 1 of the demo world. Use markdown."
-msgstr ""
-
-#: Game.Levels.MyWorld.L01_hello
-msgid "Hello World"
-msgstr ""
-
-#: Game.Levels.MyWorld.L01_hello
-msgid "A message shown at the beginning of the level. Use it to explain any new concepts."
-msgstr ""
-
-#: Game.Levels.MyWorld.L01_hello
-msgid "The message shown when the level is completed"
-msgstr ""
-
-#: Game.Levels.MyWorld
-msgid "My First World"
-msgstr ""
-
-#: Game.Levels.MyWorld
-msgid "This introduction text is shown when one first enters a world."
 msgstr ""
 
 #: Game.Levels.LogicalStructure.L01_intro
@@ -126,33 +72,34 @@ msgid "Now the only thing we have left to do is to show that $c ∣ a$.\n"
 msgstr ""
 
 #: Game.Levels.LogicalStructure.L01_intro
-msgid "We see that $q$ is introduced as a new object, namely another\n"
-"integer, and that `hb` is the hypothesis that relates `c_div_b` to\n"
-"$q$, that $b=qc$.  Try to expand the definition of `b_div_a` on your\n"
-"own."
+msgid "We see that $q$ is introduced as a new integer, and we have a new\n"
+"hypothesis, `hb` which tells us that $b=qc$.  Try to expand the\n"
+"definition of `b_div_a` on your own; use $r$ for the name of the\n"
+"witness."
 msgstr ""
 
 #: Game.Levels.LogicalStructure.L01_intro
-msgid "Our next step is to substitute the expansion of $b$ as given by `hb`\n"
-"into the equation named `ha`.  We can do this using the `rw` tactic,\n"
-"short for “rewrite”.  To use `rw`, type\n"
+msgid "Our next step is to substitute $b$ for $qc$ in the equation $a=rb$.\n"
+"We can do this using the `rw` tactic, short for “rewrite”.  To use\n"
+"`rw`, type\n"
 "```\n"
 "rw [hb] at ha\n"
 "```\n"
 "The hypothesis within the square brackets says what will be\n"
 "rewritten, and the hypothesis after the keyword `at` says where to\n"
-"perform the substitution.  When you use this tactic, Lean will look\n"
-"for the first occurrence of the left-hand side of the `hb`\n"
-"equation---that is to say, the variable $b$---in the `ha` equation,\n"
-"and replace it with the right-hand side, $qc$.  In other words, this\n"
-"command replaces $b$ with $qc$ in the equation $a = rb$."
+"perform the substitution.  When you use this tactic, Lean will\n"
+"replace the first occurrence of the left-hand side of `hb` (i.e.,\n"
+"$q$) with the right-hand side of `hb` (i.e., $qc$) in the equation\n"
+"`ha`."
 msgstr ""
 
 #: Game.Levels.LogicalStructure.L01_intro
-msgid "We have made some progress, but we still need to prove our goal.\n"
-"Since proving $a ∣ c$ involves finding an integer $s$ such that $a\n"
-"= sc$, we need to tell Lean what the value of $s$ is.  We can do\n"
-"this using the `use` tactic.  Type\n"
+msgid "We have made some progress, but we still need to prove our goal.  In\n"
+"order to prove $a ∣ c$, we have to find an integer $s$ such that $a\n"
+"= sc$.  The integer $s$ that we choose is called a *witness* to $a ∣\n"
+"c$, and we need to tell Lean what the value of $s$ is.\n"
+"\n"
+"We can do this using the `use` tactic.  Type\n"
 "```\n"
 "use r * q\n"
 "```\n"
@@ -161,9 +108,9 @@ msgstr ""
 
 #: Game.Levels.LogicalStructure.L01_intro
 msgid "Now, since Lean knows what the witness is, our goal has changed to\n"
-"proving that, indeed, $a = c(rq)$.  We have a hypothesis that tells\n"
-"us what $a$ is, so we can replace $a$ in our goal with its expansion\n"
-"by again using the `rw` tactic.  This time, type\n"
+"proving that $a = c(rq)$.  We have a hypothesis that tells us what\n"
+"$a$ is, so we can replace $a$ in our goal with its expansion by\n"
+"again using the `rw` tactic.  This time, type\n"
 "```\n"
 "rw [ha]\n"
 "```\n"
@@ -172,10 +119,9 @@ msgid "Now, since Lean knows what the witness is, our goal has changed to\n"
 msgstr ""
 
 #: Game.Levels.LogicalStructure.L01_intro
-msgid "Oh no---we’re so close now, but Lean seems to have tripped up on\n"
+msgid "Oh no—we’re so close now, but Lean seems to have tripped up on\n"
 "something basic, probably so simple you didn’t even think about it.\n"
-"We need to use the associativity of multiplication to finish this\n"
-"proof.\n"
+"We need to use associativity of multiplication to finish this proof.\n"
 "\n"
 "Lean doesn’t know about basic properties of addition and\n"
 "multiplication, because they are theorems, and they have to be\n"
@@ -195,6 +141,55 @@ msgstr ""
 
 #: Game.Levels.LogicalStructure
 msgid "todo"
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Introduction to Subsets"
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Following along with Example 2.1.16, let's prove a basic set theorem using Lean.\n"
+"\n"
+"To prove A ⊆ B, we need to show that if something is an element of A, then it is also an element of B i.e we\n"
+"need to prove `x ∈ A → x ∈ B`\n"
+"(To enter the symbol ⊆ type `\\sub`, and for ∈ type `\\mem` or `\\in`).\n"
+"\n"
+"To prove tha goal the first tactic you're going to use is `intro`. Type in `intro x hx` to get started, this will introduce a new\n"
+"hypotheses named `hx` with new variable `x` that is needed to prove the goal. Read the documentation on the right by clicking on `intro`.\n"
+"Alternatively you could execute `intro x` to first introduce a new variable `x` into goal and then introduce a new hypotheses."
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Suppose A is a set. Then A⊆A."
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Now that we have a goal that matches one of the hypotheses. We use `exact` tactic to close the goal. Read the documentation on the right by clicking on `exact`."
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Congratulations! You have completed your first proof in Sets using LEAN!"
+msgstr ""
+
+#: Game.Levels.Sets
+msgid "Chapter 2: Sets"
+msgstr ""
+
+#: Game.Levels.Sets
+msgid "Welcome to Set World!\n"
+"\n"
+"The elements of the sets in this level will come from a universe called `U`.\n"
+"To specify that an object `x` belongs to the universe `U`, we write `x : U`.\n"
+"To specify that `A` is a set of objects from `U`, we write `A : Set U`.\n"
+"(The terminology used in Lean is that `x` has type `U` and `A` has type `Set U`.)\n"
+"To say that `x` is an element of `A`, we write `x ∈ A`.\n"
+"(You can enter the symbol `∈` by typing `\\mem` or `\\in`.)\n"
+"\n"
+"\n"
+"The notation A ⊆ B means that A is a subset of B.\n"
+"(To enter the symbol ⊆, type `\\sub`, followed by a space.)\n"
+"\n"
+"Click on 'Start' below to get started."
 msgstr ""
 
 #: Game

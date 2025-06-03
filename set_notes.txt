@@ -1,0 +1,11 @@
+tactics
+
+exact h1
+exact h1 h2
+have h4 : x ∈ B := h1 h3
+intro
+
+def
+
+belong to
+subset
