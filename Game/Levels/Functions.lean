@@ -1,5 +1,7 @@
 import Game.Levels.Functions.L01_extensionality
 import Game.Levels.Functions.L02_graphs
+import Game.Levels.Functions.L03_identity_and_composition
+import Game.Levels.Functions.L04_associativity_of_composition
 
 World "Functions"
 Title "Chapter 3: Functions"

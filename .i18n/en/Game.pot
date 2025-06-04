@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Wed Jun  4 11:43:42 2025\n"
+"POT-Creation-Date: Wed Jun  4 16:35:49 2025\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -249,6 +249,57 @@ msgstr ""
 
 #: Game.Levels.Functions.L02_graphs
 msgid ""
+msgstr ""
+
+#: Game.Levels.Functions.L03_identity_and_composition
+msgid "The identity function and composition"
+msgstr ""
+
+#: Game.Levels.Functions.L03_identity_and_composition
+msgid "In Lean, the identity function on any type $X$ is written `id`.  You\n"
+"don't need to specify the type yourself; Lean will figure it out\n"
+"automatically.\n"
+"\n"
+"The composition of two functions is written with the `∘` symbol, which\n"
+"you can type using `\\circ`.  For instance, if we have a function `f :\n"
+"A → B` and a function `g : B → C`, then we can write their\n"
+"composition, $g ∘ f$, as `g ∘ f`.\n"
+"\n"
+"Let's prove Example 3.1.20.  In Lean, the argument is straightforward;\n"
+"just split this proof into its two cases, use function\n"
+"extensionality in each goal, and then solve each goal using `rfl`.\n"
+"Lean is able to compute with the identity function and composition\n"
+"automatically."
+msgstr ""
+
+#: Game.Levels.Functions.L03_identity_and_composition
+msgid "Let $f : X → Y$ be any function.  Then\n"
+"\n"
+"$$id_Y ∘ f = f = f ∘ id_X.$$"
+msgstr ""
+
+#: Game.Levels.Functions.L03_identity_and_composition
+msgid "Great! Now we can move onto proving associativity of composition."
+msgstr ""
+
+#: Game.Levels.Functions.L04_associativity_of_composition
+msgid "Associativity of composition"
+msgstr ""
+
+#: Game.Levels.Functions.L04_associativity_of_composition
+msgid "You’re on your own for this one—but don’t worry, the proof is pretty\n"
+"short."
+msgstr ""
+
+#: Game.Levels.Functions.L04_associativity_of_composition
+msgid "If $f : X → Y$, $g : Y → Z$, and $h : Z → W$ are functions, then\n"
+"\n"
+"$$h ∘ (g ∘ f) = (h ∘ g) ∘ f : X → W.$$"
+msgstr ""
+
+#: Game.Levels.Functions.L04_associativity_of_composition
+msgid "Lean took care of basically everything for you in this proof, so it\n"
+"would be a good idea to try writing the proof out on your own as well."
 msgstr ""
 
 #: Game.Levels.Functions
