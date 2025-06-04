@@ -1,4 +1,5 @@
 import Game.Levels.Functions.L01_extensionality
+import Game.Levels.Functions.L02_graphs
 
 World "Functions"
 Title "Chapter 3: Functions"

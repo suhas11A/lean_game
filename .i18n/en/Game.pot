@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Tue Jun  3 15:00:15 2025\n"
+"POT-Creation-Date: Wed Jun  4 11:43:42 2025\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -224,6 +224,30 @@ msgid "Now, use the `ring` tactic to complete the proof."
 msgstr ""
 
 #: Game.Levels.Functions.L01_extensionality
+msgid ""
+msgstr ""
+
+#: Game.Levels.Functions.L02_graphs
+msgid "The graph of a function"
+msgstr ""
+
+#: Game.Levels.Functions.L02_graphs
+msgid "This proof is long and complicated.  The backward direction in\n"
+"particular may be too much for this course, so we may remove it.  No\n"
+"hints just yet."
+msgstr ""
+
+#: Game.Levels.Functions.L02_graphs
+msgid "Let $X$ and $Y$ be sets.  A subset $G ⊆ X×Y$ is the graph of a function if and only if:\n"
+"\n"
+"$∀ x∈X, ∃! y∈Y, (x,y)∈G.$"
+msgstr ""
+
+#: Game.Levels.Functions.L02_graphs
+msgid "The goal might look scary, but remember you can use `dsimp`."
+msgstr ""
+
+#: Game.Levels.Functions.L02_graphs
 msgid ""
 msgstr ""
 
