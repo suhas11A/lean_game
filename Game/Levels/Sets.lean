@@ -1,4 +1,8 @@
 import Game.Levels.Sets.L01_intro
+import Game.Levels.Sets.L02_intervals
+import Game.Levels.Sets.L03_subsets
+import Game.Levels.Sets.L04_equality
+import Game.Levels.Sets.L05_emptiness
 
 World "Sets"
 Title "Chapter 2: Sets"
@@ -6,16 +10,14 @@ Title "Chapter 2: Sets"
 Introduction "
 Welcome to Set World!
 
-The elements of the sets in this level will come from a universe called `U`.
-To specify that an object `x` belongs to the universe `U`, we write `x : U`.
-To specify that `A` is a set of objects from `U`, we write `A : Set U`.
-(The terminology used in Lean is that `x` has type `U` and `A` has type `Set U`.)
-To say that `x` is an element of `A`, we write `x ∈ A`.
-(You can enter the symbol `∈` by typing `\\mem` or `\\in`.)
+The elements of the sets in this world will be from the Set of Natural Numbers.
+To specify that an object `x` belongs to the set of Natural Numbers `ℕ`, we write `x : ℕ`.
+To specify that `A` is a set of objects from `ℕ`, we write `A : Set ℕ`.
+(The terminology used in Lean is that `x` has type `ℕ` and `A` has type `Set ℕ`).
 
+To say that `x` is an element of `A`, we write `x ∈ A`.
 
 The notation A ⊆ B means that A is a subset of B.
-(To enter the symbol ⊆, type `\\sub`, followed by a space.)
 
 Click on 'Start' below to get started.
 "

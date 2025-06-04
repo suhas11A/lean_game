@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Wed Jun  4 16:35:49 2025\n"
+"POT-Creation-Date: Wed Jun  4 16:47:42 2025\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -152,7 +152,7 @@ msgid "Following along with Example 2.1.16, let's prove a basic set theorem usin
 "\n"
 "To prove A ⊆ B, we need to show that if something is an element of A, then it is also an element of B i.e we\n"
 "need to prove `x ∈ A → x ∈ B`\n"
-"(To enter the symbol ⊆ type `\\sub`, and for ∈ type `\\mem` or `\\in`).\n"
+"(To enter the symbol ⊆ type `\\sub`, and for ∈ type `\\mem` (is a member of) or `\\in`).\n"
 "\n"
 "To prove tha goal the first tactic you're going to use is `intro`. Type in `intro x hx` to get started, this will introduce a new\n"
 "hypotheses named `hx` with new variable `x` that is needed to prove the goal. Read the documentation on the right by clicking on `intro`.\n"
@@ -171,6 +171,82 @@ msgstr ""
 msgid "Congratulations! You have completed your first proof in Sets using LEAN!"
 msgstr ""
 
+#: Game.Levels.Sets.L01_intro
+msgid "`exact e` closes the main goal if its target type matches that of `e` i.e `exact hx` closes the goal that matches hypotheses `hx`."
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "Basic example in intervals"
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "Following along with Example 2.1.17.\n"
+"\n"
+"To prove tha goal"
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "Suppose A is a set. Then A⊆A."
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "--conc--"
+msgstr ""
+
+#: Game.Levels.Sets.L03_subsets
+msgid "Basic example in intervals"
+msgstr ""
+
+#: Game.Levels.Sets.L03_subsets
+msgid "Following along with Proposition 2.1.20.\n"
+"\n"
+"To prove tha goal"
+msgstr ""
+
+#: Game.Levels.Sets.L03_subsets
+msgid "Suppose A⊆B, B⊆C, and x∈A. Then x∈C."
+msgstr ""
+
+#: Game.Levels.Sets.L03_subsets
+msgid "--conc--"
+msgstr ""
+
+#: Game.Levels.Sets.L04_equality
+msgid "Basic example in intervals"
+msgstr ""
+
+#: Game.Levels.Sets.L04_equality
+msgid "Following along with Proposition 2.1.20.\n"
+"\n"
+"To prove tha goal"
+msgstr ""
+
+#: Game.Levels.Sets.L04_equality
+msgid "Suppose A is a set. Then (Aᶜ)ᶜ= A."
+msgstr ""
+
+#: Game.Levels.Sets.L04_equality
+msgid "--conc--"
+msgstr ""
+
+#: Game.Levels.Sets.L05_emptiness
+msgid "Basic example in intervals"
+msgstr ""
+
+#: Game.Levels.Sets.L05_emptiness
+msgid "Following along with Proposition 2.1.20.\n"
+"\n"
+"To prove tha goal"
+msgstr ""
+
+#: Game.Levels.Sets.L05_emptiness
+msgid "Let a,b ∈ R. Prove that [a,b] is empty if and only if a > b."
+msgstr ""
+
+#: Game.Levels.Sets.L05_emptiness
+msgid "--conc--"
+msgstr ""
+
 #: Game.Levels.Sets
 msgid "Chapter 2: Sets"
 msgstr ""
@@ -178,16 +254,14 @@ msgstr ""
 #: Game.Levels.Sets
 msgid "Welcome to Set World!\n"
 "\n"
-"The elements of the sets in this level will come from a universe called `U`.\n"
-"To specify that an object `x` belongs to the universe `U`, we write `x : U`.\n"
-"To specify that `A` is a set of objects from `U`, we write `A : Set U`.\n"
-"(The terminology used in Lean is that `x` has type `U` and `A` has type `Set U`.)\n"
-"To say that `x` is an element of `A`, we write `x ∈ A`.\n"
-"(You can enter the symbol `∈` by typing `\\mem` or `\\in`.)\n"
+"The elements of the sets in this world will be from the Set of Natural Numbers.\n"
+"To specify that an object `x` belongs to the set of Natural Numbers `ℕ`, we write `x : ℕ`.\n"
+"To specify that `A` is a set of objects from `ℕ`, we write `A : Set ℕ`.\n"
+"(The terminology used in Lean is that `x` has type `ℕ` and `A` has type `Set ℕ`).\n"
 "\n"
+"To say that `x` is an element of `A`, we write `x ∈ A`.\n"
 "\n"
 "The notation A ⊆ B means that A is a subset of B.\n"
-"(To enter the symbol ⊆, type `\\sub`, followed by a space.)\n"
 "\n"
 "Click on 'Start' below to get started."
 msgstr ""
