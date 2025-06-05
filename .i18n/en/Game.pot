@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Wed Jun  4 16:47:42 2025\n"
+"POT-Creation-Date: Thu Jun  5 00:50:19 2025\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -193,57 +193,93 @@ msgstr ""
 msgid "--conc--"
 msgstr ""
 
-#: Game.Levels.Sets.L03_subsets
+#: Game.Levels.Sets.L03_types
 msgid "Basic example in intervals"
 msgstr ""
 
-#: Game.Levels.Sets.L03_subsets
+#: Game.Levels.Sets.L03_types
 msgid "Following along with Proposition 2.1.20.\n"
 "\n"
 "To prove tha goal"
 msgstr ""
 
-#: Game.Levels.Sets.L03_subsets
+#: Game.Levels.Sets.L03_types
 msgid "Suppose A⊆B, B⊆C, and x∈A. Then x∈C."
 msgstr ""
 
-#: Game.Levels.Sets.L03_subsets
+#: Game.Levels.Sets.L03_types
 msgid "--conc--"
 msgstr ""
 
-#: Game.Levels.Sets.L04_equality
+#: Game.Levels.Sets.L04_subsets
 msgid "Basic example in intervals"
 msgstr ""
 
-#: Game.Levels.Sets.L04_equality
+#: Game.Levels.Sets.L04_subsets
 msgid "Following along with Proposition 2.1.20.\n"
 "\n"
 "To prove tha goal"
 msgstr ""
 
-#: Game.Levels.Sets.L04_equality
+#: Game.Levels.Sets.L04_subsets
+msgid "Suppose A⊆B, B⊆C, and x∈A. Then x∈C."
+msgstr ""
+
+#: Game.Levels.Sets.L04_subsets
+msgid "--conc--"
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "Basic example in intervals"
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "Following along with Proposition 2.1.20.\n"
+"\n"
+"To prove tha goal"
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
 msgid "Suppose A is a set. Then (Aᶜ)ᶜ= A."
 msgstr ""
 
-#: Game.Levels.Sets.L04_equality
+#: Game.Levels.Sets.L05_equality
 msgid "--conc--"
 msgstr ""
 
-#: Game.Levels.Sets.L05_emptiness
+#: Game.Levels.Sets.L06_phi
 msgid "Basic example in intervals"
 msgstr ""
 
-#: Game.Levels.Sets.L05_emptiness
+#: Game.Levels.Sets.L06_phi
 msgid "Following along with Proposition 2.1.20.\n"
 "\n"
 "To prove tha goal"
 msgstr ""
 
-#: Game.Levels.Sets.L05_emptiness
+#: Game.Levels.Sets.L06_phi
+msgid "Let X be a set. Prove that ∅ ⊆ X"
+msgstr ""
+
+#: Game.Levels.Sets.L06_phi
+msgid "--conc--"
+msgstr ""
+
+#: Game.Levels.Sets.L07_emptiness
+msgid "Basic example in intervals"
+msgstr ""
+
+#: Game.Levels.Sets.L07_emptiness
+msgid "Following along with Proposition 2.1.20.\n"
+"\n"
+"To prove tha goal"
+msgstr ""
+
+#: Game.Levels.Sets.L07_emptiness
 msgid "Let a,b ∈ R. Prove that [a,b] is empty if and only if a > b."
 msgstr ""
 
-#: Game.Levels.Sets.L05_emptiness
+#: Game.Levels.Sets.L07_emptiness
 msgid "--conc--"
 msgstr ""
 

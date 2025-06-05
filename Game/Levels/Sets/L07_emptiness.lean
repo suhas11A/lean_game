@@ -4,7 +4,7 @@ import Mathlib.Data.Set.Intervals.Basic
 import Mathlib.Order.Basic
 
 World "Sets"
-Level 5
+Level 7
 Title "Basic example in intervals"
 
 Introduction "
@@ -40,14 +40,13 @@ Statement (a b : ℕ): Icc a b = ∅ ↔ a > b := by
   have h1 := hx.1
   have h2 := hx.2
   have h3 := le_trans h1 h2
-  exfalso
   exact not_le_of_gt h h3
   intro
-  exfalso
   cases a_1
 
 Conclusion "
 --conc--
 "
 
-NewTactic exact rw intro
+NewTactic ext constructor
+NewTheorem le_trans not_le_of_gt le_of_eq le_of_lt lt_trichotomy

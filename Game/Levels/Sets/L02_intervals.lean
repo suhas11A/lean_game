@@ -28,5 +28,5 @@ Statement (a b c d : ℕ)(ha : a < c)(hc : d < b): Icc c d ⊆ Ioo a b := by
 Conclusion "--conc--"
 
 
-NewTactic exact rw intro And.intro
+NewTactic rw intro And.intro
 NewTheorem Set.mem_Icc Set.mem_Ioo lt_of_lt_of_le lt_of_le_of_lt Set.Icc Set.Ioo

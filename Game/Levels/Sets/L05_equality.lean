@@ -4,7 +4,7 @@ import Mathlib.Data.Set.Intervals.Basic
 import Mathlib.Order.Basic
 
 World "Sets"
-Level 4
+Level 5
 Title "Basic example in intervals"
 
 Introduction "
@@ -14,7 +14,7 @@ To prove tha goal
 "
 open Set
 /-- Suppose A is a set. Then (Aᶜ)ᶜ= A. -/
-Statement (A : Set ℕ): (Aᶜ)ᶜ = A := by
+Statement (U : Type)(A : Set U): (Aᶜ)ᶜ = A := by
   apply Subset.antisymm
   intro a a_1
   rw[mem_compl_iff] at a_1
@@ -29,4 +29,5 @@ Statement (A : Set ℕ): (Aᶜ)ᶜ = A := by
 
 Conclusion "--conc--"
 
-NewTactic exact rw intro
+NewTactic push_neg apply
+NewTheorem Set.mem_compl_iff Set.Subset.antisymm

@@ -1,8 +1,10 @@
 import Game.Levels.Sets.L01_intro
 import Game.Levels.Sets.L02_intervals
-import Game.Levels.Sets.L03_subsets
-import Game.Levels.Sets.L04_equality
-import Game.Levels.Sets.L05_emptiness
+import Game.Levels.Sets.L03_types
+import Game.Levels.Sets.L04_subsets
+import Game.Levels.Sets.L05_equality
+import Game.Levels.Sets.L06_phi
+import Game.Levels.Sets.L07_emptiness
 
 World "Sets"
 Title "Chapter 2: Sets"
