@@ -1,5 +1,5 @@
 import Game.Metadata
-import Mathlib
+import Mathlib.Tactic.Ring
 
 World "Functions"
 Level 1

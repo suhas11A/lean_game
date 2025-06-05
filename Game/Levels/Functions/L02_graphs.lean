@@ -1,5 +1,9 @@
 import Game.Metadata
-import Mathlib
+import Mathlib.Data.Set.Defs
+import Aesop
+import Mathlib.Tactic.Use
+import Mathlib.Tactic.ApplyAt
+import Mathlib.Tactic.Have
 
 open Set
 

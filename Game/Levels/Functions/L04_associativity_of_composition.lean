@@ -1,7 +1,4 @@
 import Game.Metadata
-import Mathlib
-
-open Set
 
 World "Functions"
 Level 4
