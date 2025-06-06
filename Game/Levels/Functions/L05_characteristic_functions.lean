@@ -79,6 +79,7 @@ theorem characteristic_function_value {X : Type} (A : Set X) (x : X) :
 /-- Let $X$ be a set and $U,V ⊆ X$.  Then $U = V$ if and only if $χ_U = χ_V$.
  -/
 Statement (X : Type) (U V : Set X) : U = V ↔ χ U = χ V := by
+  Hint "Start off by using `constructor` to split the goal into two subgoals."
   constructor
   · Hint "The forward direction is a straightforward substitution."
     intro huv
@@ -94,10 +95,10 @@ Statement (X : Type) (U V : Set X) : U = V ↔ χ U = χ V := by
     · intro hxu
       Hint "
       Our first step is to show that the value of $χ_U({x})$ is $1$.
-      Is there a property of $χ$ that would be helpful here?
+      Is there a property of $χ$ that would be helpful to use at `{hxu}`?
       "
       apply (characteristic_function_1 U x).mpr at hxu
-      Hint "Now, we need to deduce that $χ_U({x})=1$."
+      Hint "Now, we need to deduce that $χ_{V}({x})=1$."
       rw [hchi] at hxu
       Hint "Finally, we must show that $x∈V$."
       apply (characteristic_function_1 V x).mp
@@ -115,7 +116,7 @@ Statement (X : Type) (U V : Set X) : U = V ↔ χ U = χ V := by
 
 Conclusion "
 In my proof, I only used `characteristic_function_1`, but the other
-two theorems will be helpful for the next exercise, where we will
+two theorems will be helpful for the next exercises, where we will
 relate set operations to operations in the natural numbers through
 characteristic functions.  Make sure you understand them!
 "
