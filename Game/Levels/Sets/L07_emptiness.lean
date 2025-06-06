@@ -1,5 +1,6 @@
 import Game.Metadata
 import Mathlib.Data.Set.Basic
+import Mathlib.Data.Real.Basic
 import Mathlib.Data.Set.Intervals.Basic
 import Mathlib.Order.Basic
 
@@ -14,7 +15,7 @@ To prove tha goal
 "
 open Set
 /-- Let a,b ∈ R. Prove that [a,b] is empty if and only if a > b. -/
-Statement (a b : ℕ): Icc a b = ∅ ↔ a > b := by
+Statement (a b : ℝ): Icc a b = ∅ ↔ a > b := by
   constructor
   intro h1
   have h_ : a = a := rfl

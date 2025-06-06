@@ -5,13 +5,10 @@ import Mathlib.Order.Basic
 
 variable {α : Type*}
 variable (s t u : Set α)
-variable (x y : α)
 open Set
 
-example (h : s ⊆ t) : x<y := by
-  rw [subset_def]
-  rw[inter_def]
-  rw[inter_def]
+example (h : s ⊆ t) : s ∩ u ⊆ t ∩ u := by
+  rw [subset_def, inter_def, inter_def]
   rw [subset_def] at h
   simp only [mem_setOf]
   rintro x ⟨xs, xu⟩

@@ -1,5 +1,6 @@
 import Game.Metadata
 import Mathlib.Data.Set.Basic
+import Mathlib.Data.Real.Basic
 import Mathlib.Data.Set.Intervals.Basic
 import Mathlib.Order.Basic
 
@@ -14,7 +15,7 @@ To prove tha goal
 "
 open Set
 /-- Suppose A is a set. Then A⊆A. -/
-Statement (a b c d : ℕ)(ha : a < c)(hc : d < b): Icc c d ⊆ Ioo a b := by
+Statement (a b c d : ℝ)(ha : a < c)(hc : d < b): Icc c d ⊆ Ioo a b := by
   intro x hx
   rw [mem_Icc] at hx
   have h1 := hx.1
