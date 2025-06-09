@@ -6,6 +6,11 @@ import Game.Levels.Functions.L05_characteristic_functions
 import Game.Levels.Functions.L06_characteristic_functions_inter
 import Game.Levels.Functions.L07_characteristic_functions_union
 import Game.Levels.Functions.L08_characteristic_functions_compl
+import Game.Levels.Functions.L09_characteristic_functions_inter_distrib_union
+import Game.Levels.Functions.L10_image_empty_set
+import Game.Levels.Functions.L11_preimage_empty_set
+import Game.Levels.Functions.L12_preimage_codomain
+import Game.Levels.Functions.L13_every_function_to_booleans_is_characteristic
 
 World "Functions"
 Title "Chapter 3: Functions"

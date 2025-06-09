@@ -14,7 +14,7 @@ open Set
 
 /-- Let $X$ be a set and $U,V ⊆ X$.  Then $χ_{U∪V}(a) = χ_U(a)+χ_V(a)-χ_U(a)χ_V(a)$ for all $a∈X$.
  -/
-Statement (X : Type) (U V : Set X) (a : X) : χ (U ∪ V) a = (χ U a) + (χ V a) - (χ U a) * (χ V a) := by
+Statement characteristic_function_union (X : Type) (U V : Set X) (a : X) : χ (U ∪ V) a = (χ U a) + (χ V a) - (χ U a) * (χ V a) := by
   have hu := characteristic_function_value U a
   have hv := characteristic_function_value V a
   cases hu with

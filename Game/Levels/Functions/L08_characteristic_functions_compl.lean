@@ -14,7 +14,7 @@ open Set
 
 /-- Let $X$ be a set and $U ⊆ X$.  Then $χ_{X∖U}(a) = 1 - χ_U(a)$ for all $a∈X$.
  -/
-Statement (X : Type) (U : Set X) (a : X) : χ Uᶜ a = 1 - χ U a := by
+Statement characteristic_function_compl (X : Type) (U : Set X) (a : X) : χ Uᶜ a = 1 - χ U a := by
   have hu := characteristic_function_value U a
   cases hu with
   | inl hu =>

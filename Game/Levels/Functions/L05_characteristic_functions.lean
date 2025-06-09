@@ -31,7 +31,7 @@ Following the argument in the book, use these facts to prove Theorem
 
 -- Could not find a definition of this in mathlib.  This requires
 -- classical reasoning, as we need membership in A to be decidable.
-noncomputable def characteristic_function {X : Type} (A : Set X) (x : X) : ℕ :=
+noncomputable def characteristic_function {X : Type} (A : Set X) (x : X) : Int :=
   match Classical.propDecidable (x ∈ A) with
     | isTrue _ => 1
     | isFalse _ => 0
@@ -78,7 +78,7 @@ theorem characteristic_function_value {X : Type} (A : Set X) (x : X) :
 
 /-- Let $X$ be a set and $U,V ⊆ X$.  Then $U = V$ if and only if $χ_U = χ_V$.
  -/
-Statement (X : Type) (U V : Set X) : U = V ↔ χ U = χ V := by
+Statement characteristic_function_equality (X : Type) (U V : Set X) : U = V ↔ χ U = χ V := by
   Hint "Start off by using `constructor` to split the goal into two subgoals."
   constructor
   · Hint "The forward direction is a straightforward substitution."
