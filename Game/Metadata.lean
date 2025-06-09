@@ -1,6 +1,7 @@
 import GameServer.Commands
 
--- import Mathlib.Tactic.Common
+import Mathlib.Init.Data.Nat.Notation
+import Mathlib.Tactic.Common
 
 /-! Use this file to add things that should be available in all levels.
 
@@ -14,3 +15,4 @@ a suggestion.
 in a random order. Therefore, you should keep the structure of one file lean file per world
 that imports all its levels.
 -/
+

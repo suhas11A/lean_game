@@ -1,3 +1,4 @@
+import Game.Levels.Basics
 import Game.Levels.LogicalStructure
 import Game.Levels.Sets
 import Game.Levels.SetOperations
@@ -18,6 +19,7 @@ For example: Game version, Credits, Link to Github and Zulip, etc.
 
 Use markdown.
 "
+Dependency Basics → LogicalStructure
 Dependency LogicalStructure → Sets
 Dependency LogicalStructure → SetOperations
 Dependency Sets → Functions
