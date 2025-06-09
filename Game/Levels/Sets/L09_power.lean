@@ -8,12 +8,10 @@ Level 9
 Title "Basic example in intervals"
 
 Introduction "
-Following along with Example 2.1.17.
-
-To prove tha goal
+This example is imspired from Example 2.1.37 from infinite descent.
 "
 open Set
-/-- Suppose A is a set. Then A⊆A. -/
+/-- Suppose A = {a,b}. Then P(A) = {∅, {a}, {b}, {a,b}}. -/
 Statement (E : Type)(a b : E): {∅, {a}, {b}, {a, b}} ⊆ Set.powerset ({a, b}) := by
   intro x hx
   rw[mem_powerset_iff]

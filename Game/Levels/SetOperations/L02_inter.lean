@@ -9,14 +9,19 @@ Level 2
 Title "Basic example in intervals"
 
 Introduction "
-Following along with Example 2.1.17.
+This example is imspired from Exercise 2.2.14 from infinite descent.
 
-To prove the goal
+`Ico a b` represent the interval [a,b) in LEAN.
 "
 open Set
 /-- Suppose x∈A∩B. Then x∈B. -/
 Statement (a b c d : ℝ)(h1 : a < c)(h2 : c < b)(h3 : b < d): (Ico a b) ∩ (Ico c d) = Ico c b := by
+  Hint "There are 2 ways you can prove `A = B`, first one being splitting goal into `A ⊆ B` and `B ⊆ A` or second strategy being
+  using the tactic `ext` to chage the goal into `x ∈ A ↔ x ∈ B`. Here I will be using `ext` tactic but you can use either to close the goal."
+  Hint "There is tactic named `clear` that will clear any hypotheses or variable if you feel like its not usefull anymore."
+  Hint "Read and learn theorems `le_of_lt`, `lt_trans` and `mem_Ico` as they will be usefull."
   ext x
+  Hint "Recall how to solve `↔` goals"
   constructor
   intro h
   have ha := h.1

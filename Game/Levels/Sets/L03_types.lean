@@ -20,4 +20,4 @@ Statement (U : Type)(A : Set U)(B : Set ℕ): 0 = 0 := by
 
 Conclusion "--conc--"
 
-NewTactic rfl «have»
+NewTactic rfl

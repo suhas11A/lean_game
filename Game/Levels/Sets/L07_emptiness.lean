@@ -9,9 +9,7 @@ Level 7
 Title "Basic example in intervals"
 
 Introduction "
-Following along with Proposition 2.1.20.
-
-To prove tha goal
+This example is imspired from Exercise 2.1.31 from infinite descent.
 "
 open Set
 /-- Let a,b ∈ R. Prove that [a,b] is empty if and only if a > b. -/

@@ -40,10 +40,7 @@ Statement (U : Type)(X Y Z : Set U): X ∩ (Y ∪ Z) = (X ∩ Y) ∪ (X ∩ Z) :
   right
   exact h
 
-
-
-
 Conclusion "--conc--"
 
 
-NewTheorem and_or_left
+NewTheorem Set.mem_union lt_trans and_or_left 

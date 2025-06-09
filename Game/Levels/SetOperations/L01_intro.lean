@@ -8,17 +8,16 @@ Level 1
 Title "Basic example in intervals"
 
 Introduction "
-Following along with Example 2.1.17.
-
-To prove tha goal
+Let us prove a basic result involving intersection(`∩`) to get a better understanding.
 "
 open Set
 /-- Suppose x∈A∩B. Then x∈B. -/
 Statement (U : Type)(x : U)(A B : Set U)(h : x ∈ A ∩ B): x ∈ B := by
+  Hint "Read and use the theorom `mem_inter_iff` (member of intersection if and only if)."
   rw[mem_inter_iff] at h
   exact h.2
 
-Conclusion "--conc--"
+Conclusion "Directly executing `exact h.2` will also close the goal, butit is importnt to understand what `x ∈ A ∩ B` means."
 
 
 NewTheorem Set.mem_inter_iff
