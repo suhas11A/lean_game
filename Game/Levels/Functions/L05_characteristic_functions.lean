@@ -52,7 +52,7 @@ theorem characteristic_function_0 {X : Type} (A : Set X) (x : X) :
   · intro hx
     split
     · contradiction
-    · trivial
+    · rfl
 
 theorem characteristic_function_1 {X : Type} (A : Set X) (x : X) :
   χ A x = 1 ↔ x ∈ A := by
@@ -65,7 +65,7 @@ theorem characteristic_function_1 {X : Type} (A : Set X) (x : X) :
     · contradiction
   · intro hx
     split
-    · trivial
+    · rfl
     · contradiction
 
 theorem characteristic_function_value {X : Type} (A : Set X) (x : X) :
@@ -73,8 +73,8 @@ theorem characteristic_function_value {X : Type} (A : Set X) (x : X) :
   unfold χ
   unfold characteristic_function
   split
-  · right; trivial
-  · left; trivial
+  · right; rfl
+  · left; rfl
 
 /-- Let $X$ be a set and $U,V ⊆ X$.  Then $U = V$ if and only if $χ_U = χ_V$.
  -/

@@ -19,7 +19,7 @@ open Set
 Statement (X Y : Type) (f : X → Y) : f ⁻¹' univ = univ := by
   ext
   rw [mem_preimage]
-  trivial
+  rfl
 
 Conclusion "
 

@@ -38,18 +38,19 @@ Statement (X : Type) (f : X → Int) : (∀ x : X, f x = 0 ∨ f x = 1) →
     rw [mem_preimage]
     rw [hf]
     rw [mem_singleton_iff]
-    trivial
+    intro contra
+    contradiction
   | inr hf =>
   · rw [hf]
     symm
     rw [characteristic_function_1]
     rw [mem_preimage]
     rw [hf]
-    trivial
+    apply mem_singleton
 
 Conclusion "
 
 "
 
-NewTheorem Set.mem_preimage Set.mem_singleton_iff
-NewTactic symm trivial
+NewTheorem Set.mem_preimage Set.mem_singleton_iff Set.mem_singleton
+NewTactic symm
