@@ -12,7 +12,7 @@ Introduction "
 This example is inspired from Exercise 2.1.31 from infinite descent.
 "
 open Set
-/-- Let a,b ∈ R. Prove that [a,b] is empty if and only if a > b. -/
+/-- Let a,b ∈ R. Prove that [a, b] is empty if and only if a > b. -/
 Statement (a b : ℝ): Icc a b = ∅ ↔ a > b := by
   apply Iff.intro
   intro h1

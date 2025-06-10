@@ -10,9 +10,7 @@ Level 4
 Title "Basic example in intervals"
 
 Introduction "
-Following along with Example 2.1.17.
-
-To prove the goal
+Let us prove a very famous and important result in Set theory.
 "
 open Set
 /-- Let X, Y and Z be sets. Prove that X∩(Y∪Z) = (X∩Y)∪(X∩Z). -/

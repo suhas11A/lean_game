@@ -16,7 +16,7 @@ Here the goal is of form `↔`. First we need to split the goal into 2 sub-goals
 open Set
 /-- Let X and Y be sets. Prove that X ⊆ Y if and only if X∩Y = X. -/
 Statement (U : Type)(X Y : Set U): X ⊆ Y ↔ (X ∩ Y = X) := by
-  Hint "Recall which Theorem is used to do split an `↔` goal."
+  Hint "Recall which Theorem is used to split an `↔` goal."
   apply Iff.intro
   Hint "To prove a result of type `p → q` we need to assume `p` and show `q`."
   intro h

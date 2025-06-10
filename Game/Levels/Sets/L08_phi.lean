@@ -11,7 +11,7 @@ Introduction "
 This example is inspired from Exercise 2.1.32 from infinite descent.
 "
 open Set
-/-- Let a,b ∈ R. Prove that [a,b] is empty if and only if a > b. -/
+/-- If p is proposition in x. Show that ∀ x ∈ ∅, p(x) is true. -/
 Statement (U : Type)(p : U → Prop): ∀ x ∈ (∅ : Set U), p x := by
   Hint "This is a simple proof, you are on your own."
   intro x hx

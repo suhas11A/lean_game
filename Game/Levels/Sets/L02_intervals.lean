@@ -16,7 +16,7 @@ We will be proving a simple result involving intervals.
 In LEAN the interval [a,b] is represented as `Icc a b` which expands to `Interval closed closed`
 "
 open Set
-/-- Suppose a < c and d < b. Show that `Icc c d ⊆ Ioo a b`. -/
+/-- Suppose a < c and d < b. Show that [c, d] ⊆ (a,b). -/
 Statement (a b c d : ℝ)(ha : a < c)(hc : d < b): Icc c d ⊆ Ioo a b := by
   intro x hx
   Hint "Use theorem `mem_Icc` to rewrite `x ∈ Icc c d` to `c ≤ x ∧ x ≤ d`"
