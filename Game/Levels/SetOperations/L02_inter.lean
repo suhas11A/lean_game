@@ -48,5 +48,5 @@ Statement (a b c d : ℝ)(h1 : a < c)(h2 : c < b)(h3 : b < d): (Ico a b) ∩ (Ic
 Conclusion "--conc--"
 
 
-NewTheorem Set.mem_inter_iff Set.mem_Ico
-NewTactic clear
+NewTheorem Set.mem_inter_iff Set.mem_Ico And.intro lt_trans le_of_lt lt_of_lt_of_le
+NewTactic clear «have» ext constructor intro

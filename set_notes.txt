@@ -2,5 +2,6 @@ didnt write hints for sets-L03,07,09; operations-L02,03,04,05,06,07,08
 used simp in sets-L09; operation-L06,08
 didnt finish problems - sets-L03,09; operations-L08
 conc - everything(almost)
+title - everything(almost)
 
 in sets-L07 we used `ext` to make `A=B` to `x in A iff x in B`

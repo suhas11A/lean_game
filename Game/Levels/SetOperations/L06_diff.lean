@@ -38,3 +38,4 @@ Conclusion "--conc--"
 
 
 NewTheorem Set.mem_union lt_trans and_or_left not_or
+NewTactic simp

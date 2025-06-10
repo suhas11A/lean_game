@@ -41,5 +41,5 @@ Statement (U : Type)(X Y : Set U): X ⊆ Y ↔ (X ∩ Y = X) := by
 Conclusion "--conc--"
 
 
-NewTheorem Set.mem_inter_iff
-NewTactic symm
+NewTheorem Set.mem_inter_iff Set.Subset.antisymm
+NewTactic symm apply
