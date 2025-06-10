@@ -8,7 +8,7 @@ Level 8
 Title "Basic example in intervals"
 
 Introduction "
-This example is imspired from Exercise 2.1.32 from infinite descent.
+This example is inspired from Exercise 2.1.32 from infinite descent.
 "
 open Set
 /-- Let a,b ∈ R. Prove that [a,b] is empty if and only if a > b. -/

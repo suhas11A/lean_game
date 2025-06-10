@@ -9,7 +9,7 @@ Level 2
 Title "Basic example in intervals"
 
 Introduction "
-This example is imspired from Example 2.1.17 from infinite descent.
+This example is inspired from Example 2.1.17 from infinite descent.
 
 We will be proving a simple result involving intervals.
 

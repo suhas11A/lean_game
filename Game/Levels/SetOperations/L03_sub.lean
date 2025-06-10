@@ -9,32 +9,36 @@ Level 3
 Title "Basic example in intervals"
 
 Introduction "
-Following along with Example 2.1.17.
+This example is inspired from Exercise 2.2.30 from infinite descent.
 
-To prove the goal
+Here the goal is of form `↔`. First we need to split the goal into 2 sub-goals.
 "
 open Set
 /-- Let X and Y be sets. Prove that X ⊆ Y if and only if X∩Y = X. -/
 Statement (U : Type)(X Y : Set U): X ⊆ Y ↔ (X ∩ Y = X) := by
-  constructor
+  Hint "Recall which Theorem is used to do split an `↔` goal."
+  apply Iff.intro
+  Hint "To prove a result of type `p → q` we need to assume `p` and show `q`."
   intro h
+  Hint "To prove that 2 Sets are equal it suffices to show ..."
   apply Subset.antisymm
-  intro
-  intro
+  Hint "To show `A ⊆ B` it is enough to show ..."
+  intro a
+  intro a_1
   rw[mem_inter_iff] at a_1
   exact a_1.1
-  intro
-  intro
+  intro a
+  intro a_1
+  Hint "To prove `x ∈ A ∩ B` we need to show `x ∈ A` and `x ∈ B`."
   rw[mem_inter_iff]
   have h4 := h a_1
   exact And.intro a_1 h4
   intro h
   intro a
-  intro h_1
-  symm at h
-  rw[h] at h_1
-  rw[mem_inter_iff] at h_1
-  exact h_1.2
+  intro a_1
+  rw[← h] at a_1
+  rw[mem_inter_iff] at a_1
+  exact a_1.2
 
 
 

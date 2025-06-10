@@ -9,7 +9,7 @@ Level 2
 Title "Basic example in intervals"
 
 Introduction "
-This example is imspired from Exercise 2.2.14 from infinite descent.
+This example is inspired from Exercise 2.2.14 from infinite descent.
 
 `Ico a b` represent the interval [a,b) in LEAN.
 "
@@ -22,7 +22,7 @@ Statement (a b c d : ℝ)(h1 : a < c)(h2 : c < b)(h3 : b < d): (Ico a b) ∩ (Ic
   Hint "Read and learn theorems `le_of_lt`, `lt_trans` and `mem_Ico` as they will be usefull."
   ext x
   Hint "Recall how to solve `↔` goals"
-  constructor
+  apply Iff.intro
   intro h
   have ha := h.1
   have hb := h.2
@@ -37,7 +37,7 @@ Statement (a b c d : ℝ)(h1 : a < c)(h2 : c < b)(h3 : b < d): (Ico a b) ∩ (Ic
   have hb := h.2
   have hd : x < d := lt_trans hb h3
   have ha : a ≤ x := le_of_lt (lt_of_lt_of_le h1 hc)
-  constructor
+  apply And.intro
   rw[mem_Ico]
   exact And.intro ha hb
   rw[mem_Ico]
@@ -48,5 +48,5 @@ Statement (a b c d : ℝ)(h1 : a < c)(h2 : c < b)(h3 : b < d): (Ico a b) ∩ (Ic
 Conclusion "--conc--"
 
 
-NewTheorem Set.mem_inter_iff Set.mem_Ico And.intro lt_trans le_of_lt lt_of_lt_of_le
-NewTactic clear «have» ext constructor intro
+NewTheorem Set.mem_inter_iff Set.mem_Ico And.intro lt_trans le_of_lt lt_of_lt_of_le Iff.intro
+NewTactic clear «have» ext intro apply split

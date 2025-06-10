@@ -6,7 +6,7 @@ Level 1
 Title "Introduction to Subsets"
 
 Introduction "
-This example is imspired from Example 2.1.16 from infinite descent, let's prove a basic set theorem using Lean.
+This example is inspired from Example 2.1.16 from infinite descent, let's prove a basic set theorem using Lean.
 
 To prove A ⊆ B, we need to show that if something is an element of A, then it is also an element of B i.e we
 need to prove `x ∈ A → x ∈ B`

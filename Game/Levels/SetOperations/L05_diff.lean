@@ -24,7 +24,7 @@ open Set
 Statement : Set.univ \ evens = odds := by
   ext n
   rw[mem_diff]
-  constructor
+  apply Iff.intro
   intro
   cases Nat.mod_two_eq_zero_or_one n
   have h1 : n ∈ evens := h

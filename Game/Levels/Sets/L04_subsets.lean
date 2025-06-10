@@ -8,7 +8,7 @@ Level 4
 Title "Basic example in intervals"
 
 Introduction "
-This example is from Proposition 2.1.20 in Infinite Descent.
+This example is inspired from Proposition 2.1.20 in Infinite Descent.
 "
 open Set
 /-- Suppose A ⊆ B, B ⊆ C. Then A ⊆ C. -/

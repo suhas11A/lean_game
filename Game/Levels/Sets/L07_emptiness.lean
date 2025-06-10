@@ -9,12 +9,12 @@ Level 7
 Title "Basic example in intervals"
 
 Introduction "
-This example is imspired from Exercise 2.1.31 from infinite descent.
+This example is inspired from Exercise 2.1.31 from infinite descent.
 "
 open Set
 /-- Let a,b ∈ R. Prove that [a,b] is empty if and only if a > b. -/
 Statement (a b : ℝ): Icc a b = ∅ ↔ a > b := by
-  constructor
+  apply Iff.intro
   intro h1
   have h_ : a = a := rfl
   have h_a_eq : a ≤ a := le_of_eq h_
@@ -33,7 +33,7 @@ Statement (a b : ℝ): Icc a b = ∅ ↔ a > b := by
   exact h_1
   intro h
   ext x
-  constructor
+  apply Iff.intro
   intro hx
   rw[mem_Icc] at hx
   have h1 := hx.1
@@ -47,5 +47,5 @@ Conclusion "
 --conc--
 "
 
-NewTactic ext constructor
-NewTheorem le_trans not_le_of_gt le_of_eq le_of_lt lt_trichotomy
+NewTactic ext apply
+NewTheorem le_trans not_le_of_gt le_of_eq le_of_lt lt_trichotomy Iff.intro

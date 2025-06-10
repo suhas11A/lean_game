@@ -18,7 +18,7 @@ To prove the goal
 "
 
 open Set
-/-- Let X, Y and A be sets. Prove that A\(X∪Y)=(A\X)∩(A\Y). -/
+/-- Let X, Y and A be sets. Prove that A \ (X∪Y)=(A\X)∩(A\Y). -/
 Statement (U : Type)(A X Y : Set U): A \ (X ∪ Y) ⊆ (A \ X) ∩ (A \ Y) := by
   intro x hx
   rw[mem_diff] at hx

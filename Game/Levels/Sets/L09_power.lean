@@ -8,7 +8,7 @@ Level 9
 Title "Basic example in intervals"
 
 Introduction "
-This example is imspired from Example 2.1.37 from infinite descent.
+This example is inspired from Example 2.1.37 from infinite descent.
 "
 open Set
 /-- Suppose A = {a,b}. Then P(A) = {∅, {a}, {b}, {a,b}}. -/

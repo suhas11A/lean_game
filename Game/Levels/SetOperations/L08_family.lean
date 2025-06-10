@@ -23,10 +23,10 @@ open Set
 Statement : (⋂ n : ℕ, Ico (0 : ℝ) (1 + 1 / (n + 1))) = Icc 0 1 := by
   ext x
   simp[mem_Ico, mem_Icc, mem_inter]
-  constructor
+  apply Iff.intro
   intro h
   have hx0 : 0 ≤ x := (h 0).1
-  constructor
+  apply And.intro
   exact hx0
   by_contra hx
   apply lt_of_not_ge at hx

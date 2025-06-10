@@ -22,7 +22,7 @@ Statement (U : Type)(X Y Z : Set U): X ∩ (Y ∪ Z) = (X ∩ Y) ∪ (X ∩ Z) :
   rw[mem_union]
   rw[mem_union]
   rw[mem_inter_iff]
-  constructor
+  apply Iff.intro
   intro
   have a_1 := a.1
   have a_2 := a.2

@@ -22,7 +22,7 @@ open Set
 Statement (U : Type)(X: Set U): X ×ˢ (∅ : Set U) = ∅ := by
   ext x
   rw[mem_prod]
-  constructor
+  apply Iff.intro
   intro h
   cases h.2
   intro
