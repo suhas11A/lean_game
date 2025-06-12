@@ -14,11 +14,12 @@ open Set
 /-- Suppose A ⊆ B, B ⊆ C. Then A ⊆ C. -/
 Statement (U : Type)(A B C : Set U)(ha : A ⊆ B)(hb : B ⊆ C): A ⊆ C := by
   intro x h1
-  Hint "`ha: A ⊆ B` is a proof of `x ∈ A → x ∈ B`"
-  Hint "`h1 : x ∈ A` and `ha: A ⊆ B` together make the proof of `h2 : x ∈ B`"
-  Hint "Execute `have h2 : x ∈ B := ha h1`"
+  Hint "What does it mean when you say `A ⊆ B`?? It means that every element of A is also a mem of B."
+  Hint "Thus `ha: A ⊆ B` is a proof of `x ∈ A → x ∈ B`."
+  Hint "`h1 : x ∈ A` and `ha: A ⊆ B` together make the proof of `h2 : x ∈ B`."
+  Hint "Execute `have h2 : x ∈ B := ha h1`."
   have h2 : x ∈ B := ha h1
-  Hint "We know `hb h2` is the proof of `x ∈ C` so execute `exact hb h2`"
+  Hint "We know `hb h2` is the proof of `x ∈ C` so execute `exact hb h2`."
   exact hb h2
 
-Conclusion "`exact` can close goals and can be used with complex argument. For example `exact And.intro ha hb` will close the goal `ha ∧ hb`"
+Conclusion "`exact` can close goals and can be used with complex argument. For example `exact And.intro ha hb` will close the goal `ha ∧ hb`."

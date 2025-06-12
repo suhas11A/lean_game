@@ -14,7 +14,9 @@ open Set
 /-- Let X be a set. Prove that ∅ ⊆ X -/
 Statement (U :Type)(X : Set U): ∅ ⊆ X := by
   intro x hx
-  Hint "When there is hypotheses `x ∈ ∅` any goal is trivially true. To prove this execute `cases hx`."
+  Hint "When there is hypotheses `x ∈ ∅` any goal is trivially true (Recall from Chapter 1). To prove this in LEAN execute `cases hx`."
+  Hint "`cases` is a tactic used to split a hypotheses into cases."
+  Hint "If we have `hx : x ∈ Set(a,b)`, then `cases hx` would change the tactic state into 2 goals(same as original goal) with diff hypotheses: `hx : x ∈ A` in the first goal and `hx : x ∈ B` in the second goal."
   cases hx
 
 Conclusion "

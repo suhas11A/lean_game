@@ -1,6 +1,7 @@
-didnt write hints for sets-L03,07,09; operations-,04,05,06,07,08
+didnt write hints for sets-L03,07; operations-L04,05,06,07,08
 used simp in sets-L09; operation-L06,08
-didnt finish problems - sets-L03,09; operations-L08
+used ext in sets-L07; operations-L08
+unfinished levels - sets-L03,09; operations-L08
 conc - everything(almost)
 title - everything(almost)
 

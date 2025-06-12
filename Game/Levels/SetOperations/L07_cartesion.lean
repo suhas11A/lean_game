@@ -20,15 +20,12 @@ To prove the goal
 open Set
 /--  Let X be a set. Prove that X×∅ = ∅. -/
 Statement (U : Type)(X: Set U): X ×ˢ (∅ : Set U) = ∅ := by
-  ext x
-  rw[mem_prod]
-  apply Iff.intro
-  intro h
-  cases h.2
-  intro
-  cases a
-
-
+  apply Subset.antisymm
+  intro a ha
+  rw[mem_prod] at ha
+  cases ha.2
+  intro a ha
+  cases ha
 
 
 Conclusion "--conc--"

@@ -22,18 +22,17 @@ def odds : Set ℕ := { n | n % 2 = 1 }
 open Set
 /-- Let X, Y and Z be sets. Prove that X∩(Y∪Z) = (X∩Y)∪(X∩Z). -/
 Statement : Set.univ \ evens = odds := by
-  ext n
-  rw[mem_diff]
-  apply Iff.intro
-  intro
+  apply Subset.antisymm
+  intro n hn
+  rw[mem_diff] at hn
   cases Nat.mod_two_eq_zero_or_one n
   have h1 : n ∈ evens := h
-  have a_1 := a.2
+  have a_1 := hn.2
   contradiction
   have h1 : n ∈ odds := h
   exact h1
-  intro
-  have h1 : n % 2 = 1 := a
+  intro n hn
+  have h1 : n % 2 = 1 := hn
   have h2 : 1 ≠ 0 := Nat.one_ne_zero
   rw[← h1] at h2
   have h3 : n ∉ evens := h2
