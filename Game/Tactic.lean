@@ -1,6 +1,7 @@
 -- Custom tactics used by the Infinite Descent game.
 
 import Lean
+import GameServer.Commands
 
 open Lean.Elab.Tactic Lean.Meta Lean.MonadLCtx
 
@@ -22,6 +23,13 @@ elab "and_intro" : tactic =>
     else
       throwTacticEx `and_intro goal
         m!"the goal {decl.type} isn't of the form p ∧ q"
+
+/--
+  `and_intro` turns a goal of the form p ∧ q into two goals, p and q.
+
+  This follows Strategy 1.1.7 in Infinite Descent.
+ -/
+TacticDoc and_intro
 
 example : (0 = 0 ∧ 2 = 2) ∧ 1 = 1 := by
   and_intro
@@ -62,4 +70,11 @@ theorem a (P Q : Prop) (abc : P ∧ Q) : (Q ∧ P) := by
   · exact c
   · exact a
 
-#print a
+/--
+  If `h` is the name of an assumption of the form `p ∧ q`, then
+  `and_elim h into ha hb` replaces `h` with two assumptions, `ha`
+  which proves `p` and `hb` which proves `q`.
+
+  This follows Strategy 1.1.9 in Infinite Descent.
+ -/
+TacticDoc and_elim
