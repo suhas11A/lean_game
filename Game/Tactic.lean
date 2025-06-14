@@ -64,7 +64,7 @@ elab "and_elim" h:ident "into" hl:ident hr:ident : tactic =>
       throwTacticEx `and_elim goal
         m!"there is no assumption named {h}"
 
-theorem a (P Q : Prop) (abc : P ∧ Q) : (Q ∧ P) := by
+example (P Q : Prop) (abc : P ∧ Q) : (Q ∧ P) := by
   and_elim abc into a c
   and_intro
   · exact c
