@@ -1,4 +1,5 @@
 import GameServer.Commands
+import Game.Tactic
 
 import Mathlib.Init.Data.Nat.Notation
 import Mathlib.Tactic.Common
