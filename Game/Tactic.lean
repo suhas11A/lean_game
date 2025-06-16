@@ -6,27 +6,54 @@ import GameServer.Commands
 open Lean Elab.Tactic Meta MonadLCtx
 
 
+-- Helper functions from later versions of the Lean standard library.
+namespace List
+def flatten : List (List α) → List α
+  | []      => []
+  | l :: L => l ++ flatten L
+@[inline]
+def flatMapM {m : Type u → Type v} [Monad m] {α : Type w} {β : Type u}
+    (f : α → m (List β)) (as_ : List α) : m (List β) :=
+  let rec loop
+    | [],     bs => pure bs.reverse.flatten
+    | a :: as_, bs => do
+      let bs' ← f a
+      loop as_ (bs' :: bs)
+  loop as_ []
+end List
+
+partial def and_intro.go (goal : MVarId) : MetaM (List MVarId) := do
+  -- Convert the goal to WHNF to compare.
+  let decl ← goal.getDecl
+  let whnfGoal ← whnf decl.type
+  -- Check that the goal type is of the form p ∧ q.
+  if let .app (.app (.const ``And []) conj1) conj2 := whnfGoal then
+    -- Add new metavariables for each conjunct.
+    let mvar1 ← mkFreshExprMVar conj1
+    let mvar2 ← mkFreshExprMVar conj2
+    -- Close the current goal with And.intro, and add new goals for
+    -- each conjunct.
+    goal.assign (← mkAppM ``And.intro #[mvar1, mvar2])
+    List.flatMapM go [Expr.mvarId! mvar1, Expr.mvarId! mvar2]
+  else
+    pure [goal]
+
 -- Proceeds with and-introduction.  Works like apply And.intro.
 elab "and_intro" : tactic =>
   withMainContext $ liftMetaTactic λ goal ↦ do
-    let decl ← goal.getDecl
     -- Convert the goal to WHNF to compare.
+    let decl ← goal.getDecl
     let whnfGoal ← whnf decl.type
     -- Check that the goal type is of the form p ∧ q.
-    if let .app (.app (.const ``And []) conj1) conj2 := whnfGoal then
-      -- Add new metavariables for each conjunct.
-      let mvar1 ← mkFreshExprMVar conj1
-      let mvar2 ← mkFreshExprMVar conj2
-      -- Close the current goal with And.intro, and add new goals for
-      -- each conjunct.
-      goal.assign (← mkAppM ``And.intro #[mvar1, mvar2])
-      pure [Expr.mvarId! mvar1, Expr.mvarId! mvar2]
+    if let .app (.app (.const ``And []) _) _ := whnfGoal then
+      and_intro.go goal
     else
       throwTacticEx `and_intro goal
         m!"the goal {decl.type} isn't a conjunction"
 
 /--
-  `and_intro` turns a goal of the form p ∧ q into two goals, p and q.
+  If the goal is a conjunction, `and_intro` will replace the goal with
+  each of its conjuncts, in turn.
 
   This follows Strategy 1.1.7 in Infinite Descent.
  -/
@@ -34,9 +61,8 @@ TacticDoc and_intro
 
 example : (0 = 0 ∧ 2 = 2) ∧ 1 = 1 := by
   and_intro
-  · and_intro
-    · rfl
-    · rfl
+  · rfl
+  · rfl
   · rfl
 
 
