@@ -66,22 +66,32 @@ example : (0 = 0 ∧ 2 = 2) ∧ 1 = 1 := by
   · rfl
 
 
--- Proceeds with and-elimination.  Replaces a hypothesis of the form
--- p ∧ q with two hypotheses of forms p and q respectively.
-elab "and_elim" h:ident "into" hl:ident hr:ident : tactic =>
+partial def and_elim.go (hyp : FVarId) (goal : MVarId) (type value : Expr) (conjs : List Name) :
+    MetaM (MVarId × List Name) := do
+  if let .app (.app (.const ``And []) conj1) conj2 := (← whnf type) then
+    let ⟨goal, conjs⟩ ← go hyp goal conj2 (← mkAppM ``And.right #[value]) conjs
+    go hyp goal conj1 (← mkAppM ``And.left #[value]) conjs
+  else
+    match conjs with
+    | [] => throwTacticEx `and_elim goal m!"not enough conjunct names provided"
+    | conj :: conjs =>
+      let ⟨_, goal, _⟩ ← goal.assertAfter hyp conj type value
+      pure ⟨goal, conjs⟩
+
+-- Proceeds with and-elimination.  Replaces a conjunction hypothesis
+-- with separate hypotheses for each conjunct.
+elab "and_elim" h:ident "into" conjs:ident,+ : tactic =>
   withMainContext $ liftMetaTactic λ goal ↦ do
     let ctx ← getLCtx
     -- Search for a hypothesis with name h.
     if let some hyp := ctx.findFromUserName? (h.getId) then
+      let hypType ← inferType hyp.toExpr
       -- If found, ensure that it is of the form p ∧ q
-      let whnfHyp ← whnf (← inferType hyp.toExpr)
-      if let .app (.app (.const ``And []) conj1) conj2 := whnfHyp then
-        -- Use And's eliminators to get values of type p and q and add
-        -- them to the context.
-        let conj1Val ← mkAppM ``And.left #[hyp.toExpr]
-        let conj2Val ← mkAppM ``And.right #[hyp.toExpr]
-        let ⟨_, goal, _⟩ ← goal.assertAfter hyp.fvarId hr.getId conj2 conj2Val
-        let ⟨_, goal, _⟩ ← goal.assertAfter hyp.fvarId hl.getId conj1 conj1Val
+      if let .app (.app (.const ``And []) _) _ := (← whnf hypType) then
+        let conjs := List.reverse $ TSyntax.getId <$> conjs.getElems.toList
+        let ⟨goal, remaining_conjs⟩ ← and_elim.go hyp.fvarId goal hypType hyp.toExpr conjs
+        if let _::_ := remaining_conjs then
+          throwTacticEx `and_elim goal m!"too many conjunct names provided"
         -- Clear the original hypothesis as it is not needed anymore.
         let goal ← goal.clear hyp.fvarId
         pure [goal]
@@ -92,13 +102,15 @@ elab "and_elim" h:ident "into" hl:ident hr:ident : tactic =>
       throwTacticEx `and_elim goal
         m!"there is no assumption named {h}"
 
-example (P Q : Prop) (abc : P ∧ Q) : (Q ∧ P) := by
-  and_elim abc into a c
+example (P Q : Prop) (abc : P ∧ Q ∧ R) : (Q ∧ R ∧ P) := by
+  and_elim abc into a, b, c
   and_intro
+  · exact b
   · exact c
   · exact a
 
 /--
+  todo i have to update this, don't wanna rn lol
   If `h` is the name of an assumption of the form `p ∧ q`, then
   `and_elim h into ha hb` replaces `h` with two assumptions, `ha`
   which proves `p` and `hb` which proves `q`.
