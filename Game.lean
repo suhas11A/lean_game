@@ -1,8 +1,9 @@
 import Game.Levels.Basics
-import Game.Levels.LogicalStructure
+import Game.Levels.PropositionalLogic
 import Game.Levels.Sets
 import Game.Levels.SetOperations
 import Game.Levels.Functions
+-- import Game.Levels.VariablesAndQuantifiers
 
 -- Here's what we'll put on the title screen
 Title "Infinite Descent in Lean"
@@ -19,9 +20,9 @@ For example: Game version, Credits, Link to Github and Zulip, etc.
 
 Use markdown.
 "
-Dependency Basics → LogicalStructure
-Dependency LogicalStructure → Sets
-Dependency LogicalStructure → SetOperations
+Dependency Basics → PropositionalLogic
+Dependency PropositionalLogic → Sets
+Dependency PropositionalLogic → SetOperations
 Dependency Sets → Functions
 
 /-! Information to be displayed on the servers landing page. -/

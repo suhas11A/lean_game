@@ -25,7 +25,7 @@ Statement (U : Type)(X Y Z : Set U): X ∩ (Y ∪ Z) = (X ∩ Y) ∪ (X ∩ Z) :
   Hint "Similarly simplify intersections and unions at `hx`."
   rw[mem_inter_iff, mem_union] at hx
   Hint "Now use theorems and tactics learned in World-1 to close the current goal."
-  and_elim hx into h_1 h_2
+  and_elim hx into h_1, h_2
   cases h_2
   left
   exact And.intro h_1 h

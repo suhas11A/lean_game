@@ -14,7 +14,6 @@ Title "Section 2.1: Sets"
 Introduction "
 Welcome to Set World!
 
-The elements of the sets in this world will be from the Set of Natural Numbers.
 To specify that an object `x` belongs to the set of Natural Numbers `ℕ`, we write `x : ℕ`.
 To specify that `A` is a set of objects from `ℕ`, we write `A : Set ℕ`.
 (The terminology used in Lean is that `x` has type `ℕ` and `A` has type `Set ℕ`).

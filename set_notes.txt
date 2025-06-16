@@ -1,11 +1,8 @@
 didnt write hints for sets-L03,07; operations-L08
-used simp in sets-L09; operation-L06,08
 used ext in sets-L07; operations-L08
 unfinished levels - sets-L03,07,09; operations-L08
 conc - everything(almost)
 title - everything(almost)
-
-in sets-L07 we used `ext` to make `A=B` to `x in A iff x in B`
 
 try to reduce `have` usage
 

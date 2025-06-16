@@ -21,10 +21,10 @@ Statement (U : Type)(A X Y : Set U): A \ (X ∪ Y) ⊆ (A \ X) ∩ (A \ Y) := by
   Hint "This example can be proved with theorems and tactics that you have already learnt. Try closing the goal on your own."
   intro x hx
   rw[mem_diff] at hx
-  and_elim hx into h1 h2
+  and_elim hx into h1, h2
   simp at h2
   rw[not_or] at h2
-  and_elim h2 into a_1 a_2
+  and_elim h2 into a_1, a_2
   simp
   exact And.intro (And.intro h1 a_1) (And.intro h1 a_2)
 

@@ -53,4 +53,4 @@ Conclusion "--conc--"
 
 
 NewTheorem Set.mem_union lt_trans and_or_left Nat.mod_two_eq_zero_or_one Set.mem_diff Set.univ Nat.one_ne_zero
-NewTactic trivial contradiction
+NewTactic trivial
