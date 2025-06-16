@@ -12,14 +12,13 @@ Level 7
 Title "Basic example in intervals"
 
 Introduction "
-Following along with Example 2.1.17.
-
-To prove the goal
+Following along with Example 2.2.36 we'll learn the concept of Cartesion product.
 "
 
 open Set
-/--  Let X be a set. Prove that X×∅ = ∅. -/
+/--  Let X be a set. Prove that X × ∅ = ∅. -/
 Statement (U : Type)(X: Set U): X ×ˢ (∅ : Set U) = ∅ := by
+  Hint "Theorem `mem_prod` can be used to rewrite `a ∈ A ×ˢ B` into `a.1 ∈ A ∧ a.2 ∈ B`."
   apply Subset.antisymm
   intro a ha
   rw[mem_prod] at ha

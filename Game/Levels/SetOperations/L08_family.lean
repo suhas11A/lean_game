@@ -36,4 +36,5 @@ Statement : (⋂ n : ℕ, Ico (0 : ℝ) (1 + 1 / (n + 1))) = Icc 0 1 := by
 
 Conclusion "--conc--"
 
-NewTheorem Set.mem_Icc
+NewTactic by_contra
+NewTheorem Set.mem_Icc lt_of_not_ge

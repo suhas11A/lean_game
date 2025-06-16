@@ -11,7 +11,7 @@ Introduction "
 In order to prove `X = Y`, it suffices to prove `X ⊆ Y` and `X ⊇ Y`.
 "
 open Set
-/-- Suppose A is a set. Then (Aᶜ)ᶜ= A. -/
+/-- Suppose A is a set. Then (Aᶜ)ᶜ = A. -/
 Statement (U : Type)(A : Set U): (Aᶜ)ᶜ = A := by
   Hint "`A = B` means every element of A is also and element of B and every element of B is also an element of A."
   Hint "More precicely `A = B` means `A ⊆ B ∧ B ⊆ A`."

@@ -23,8 +23,7 @@ Statement (a b c d : ℝ)(ha : a < c)(hc : d < b): Icc c d ⊆ Ioo a b := by
   rw [mem_Icc] at hx
   Hint "When `a < b` and `b ≤ c`, it is obvious that `a < c`, but how does lean know that. Well there are theoroms that we can use!"
   Hint "See theorems `lt_of_lt_of_le` and `lt_of_le_of_lt` and how to use them."
-  have h1 := hx.1
-  have h2 := hx.2
+  and_elim hx into h1 h2
   have h3 := lt_of_lt_of_le ha h1
   have h4 := lt_of_le_of_lt h2 hc
   Hint "Recall `And.intro` from first World."

@@ -13,7 +13,7 @@ Following along with Proposition 2.1.20.
 To prove tha goal
 "
 open Set
-/-- Suppose A⊆B, B⊆C, and x∈A. Then x∈C. -/
+/-- Suppose A⊆B, B⊆C, and x∈A. Then x ∈ C. -/
 Statement (U : Type)(A : Set U)(B : Set ℕ): 0 = 0 := by
   -- just a place holder level to explain types vs sets
   rfl

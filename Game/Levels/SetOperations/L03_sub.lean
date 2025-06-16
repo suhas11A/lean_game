@@ -14,7 +14,7 @@ This example is inspired from Exercise 2.2.30 from infinite descent.
 Here the goal is of form `↔`. First we need to split the goal into 2 sub-goals.
 "
 open Set
-/-- Let X and Y be sets. Prove that X ⊆ Y if and only if X∩Y = X. -/
+/-- Let X and Y be sets. Prove that X ⊆ Y if and only if X∩Y=X. -/
 Statement (U : Type)(X Y : Set U): X ⊆ Y ↔ (X ∩ Y = X) := by
   Hint "
   To prove a goal of form `p ↔ q` we have to essentially show 2 things `p → q` and `q → p`

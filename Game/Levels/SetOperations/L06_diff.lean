@@ -12,23 +12,19 @@ Level 6
 Title "Basic example in intervals"
 
 Introduction "
-Following along with Example 2.1.17.
-
-To prove the goal
+Following along with Thorem 2.2.31, we will show one of the Demorgans rules for Sets.
 "
 
 open Set
-/-- Let X, Y and A be sets. Prove that A \ (X∪Y)=(A\X)∩(A\Y). -/
+/-- Let X, Y and A be sets. Prove that A \ (X ∪ Y) = (A \ X) ∩ (A \ Y). -/
 Statement (U : Type)(A X Y : Set U): A \ (X ∪ Y) ⊆ (A \ X) ∩ (A \ Y) := by
+  Hint "This example can be proved with theorems and tactics that you have already learnt. Try closing the goal on your own."
   intro x hx
   rw[mem_diff] at hx
-  have h1 := hx.1
-  have h2 := hx.2
-  clear hx
+  and_elim hx into h1 h2
   simp at h2
   rw[not_or] at h2
-  have a_1 := h2.1
-  have a_2 := h2.2
+  and_elim h2 into a_1 a_2
   simp
   exact And.intro (And.intro h1 a_1) (And.intro h1 a_2)
 
@@ -37,5 +33,5 @@ Statement (U : Type)(A X Y : Set U): A \ (X ∪ Y) ⊆ (A \ X) ∩ (A \ Y) := by
 Conclusion "--conc--"
 
 
-NewTheorem Set.mem_union lt_trans and_or_left not_or
+NewTheorem not_or
 NewTactic simp
