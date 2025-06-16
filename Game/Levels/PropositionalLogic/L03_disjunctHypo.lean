@@ -9,7 +9,7 @@ Title "Disjunction in the Hypothesis"
 Introduction "todo"
 
 Statement (h:x=3 ∨ y=5) : y=5 := by
-  or_elim x=3 in h
+  or_elim h into hx, hy
   Hint "asdf"
 
   exact h1

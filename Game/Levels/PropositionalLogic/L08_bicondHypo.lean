@@ -3,12 +3,12 @@ import GameServer.Commands
 
 
 World "PropositionalLogic"
-Level 1
+Level 8
 Title "Biconditional in the Hypothesis"
 
 Introduction "todo"
 
-Statement (h1:x=3) (h2:y=5) : x=3 ∧ y=5 := by
+Statement (h:x=3) (h2:y=5) : x=3 ∧ y=5 := by
   and_intro
   Hint "asdf"
 

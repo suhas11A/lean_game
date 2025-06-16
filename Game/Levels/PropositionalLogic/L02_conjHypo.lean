@@ -17,7 +17,7 @@ separate h into two separate hypotheses: `h1: p` and `h2: q`. Try using this as 
 step of the proof."
 
 Statement (h:x=3 ∧ y=5) : y=5 := by
-  and_elim h into h1 h2
+  and_elim h into h1, h2
   Hint "Now that we have the hypotheses `h1: x=3` and `h2: y=5`, our goal matches one of these
   hypotheses exactly. Use the `exact` tactic like in the previous level to finish the proof."
 
