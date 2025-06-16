@@ -3,7 +3,7 @@
 import Lean
 import GameServer.Commands
 
-open Lean.Elab.Tactic Lean.Meta Lean.MonadLCtx
+open Lean Elab.Tactic Meta MonadLCtx
 
 -- Proceeds with and-introduction.  Works like apply And.intro.
 elab "and_intro" : tactic =>
@@ -19,7 +19,7 @@ elab "and_intro" : tactic =>
       -- Close the current goal with And.intro, and add new goals for
       -- each conjunct.
       goal.assign (← mkAppM ``And.intro #[mvar1, mvar2])
-      pure [Lean.Expr.mvarId! mvar1, Lean.Expr.mvarId! mvar2]
+      pure [Expr.mvarId! mvar1, Expr.mvarId! mvar2]
     else
       throwTacticEx `and_intro goal
         m!"the goal {decl.type} isn't a conjunction"
@@ -85,15 +85,15 @@ TacticDoc and_elim
   a composition of Or.inl or Or.inr that can be used to construct a
   term of type expr using a term of type disj.
   -/
-partial def extractDisjunct (expr disj : Lean.Expr) : MetaM (Option Lean.Expr) := do
+partial def extractDisjunct (expr disj : Expr) : MetaM (Option Expr) := do
   if ← isDefEq expr disj then
     pure (some (.app (.const ``id [.zero]) expr))
   else
     if let .app (.app (.const ``Or []) disj1) disj2 := (← whnf expr) then
       if let some inDisj1 := (← extractDisjunct disj1 disj) then
-        some <$> mkAppM ``Function.comp #[Lean.mkApp2 (.const ``Or.inl []) disj1 disj2, inDisj1]
+        some <$> mkAppM ``Function.comp #[mkApp2 (.const ``Or.inl []) disj1 disj2, inDisj1]
       else if let some inDisj2 := (← extractDisjunct disj2 disj) then
-        some <$> mkAppM ``Function.comp #[Lean.mkApp2 (.const ``Or.inr []) disj1 disj2, inDisj2]
+        some <$> mkAppM ``Function.comp #[mkApp2 (.const ``Or.inr []) disj1 disj2, inDisj2]
       else
         pure none
     else
@@ -111,7 +111,7 @@ elab "or_intro" disj:term : tactic =>
       if let some k := (← extractDisjunct (← goal.getType) disj) then
         let mvar ← mkFreshExprMVar disj
         goal.assign (.app k mvar)
-        pure [Lean.Expr.mvarId! mvar]
+        pure [Expr.mvarId! mvar]
       else
         throwTacticEx `and_intro goal
           m!"the goal {decl.type} isn't a disjunction, or {disj} isn't one of its disjuncts"
