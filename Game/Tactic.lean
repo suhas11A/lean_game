@@ -101,7 +101,6 @@ partial def extractDisjunct (expr disj : Expr) : MetaM (Except MessageData Expr)
   else
     pure $ .error m!"{expr} is not a disjunction"
 
-
 -- Proceeds with or-introduction.  If the goal is a disjunction, then
 -- the user specifies which disjunct to prove by writing the proposition
 -- out instead of picking the left or right branch.
@@ -127,5 +126,7 @@ example (x y z : Nat) : x = y ∨ y = y ∨ y = z := by
 
   For instance, if the goal is `x = y ∨ y = y ∨ y = z`, then `or_intro
   y = y` will replace the goal with `y = y`.
+
+  This follows Strategy 1.1.13, proving disjunctions, in Infinite Descent.
   -/
 TacticDoc or_intro
