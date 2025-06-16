@@ -5,6 +5,7 @@ import GameServer.Commands
 
 open Lean Elab.Tactic Meta MonadLCtx
 
+
 -- Proceeds with and-introduction.  Works like apply And.intro.
 elab "and_intro" : tactic =>
   withMainContext $ liftMetaTactic λ goal ↦ do
@@ -37,6 +38,7 @@ example : (0 = 0 ∧ 2 = 2) ∧ 1 = 1 := by
     · rfl
     · rfl
   · rfl
+
 
 -- Proceeds with and-elimination.  Replaces a hypothesis of the form
 -- p ∧ q with two hypotheses of forms p and q respectively.
@@ -78,6 +80,7 @@ example (P Q : Prop) (abc : P ∧ Q) : (Q ∧ P) := by
   This follows Strategy 1.1.9 in Infinite Descent.
  -/
 TacticDoc and_elim
+
 
 /--
   If expr is a possibly nested disjunction, and disj is one of the
