@@ -106,7 +106,6 @@ elab "or_intro" disj:term : tactic =>
   withMainContext do
     let disj ← elabTerm disj (expectedType? := some $ .sort .zero)
     liftMetaTactic λ goal ↦ do
-      let decl ← goal.getDecl
       match ← extractDisjunct (← goal.getType) disj with
       | .ok k =>
         let mvar ← mkFreshExprMVar disj
