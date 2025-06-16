@@ -81,23 +81,22 @@ TacticDoc and_elim
 
 /--
   If expr is a possibly nested disjunction, and disj is one of the
-  disjuncts, then extractDisjunct expr disj returns some e, where e is
-  a composition of Or.inl or Or.inr that can be used to construct a
-  term of type expr using a term of type disj.
+  disjuncts, then extractDisjunct expr disj returns ok e, where e is a
+  composition of Or.inl or Or.inr that can be used to construct a term
+  of type expr using a term of type disj.
   -/
-partial def extractDisjunct (expr disj : Expr) : MetaM (Option Expr) := do
+partial def extractDisjunct (expr disj : Expr) : MetaM (Except MessageData Expr) := do
   if ← isDefEq expr disj then
-    pure (some (.app (.const ``id [.zero]) expr))
-  else
-    if let .app (.app (.const ``Or []) disj1) disj2 := (← whnf expr) then
-      if let some inDisj1 := (← extractDisjunct disj1 disj) then
-        some <$> mkAppM ``Function.comp #[mkApp2 (.const ``Or.inl []) disj1 disj2, inDisj1]
-      else if let some inDisj2 := (← extractDisjunct disj2 disj) then
-        some <$> mkAppM ``Function.comp #[mkApp2 (.const ``Or.inr []) disj1 disj2, inDisj2]
-      else
-        pure none
+    pure $ .ok $ .app (.const ``id [.zero]) expr
+  else if let .app (.app (.const ``Or []) disj1) disj2 := (← whnf expr) then
+    if let .ok inDisj1 := (← extractDisjunct disj1 disj) then
+      .ok <$> mkAppM ``Function.comp #[mkApp2 (.const ``Or.inl []) disj1 disj2, inDisj1]
+    else if let .ok inDisj2 := (← extractDisjunct disj2 disj) then
+      .ok <$> mkAppM ``Function.comp #[mkApp2 (.const ``Or.inr []) disj1 disj2, inDisj2]
     else
-      pure none
+      pure $ .error m!"{disj} is not one of the disjuncts of {expr}"
+  else
+    pure $ .error m!"{expr} is not a disjunction"
 
 
 -- Proceeds with or-introduction.  If the goal is a disjunction, then
@@ -108,13 +107,13 @@ elab "or_intro" disj:term : tactic =>
     let disj ← elabTerm disj (expectedType? := some $ .sort .zero)
     liftMetaTactic λ goal ↦ do
       let decl ← goal.getDecl
-      if let some k := (← extractDisjunct (← goal.getType) disj) then
+      match ← extractDisjunct (← goal.getType) disj with
+      | .ok k =>
         let mvar ← mkFreshExprMVar disj
         goal.assign (.app k mvar)
         pure [Expr.mvarId! mvar]
-      else
-        throwTacticEx `and_intro goal
-          m!"the goal {decl.type} isn't a disjunction, or {disj} isn't one of its disjuncts"
+      | .error m =>
+        throwTacticEx `and_intro goal m
 
 example (x y z : Nat) : x = y ∨ y = y ∨ y = z := by
   or_intro y = y
