@@ -22,7 +22,7 @@ elab "and_intro" : tactic =>
       pure [Lean.Expr.mvarId! mvar1, Lean.Expr.mvarId! mvar2]
     else
       throwTacticEx `and_intro goal
-        m!"the goal {decl.type} isn't of the form p ∧ q"
+        m!"the goal {decl.type} isn't a conjunction"
 
 /--
   `and_intro` turns a goal of the form p ∧ q into two goals, p and q.
@@ -59,7 +59,7 @@ elab "and_elim" h:ident "into" hl:ident hr:ident : tactic =>
         pure [goal]
       else
         throwTacticEx `and_elim goal
-          m!"the assumption {h} : {hyp.type} isn't of the form p ∧ q"
+          m!"the assumption {h} : {hyp.type} isn't a conjunction"
     else
       throwTacticEx `and_elim goal
         m!"there is no assumption named {h}"
@@ -78,3 +78,53 @@ example (P Q : Prop) (abc : P ∧ Q) : (Q ∧ P) := by
   This follows Strategy 1.1.9 in Infinite Descent.
  -/
 TacticDoc and_elim
+
+/--
+  If expr is a possibly nested disjunction, and disj is one of the
+  disjuncts, then extractDisjunct expr disj returns some e, where e is
+  a composition of Or.inl or Or.inr that can be used to construct a
+  term of type expr using a term of type disj.
+  -/
+partial def extractDisjunct (expr disj : Lean.Expr) : MetaM (Option Lean.Expr) := do
+  if ← isDefEq expr disj then
+    pure (some (.app (.const ``id [.zero]) expr))
+  else
+    if let .app (.app (.const ``Or []) disj1) disj2 := (← whnf expr) then
+      if let some inDisj1 := (← extractDisjunct disj1 disj) then
+        some <$> mkAppM ``Function.comp #[Lean.mkApp2 (.const ``Or.inl []) disj1 disj2, inDisj1]
+      else if let some inDisj2 := (← extractDisjunct disj2 disj) then
+        some <$> mkAppM ``Function.comp #[Lean.mkApp2 (.const ``Or.inr []) disj1 disj2, inDisj2]
+      else
+        pure none
+    else
+      pure none
+
+
+-- Proceeds with or-introduction.  If the goal is a disjunction, then
+-- the user specifies which disjunct to prove by writing the proposition
+-- out instead of picking the left or right branch.
+elab "or_intro" disj:term : tactic =>
+  withMainContext do
+    let disj ← elabTerm disj (expectedType? := some $ .sort .zero)
+    liftMetaTactic λ goal ↦ do
+      let decl ← goal.getDecl
+      if let some k := (← extractDisjunct (← goal.getType) disj) then
+        let mvar ← mkFreshExprMVar disj
+        goal.assign (.app k mvar)
+        pure [Lean.Expr.mvarId! mvar]
+      else
+        throwTacticEx `and_intro goal
+          m!"the goal {decl.type} isn't a disjunction, or {disj} isn't one of its disjuncts"
+
+example (x y z : Nat) : x = y ∨ y = y ∨ y = z := by
+  or_intro y = y
+  rfl
+
+/--
+  If the goal is a disjunction, and `disj` one of its disjuncts, then
+  `or_intro disj` will replace the goal with `disj` for you to prove.
+
+  For instance, if the goal is `x = y ∨ y = y ∨ y = z`, then `or_intro
+  y = y` will replace the goal with `y = y`.
+  -/
+TacticDoc or_intro
