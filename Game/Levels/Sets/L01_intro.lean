@@ -12,7 +12,7 @@ To prove A ⊆ B, we need to show that if something is an element of A, then it 
 need to prove `x ∈ A → x ∈ B`
 (To enter the symbol ⊆ type `\\sub`, and for ∈ type `\\mem` (is a member of) or `\\in`).
 
-To prove tha goal the first tactic you're going to use is `intro`. Type in `intro x hx` to get started, this will introduce a new
+To prove this goal the first tactic you're going to use is `intro`. Type in `intro x hx` to get started, this will introduce a new
 hypotheses named `hx` with new variable `x` that is needed to prove the goal. Read the documentation on the right by clicking on `intro`.
 Alternatively you could execute `intro x` to first introduce a new variable `x` into goal and then introduce a new hypotheses.
 "

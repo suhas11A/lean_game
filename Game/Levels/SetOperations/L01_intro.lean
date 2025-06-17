@@ -14,7 +14,7 @@ open Set
 /-- Suppose x∈A∩B. Then x∈B. -/
 Statement (U : Type)(x : U)(A B : Set U)(h : x ∈ A ∩ B): x ∈ B := by
   Hint "`x ∈ A ∩ B` means that the element x is a member of both A and B."
-  Hint "Read and use the theorom `mem_inter_iff` (member of intersection if and only if) to rewrite `x ∈ A ∩ B` into `x ∈ A ∧ x ∈ B`."
+  Hint "Read and use the theorem `mem_inter_iff` (member of intersection if and only if) to rewrite `x ∈ A ∩ B` into `x ∈ A ∧ x ∈ B`."
   rw[mem_inter_iff] at h
   exact h.2
 

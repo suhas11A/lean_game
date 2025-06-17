@@ -22,10 +22,10 @@ open Set
 Statement : Set.univ \ evens = odds := by
   apply Subset.antisymm
   intro n hn
-  Hint "`A \\ B` is the set of all elements in A that are not membors of B."
+  Hint "`A \\ B` is the set of all elements in A that are not members of B."
   Hint "Theorem `mem_diff` can be used to rewrite ` x ∈ A \\ B` into `x ∈ A ∧ x ∉ B`."
   rw[mem_diff] at hn
-  Hint "Any Natural number is either odd or even, in other wordds `n % 2 = 0 ∨ n % 2 = 1`. Theorem `Nat.mod_two_eq_zero_or_one n` tells exaactly that."
+  Hint "Any Natural number is either odd or even, in other words `n % 2 = 0 ∨ n % 2 = 1`. Theorem `Nat.mod_two_eq_zero_or_one n` tells exactly that."
   Hint "`have hh := Nat.mod_two_eq_zero_or_one n` is used to create a new hypotheses saying exactly that."
   have hh := Nat.mod_two_eq_zero_or_one n
   cases hh

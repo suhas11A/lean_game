@@ -14,7 +14,7 @@ open Set
 /-- Suppose A is a set. Then (Aᶜ)ᶜ = A. -/
 Statement (U : Type)(A : Set U): (Aᶜ)ᶜ = A := by
   Hint "`A = B` means every element of A is also and element of B and every element of B is also an element of A."
-  Hint "More precicely `A = B` means `A ⊆ B ∧ B ⊆ A`."
+  Hint "More precisely, the equality `A = B` holds if and only if `A ⊆ B ∧ B ⊆ A`."
   Hint "You could also look at it this way `x ∈ A ↔ x ∈ B` (but we avoid this for now)."
   Hint "`apply Subset.antisymm` to the goal to split it into 2 goals `(Aᶜ)ᶜ ⊆ A` and `A ⊆ (Aᶜ)ᶜ`"
   apply Subset.antisymm
@@ -26,7 +26,7 @@ Statement (U : Type)(A : Set U): (Aᶜ)ᶜ = A := by
   rw[mem_compl_iff] at a_1
   Hint "We have seen that `a ∉ A` is equivalent to `¬a ∈ A` so what does `¬a ∉ A` mean??"
   Hint "`¬a ∉ A` is negation of `a ∉ A` i.e negation of `¬a ∈ A` which in turn is `a ∈ A`."
-  Hint "this `¬a ∉ A` means that a is an element of A"
+  Hint "So `¬a ∉ A` means that a is an element of A"
   Hint "Learn new Tactic `push_neg` to push the negation inside"
   push_neg at a_1
   exact a_1

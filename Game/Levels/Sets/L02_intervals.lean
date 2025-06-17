@@ -21,7 +21,7 @@ Statement (a b c d : ℝ)(ha : a < c)(hc : d < b): Icc c d ⊆ Ioo a b := by
   intro x hx
   Hint "If `a ∈ Icc x y` it means two things, `a ≥ x` and `a ≤ y`. Use theorem `mem_Icc` to rewrite `x ∈ Icc c d` to `c ≤ x ∧ x ≤ d`."
   rw [mem_Icc] at hx
-  Hint "When `a < b` and `b ≤ c`, it is obvious that `a < c`, but how does lean know that. Well there are theoroms that we can use!"
+  Hint "When `a < b` and `b ≤ c`, it is obvious that `a < c`, but how does lean know that. Well there are theorems that we can use!"
   Hint "See theorems `lt_of_lt_of_le` and `lt_of_le_of_lt` and how to use them."
   and_elim hx into h1, h2
   have h3 := lt_of_lt_of_le ha h1

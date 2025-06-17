@@ -12,7 +12,7 @@ Level 7
 Title "Basic example in intervals"
 
 Introduction "
-Following along with Example 2.2.36 we'll learn the concept of Cartesion product.
+Following along with Example 2.2.36 we'll learn the concept of Cartesian product.
 "
 
 open Set

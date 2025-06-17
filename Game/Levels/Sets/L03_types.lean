@@ -14,7 +14,7 @@ open Set
 /-- What is a Type?. -/
 Statement (U : Type)(x : U)(A : Set U)(h : x ∈ A): x ∈ A := by
   Hint "
-  In objects feild you can see `x : U` and `A : Set U` and what they mean is that x is an object of type `U`
+  In objects field you can see `x : U` and `A : Set U` and what they mean is that x is an object of type `U`
   and A is an object of type `Set U` it means A is a Set of elements of Type U.
   "
   Hint "

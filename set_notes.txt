@@ -6,4 +6,4 @@ title - everything(almost)
 
 try to reduce `have` usage
 
-Make nicer proofs in Sets-L07,09; Operations-
+Make nicer proofs in Sets-L07

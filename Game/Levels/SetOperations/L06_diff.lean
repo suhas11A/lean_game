@@ -12,7 +12,7 @@ Level 6
 Title "Basic example in intervals"
 
 Introduction "
-Following along with Thorem 2.2.31, we will show one of the Demorgans rules for Sets.
+Following along with Theorem 2.2.31, we will show one of the De Morgan's law for Sets.
 "
 
 open Set

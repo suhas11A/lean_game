@@ -21,7 +21,7 @@ Statement (U :Type)(X : Set U): ∅ ⊆ X := by
 
 Conclusion "
 Using this we can prove any 2 empty sets are equal. Say A and B are empty sets, from the above proof A ⊆ B and B ⊆ A, and from
-definition of eqauality in sets, A = B.
+definition of equality in sets, A = B.
 "
 
 NewTactic cases
