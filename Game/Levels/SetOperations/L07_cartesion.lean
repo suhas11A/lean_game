@@ -29,5 +29,9 @@ Statement (U : Type)(X: Set U): X ×ˢ (∅ : Set U) = ∅ := by
 
 Conclusion "--conc--"
 
+/-- The cartesian product s ×ˢ t is the set of (a, b) such that a ∈ s and b ∈ t.
+To enter the symbol `×ˢ`, type `\xs`. -/
+DefinitionDoc Set.prod as "×ˢ"
 
 NewTheorem Set.mem_prod
+NewDefinition Set.prod

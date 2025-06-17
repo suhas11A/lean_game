@@ -45,6 +45,10 @@ Statement (U : Type)(X Y Z : Set U): X ∩ (Y ∪ Z) = (X ∩ Y) ∪ (X ∩ Z) :
 
 Conclusion "--conc--"
 
+/-- If `A` and `B` are sets, then `A ∪ B` is the union of `A` and `B`.
+To enter the symbol `∪`, type `\union`. -/
+DefinitionDoc union as "∪"
 
 NewTheorem Set.mem_union lt_trans and_or_left
 NewTactic cases left right
+NewDefinition union

@@ -1,6 +1,6 @@
-didnt write hints for sets-L03,07; operations-L08
+didnt write hints for sets-L07; operations-L08
 used ext in sets-L07; operations-L08
-unfinished levels - sets-L03,07,09; operations-L08
+unfinished levels - sets-L07,09; operations-L08
 conc - everything(almost)
 title - everything(almost)
 

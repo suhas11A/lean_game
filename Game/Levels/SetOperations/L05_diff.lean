@@ -51,6 +51,9 @@ Statement : Set.univ \ evens = odds := by
 
 Conclusion "--conc--"
 
+/-- If `A` and `B` are sets, then `A / B` is the relative compliment of `A` with respect to `B`. -/
+DefinitionDoc diff as "/"
 
 NewTheorem Set.mem_union lt_trans and_or_left Nat.mod_two_eq_zero_or_one Set.mem_diff Set.univ Nat.one_ne_zero
 NewTactic trivial
+NewDefinition diff

@@ -30,5 +30,13 @@ Congratulations! You have completed your first proof in Sets using LEAN!
 /-- `exact e` closes the main goal if its target type matches that of `e` i.e `exact hx` closes the goal that matches hypotheses `hx`.  -/
 TacticDoc exact
 
+/-- `x ∈ A` means that `x` is an element of `A`.  To enter the symbol `∈`, type
+`\mem` or `\in`. -/
+DefinitionDoc elt as "∈"
+
+/-- `A ⊆ B` means that `A` is a subset of `B`.  To enter the symbol `⊆`,
+type `\sub`. -/
+DefinitionDoc sub as "⊆"
+
 NewTactic exact
-NewDefinition «⊆»  «∈» Set
+NewDefinition elt Set sub

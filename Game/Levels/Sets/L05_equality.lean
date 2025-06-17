@@ -39,5 +39,15 @@ Statement (U : Type)(A : Set U): (Aᶜ)ᶜ = A := by
 
 Conclusion "--conc--"
 
+/-- `A = B` means that every element of `A` is an element of `B` and vice-versa. What it means is that `A ⊆ B` and `B ⊆ A`. -/
+DefinitionDoc Set.eq as "="
+
+/-- If `A` is a set, then `Aᶜ` is the complement of `A`.
+To enter the symbol `ᶜ`, type `\compl` or `\^c`. -/
+DefinitionDoc compl as "ᶜ"
+
+DefinitionDoc inter as "∩"
+
 NewTactic push_neg apply
 NewTheorem Set.mem_compl_iff Set.Subset.antisymm
+NewDefinition Set.eq compl
