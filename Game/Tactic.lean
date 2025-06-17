@@ -168,3 +168,54 @@ example (x y z : Nat) : x = y ∨ y = y ∨ y = z := by
   This follows Strategy 1.1.13, proving disjunctions, in Infinite Descent.
   -/
 TacticDoc or_intro
+
+
+-- wip or_elim
+partial def or_elim.go (hyp : FVarId) (goal : MVarId) (disjs : List Name) :
+    MetaM (List MVarId × List Name) := do
+  if let .app (.app (.const ``Or []) disj1) disj2 := (← whnf (← hyp.getType)) then
+    let goalType ← goal.getType
+    let left_goal ← mkFreshExprMVar (some (← mkArrow disj1 goalType)) <&> Expr.mvarId!
+    let left_goal ← left_goal.clear hyp
+    let ⟨left_binder, left_goal'⟩ ← left_goal.intro1
+    let ⟨left_goals, disjs⟩ ← left_goal'.withContext $ go left_binder left_goal' disjs
+    let right_goal ← mkFreshExprMVar (some (← mkArrow disj2 goalType)) <&> Expr.mvarId!
+    let right_goal ← right_goal.clear hyp
+    let ⟨right_binder, right_goal'⟩ ← right_goal.intro1
+    let ⟨right_goals, disjs⟩ ← right_goal'.withContext $ go right_binder right_goal' disjs
+    goal.assign (← mkAppM ``Or.elim #[.fvar hyp, .mvar left_goal, .mvar right_goal])
+    pure ⟨left_goals ++ right_goals, disjs⟩
+  else
+    match disjs with
+    | [] => throwTacticEx `or_elim goal m!"not enough disjunct names provided"
+    | disj :: disjs =>
+      goal.modifyLCtx λ ctx ↦ ctx.modifyLocalDecl hyp λ decl ↦ decl.setUserName disj
+      pure ⟨[goal], disjs⟩
+
+-- Proceeds with and-elimination.  Replaces a conjunction hypothesis
+-- with separate hypotheses for each conjunct.
+elab "or_elim" h:ident "into" disjs:ident,+ : tactic =>
+  withMainContext $ liftMetaTactic λ goal ↦ do
+    let ctx ← getLCtx
+    -- Search for a hypothesis with name h.
+    if let some hyp := ctx.findFromUserName? (h.getId) then
+      let hypType ← inferType hyp.toExpr
+      -- If found, ensure that it is a disjunction
+      if let .app (.app (.const ``Or []) _) _ := (← whnf hypType) then
+        let disjs := TSyntax.getId <$> disjs.getElems.toList
+        let ⟨goals, remaining_disjs⟩ ← or_elim.go hyp.fvarId goal disjs
+        if let _::_ := remaining_disjs then
+          throwTacticEx `or_elim goal m!"too many disjunct names provided"
+        pure goals
+      else
+        throwTacticEx `or_elim goal
+          m!"the assumption {h} : {hyp.type} isn't a disjunction"
+    else
+      throwTacticEx `or_elim goal
+        m!"there is no assumption named {h}"
+
+example (h : 1 = 1 ∨ 2 = 2 ∨ 3 = 3) : 4 = 4 := by
+  or_elim h into a, b, c
+  · rfl
+  · rfl
+  · rfl
