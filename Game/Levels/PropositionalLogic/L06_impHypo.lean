@@ -16,7 +16,7 @@ to show p is true which is why the goal transforms from q to p. Try typing `appl
 begin the proof."
 
 Statement (h: x=3 → y=5) (h1: x=3) : y=5 := by
-  apply h at h1
+  imp_elim h at h1
   Hint "Use the `exact` tactic to finish the proof."
   exact h1
 

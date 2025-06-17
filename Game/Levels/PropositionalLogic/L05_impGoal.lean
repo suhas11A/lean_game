@@ -11,7 +11,7 @@ we use the `intro` tactic to turn p into a hypothesis and leave q as the goal. T
 means to call our new hypothesis (p is true) h. Try this here to begin the proof."
 
 Statement : x=3 → x=3 := by
-  intro h
+  imp_intro h
   Hint "Use the `exact` tactic to finish the proof."
   exact h
 

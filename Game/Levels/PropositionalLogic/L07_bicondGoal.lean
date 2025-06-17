@@ -14,7 +14,7 @@ requires separate proofs of p → q and q → p. Use the `constructor` tactic to
 transform a goal p ↔ q into two separate goals p → q and q → p."
 
 Statement (h1: x=3 → y=5) (h2: y=5 → x=3) : x=3 ↔ y=5 := by
-  constructor
+  iff_intro ha hb
   Hint "Use the `exact` tactic to resolve each of the two new goals."
   exact h1
   exact h2
