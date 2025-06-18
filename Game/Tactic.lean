@@ -259,7 +259,7 @@ elab "imp_elim" imp:ident "with" hyp:ident : tactic =>
       if let some hyp := (← getLCtx).findFromUserName? (hyp.getId) then
         if let .forallE _ hypType _ _ ← whnf imp.type then
           if ← isDefEq hypType hyp.type then
-            let ⟨_, goal, _⟩ ← goal.replace imp.fvarId (.app (.fvar imp.fvarId) hyp.value)
+            let ⟨_, goal, _⟩ ← goal.replace imp.fvarId (.app (.fvar imp.fvarId) (.fvar hyp.fvarId))
             pure [goal]
           else
             throwTacticEx `imp_elim goal m!"the hypothesis of {imp.type} is not {hyp.type}"
