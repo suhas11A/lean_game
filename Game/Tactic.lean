@@ -171,32 +171,29 @@ example (x y z : Nat) : x = y ∨ y = y ∨ y = z := by
 TacticDoc or_intro
 
 
--- wip or_elim
 partial def or_elim.go (hyp : FVarId) (goal : MVarId) :
     StateT (List Name) MetaM (List MVarId) := do
   goal.withContext do
-    if let .app (.app (.const ``Or []) disj1) disj2 := (← whnf (← hyp.getType)) then
+    if let .app (.app (.const ``Or []) disj1) disj2 ← whnf (← hyp.getType) then
       -- The hypothesis is a disjunction; eliminate it.
       let goalType ← goal.getType
       let ⟨cases_, newGoals⟩ ← List.unzip <$> [disj1, disj2].mapM λ disj ↦ do
         -- Create a metavariable for the argument to Or.elim.  Clear the
         -- old hypothesis; it is not needed anymore.
-        let case ← (mkArrow disj goalType >>= monadLift ∘ mkFreshExprMVar ∘ some) <&>
-                    Lean.Expr.mvarId! >>=
-                    monadLift ∘ Lean.MVarId.clear (fvarId := hyp)
+        let case ← ((mkArrow disj goalType >>= mkFreshExprMVar ∘ some) <&>
+                     Lean.Expr.mvarId! >>= Lean.MVarId.clear (fvarId := hyp)
+                     : MetaM _)
         -- Introduce the disjunct and recurse.
         let ⟨subHyp, subGoal⟩ ← case.intro1
         let subGoals ← go subHyp subGoal
         pure (Expr.mvar case, subGoals)
-      goal.assign (← mkAppM ``Or.elim (Expr.fvar hyp :: cases_).toArray)
+      goal.assign =<< mkAppM ``Or.elim (Expr.fvar hyp :: cases_).toArray
       pure newGoals.flatten
     else
       -- The hypothesis is not a disjunction; name the disjunct.
       match ← get with
       | [] => throwTacticEx `or_elim goal m!"not enough disjunct names provided"
-      | name :: names =>
-        set names
-        .singleton <$> goal.rename hyp name
+      | name :: names => set names ; .singleton <$> goal.rename hyp name
 
 -- Proceeds with or-elimination.  Eliminates a (possibly recursive)
 -- disjunction hypothesis and adds a goal for each disjunct.
@@ -226,6 +223,11 @@ example (h : 1 = 1 ∨ 1 = 1 ∨ 1 = 1) : 1 = 1 := by
   · exact b
   · exact c
 
-/-- todo
+/-- If `h` is a disjunction assumption with `n` disjuncts, then
+    `or_elim h into h1, h2, h3, ..., hn` will add a goal where each
+    one of the disjuncts is true in turn, and will name the ith
+    disjunct `hi`.  You may pass whatever names for the disjuncts that
+    you wish, but you need to provide as many names as there are
+    disjuncts.
   -/
 TacticDoc or_elim
