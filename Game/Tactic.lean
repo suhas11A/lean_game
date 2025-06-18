@@ -20,6 +20,7 @@ def flatMapM {m : Type u → Type v} [Monad m] {α : Type w} {β : Type u}
       let bs' ← f a
       loop as_ (bs' :: bs)
   loop as_ []
+@[inline] protected def singleton {α : Type u} (a : α) : List α := [a]
 end List
 
 partial def and_intro.go (goal : MVarId) : MetaM (List MVarId) := do
@@ -171,29 +172,34 @@ TacticDoc or_intro
 
 
 -- wip or_elim
-partial def or_elim.go (hyp : FVarId) (goal : MVarId) (disjs : List Name) :
-    MetaM (List MVarId × List Name) := do
-  if let .app (.app (.const ``Or []) disj1) disj2 := (← whnf (← hyp.getType)) then
-    let goalType ← goal.getType
-    let left_goal ← mkFreshExprMVar (some (← mkArrow disj1 goalType)) <&> Expr.mvarId!
-    let left_goal ← left_goal.clear hyp
-    let ⟨left_binder, left_goal'⟩ ← left_goal.intro1
-    let ⟨left_goals, disjs⟩ ← left_goal'.withContext $ go left_binder left_goal' disjs
-    let right_goal ← mkFreshExprMVar (some (← mkArrow disj2 goalType)) <&> Expr.mvarId!
-    let right_goal ← right_goal.clear hyp
-    let ⟨right_binder, right_goal'⟩ ← right_goal.intro1
-    let ⟨right_goals, disjs⟩ ← right_goal'.withContext $ go right_binder right_goal' disjs
-    goal.assign (← mkAppM ``Or.elim #[.fvar hyp, .mvar left_goal, .mvar right_goal])
-    pure ⟨left_goals ++ right_goals, disjs⟩
-  else
-    match disjs with
-    | [] => throwTacticEx `or_elim goal m!"not enough disjunct names provided"
-    | disj :: disjs =>
-      goal.modifyLCtx λ ctx ↦ ctx.modifyLocalDecl hyp λ decl ↦ decl.setUserName disj
-      pure ⟨[goal], disjs⟩
+partial def or_elim.go (hyp : FVarId) (goal : MVarId) :
+    StateT (List Name) MetaM (List MVarId) := do
+  goal.withContext do
+    if let .app (.app (.const ``Or []) disj1) disj2 := (← whnf (← hyp.getType)) then
+      -- The hypothesis is a disjunction; eliminate it.
+      let goalType ← goal.getType
+      let ⟨cases_, newGoals⟩ ← List.unzip <$> [disj1, disj2].mapM λ disj ↦ do
+        -- Create a metavariable for the argument to Or.elim.  Clear the
+        -- old hypothesis; it is not needed anymore.
+        let case ← (mkArrow disj goalType >>= monadLift ∘ mkFreshExprMVar ∘ some) <&>
+                    Lean.Expr.mvarId! >>=
+                    monadLift ∘ Lean.MVarId.clear (fvarId := hyp)
+        -- Introduce the disjunct and recurse.
+        let ⟨subHyp, subGoal⟩ ← case.intro1
+        let subGoals ← go subHyp subGoal
+        pure (Expr.mvar case, subGoals)
+      goal.assign (← mkAppM ``Or.elim (Expr.fvar hyp :: cases_).toArray)
+      pure newGoals.flatten
+    else
+      -- The hypothesis is not a disjunction; name the disjunct.
+      match ← get with
+      | [] => throwTacticEx `or_elim goal m!"not enough disjunct names provided"
+      | name :: names =>
+        set names
+        .singleton <$> goal.rename hyp name
 
--- Proceeds with and-elimination.  Replaces a conjunction hypothesis
--- with separate hypotheses for each conjunct.
+-- Proceeds with or-elimination.  Eliminates a (possibly recursive)
+-- disjunction hypothesis and adds a goal for each disjunct.
 elab "or_elim" h:ident "into" disjs:ident,+ : tactic =>
   withMainContext $ liftMetaTactic λ goal ↦ do
     let ctx ← getLCtx
@@ -214,8 +220,12 @@ elab "or_elim" h:ident "into" disjs:ident,+ : tactic =>
       throwTacticEx `or_elim goal
         m!"there is no assumption named {h}"
 
-example (h : 1 = 1 ∨ 2 = 2 ∨ 3 = 3) : 4 = 4 := by
+example (h : 1 = 1 ∨ 1 = 1 ∨ 1 = 1) : 1 = 1 := by
   or_elim h into a, b, c
-  · rfl
-  · rfl
-  · rfl
+  · exact a
+  · exact b
+  · exact c
+
+/-- todo
+  -/
+TacticDoc or_elim
