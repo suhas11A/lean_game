@@ -252,3 +252,46 @@ example (x : Nat) : x = 1 → x = 1 := by
   exact h
 
 
+-- Implies-elimination, applying one hypothesis with another.
+elab "imp_elim" imp:ident "with" hyp:ident : tactic =>
+  withMainContext $ liftMetaTactic λ goal => do
+    if let some imp := (← getLCtx).findFromUserName? (imp.getId) then
+      if let some hyp := (← getLCtx).findFromUserName? (hyp.getId) then
+        if let .forallE _ hypType _ _ ← whnf imp.type then
+          if ← isDefEq hypType hyp.type then
+            let ⟨_, goal, _⟩ ← goal.replace imp.fvarId (.app (.fvar imp.fvarId) hyp.value)
+            pure [goal]
+          else
+            throwTacticEx `imp_elim goal m!"the hypothesis of {imp.type} is not {hyp.type}"
+        else
+          throwTacticEx `imp_elim goal m!"{imp.type} is not an implication"
+      else
+        throwTacticEx `imp_elim goal m!"assumption {hyp} not found"
+    else
+      throwTacticEx `imp_elim goal m!"assumption {imp} not found"
+
+example (x y : Nat) : (x = 1 → y = 2) → x = 1 → y = 2 := by
+  imp_intro imp
+  imp_intro x1
+  imp_elim imp with x1
+  exact imp
+
+-- Implies-elimination, applying a hypothesis to the goal.
+elab "imp_elim" imp:ident : tactic =>
+  withMainContext $ liftMetaTactic λ goal => do
+    if let some imp := (← getLCtx).findFromUserName? (imp.getId) then
+      if let .forallE _ _ goalType _ ← whnf imp.type then
+        if ← isDefEq goalType (← goal.getType) then
+          goal.apply (.fvar imp.fvarId)
+        else
+          throwTacticEx `imp_elim goal m!"the conclusion of {imp.type} is not {← goal.getType}"
+      else
+        throwTacticEx `imp_elim goal m!"{imp.type} is not an implication"
+    else
+      throwTacticEx `imp_elim goal m!"assumption {imp} not found"
+
+example (x y : Nat) : (x = 1 → y = 2) → x = 1 → y = 2 := by
+  imp_intro imp
+  imp_intro x1
+  imp_elim imp
+  exact x1
