@@ -231,3 +231,24 @@ example (h : 1 = 1 ∨ 1 = 1 ∨ 1 = 1) : 1 = 1 := by
     disjuncts.
   -/
 TacticDoc or_elim
+
+
+-- Implies-introduction.  Works like intro, but checks that the variable
+-- being introduced is a proposition.
+elab "imp_intro" h:ident : tactic =>
+  withMainContext $ liftMetaTactic λ goal => do
+    let goalType ← goal.getType
+    if let .forallE _ hypType _ _ ← whnf goalType then
+      if ← Expr.isProp <$> inferType hypType then
+        let ⟨_, goal⟩ ← goal.intro h.getId
+        pure [goal]
+      else
+        throwTacticEx `imp_intro goal m!"{hypType} is not a proposition"
+    else
+      throwTacticEx `imp_intro goal m!"{goalType} is not an implication"
+
+example (x : Nat) : x = 1 → x = 1 := by
+  imp_intro h
+  exact h
+
+
