@@ -6,11 +6,17 @@ World "PropositionalLogic"
 Level 1
 Title "Conjunction in the Goal"
 
-Introduction "Definition 1.1.4 gives the three properties of the conjunction operator.
-In this level, we will invoke the first property: If p is true and q is true, then p ∧ q is true.
+Introduction "Definition 1.1.4 gives the one introduction rule (∧I) and two elimination rules of
+the conjunction operator (∧E₁ and ∧E₂). Introduction rules are used when the operator (or
+quantifier, as seen in the next world) appears in the goal. Elimination rules are used when the
+operator or quantifier is in a hypothesis.
+
+(∧I) If p is true and q is true, then p ∧ q is true.
+
+In this level, we invoke ∧I with the tactic `and_intro`.
 When the goal of our proof has a conjunction ∧ as its outermost operator, we use the `and_intro`
-tactic to separate the goal into two separate goals. If we want to prove p ∧ q, we must prove
-p and q separately. Try typing `and_intro` and pressing Enter."
+tactic to separate the goal of proving p ∧ q is true into two separate goals, proving p is true
+and proving q is true. Try using `and_intro` to start the proof."
 
 Statement (h1:x=3) (h2:y=5) : x=3 ∧ y=5 := by
   and_intro
