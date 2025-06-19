@@ -323,3 +323,27 @@ example : 1 = 1 ↔ 2 = 2 := by
     rfl
   · imp_intro h
     rfl
+
+
+-- Biconditional elimination; turns a hypothesis of the form p ↔ q into
+-- a hypothesis p → q and a hypothesis q → p.
+elab "iff_elim" iff:ident "into" fw:ident "," bw:ident : tactic =>
+  withMainContext $ liftMetaTactic λ goal ↦ do
+    if let some iff := (← getLCtx).findFromUserName? (iff.getId) then
+      if let .app (.app (.const ``Iff []) p) q ← whnf iff.type then
+        let ⟨_, goal, _⟩ ← goal.assertAfter iff.fvarId bw.getId (← mkArrow q p)
+                            =<< mkAppM ``Iff.mpr #[.fvar iff.fvarId]
+        let ⟨_, goal, _⟩ ← goal.assertAfter iff.fvarId fw.getId (← mkArrow p q)
+                            =<< mkAppM ``Iff.mp #[.fvar iff.fvarId]
+        List.singleton <$> goal.clear iff.fvarId
+      else
+        throwTacticEx `iff_elim goal m!"{iff.type} is not a biconditional"
+    else
+      throwTacticEx `iff_elim goal m!"assumption {iff} not found"
+
+example (p q : Prop) : (P ↔ Q) → (P → Q) ∧ (Q → P) := by
+  imp_intro h
+  iff_elim h into h1, h2
+  and_intro
+  · exact h1
+  · exact h2
