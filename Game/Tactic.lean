@@ -295,3 +295,31 @@ example (x y : Nat) : (x = 1 → y = 2) → x = 1 → y = 2 := by
   imp_intro x1
   imp_elim imp
   exact x1
+
+
+-- Biconditional introduction; turns a goal of the form p ↔ q into a
+-- goal p → q and a goal q → p.
+elab "iff_intro" : tactic =>
+  withMainContext $ liftMetaTactic λ goal ↦ do
+    -- Convert the goal to WHNF to compare.
+    let decl ← goal.getDecl
+    let whnfGoal ← whnf decl.type
+    -- Check that the goal type is of the form p ↔ q.
+    if let .app (.app (.const ``Iff []) p) q := whnfGoal then
+      -- Add new metavariables for each conditional.
+      let mvar1 ← mkFreshExprMVar =<< mkArrow p q
+      let mvar2 ← mkFreshExprMVar =<< mkArrow q p
+      -- Close the current goal with Iffn.intro, and add new goals for
+      -- each conditional.
+      goal.assign (← mkAppM ``Iff.intro #[mvar1, mvar2])
+      pure [Expr.mvarId! mvar1, Expr.mvarId! mvar2]
+    else
+      throwTacticEx `iff_intro goal
+        m!"the goal {decl.type} isn't a biconditional"
+
+example : 1 = 1 ↔ 2 = 2 := by
+  iff_intro
+  · imp_intro h
+    rfl
+  · imp_intro h
+    rfl
