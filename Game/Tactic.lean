@@ -253,13 +253,14 @@ example (x : Nat) : x = 1 → x = 1 := by
 
 
 -- Implies-elimination, applying one hypothesis with another.
-elab "imp_elim" imp:ident "with" hyp:ident : tactic =>
+elab "imp_elim" imp:ident "with" hyp:ident "into" conc:ident : tactic =>
   withMainContext $ liftMetaTactic λ goal => do
     if let some imp := (← getLCtx).findFromUserName? (imp.getId) then
       if let some hyp := (← getLCtx).findFromUserName? (hyp.getId) then
-        if let .forallE _ hypType _ _ ← whnf imp.type then
+        if let .forallE _ hypType concType _ ← whnf imp.type then
           if ← isDefEq hypType hyp.type then
-            let ⟨_, goal, _⟩ ← goal.replace imp.fvarId (.app (.fvar imp.fvarId) (.fvar hyp.fvarId))
+            let ⟨_, goal⟩ ← goal.assert conc.getId concType (.app (.fvar imp.fvarId) (.fvar hyp.fvarId))
+                             >>= MVarId.intro1P
             pure [goal]
           else
             throwTacticEx `imp_elim goal m!"the hypothesis of {imp.type} is not {hyp.type}"
@@ -273,8 +274,8 @@ elab "imp_elim" imp:ident "with" hyp:ident : tactic =>
 example (x y : Nat) : (x = 1 → y = 2) → x = 1 → y = 2 := by
   imp_intro imp
   imp_intro x1
-  imp_elim imp with x1
-  exact imp
+  imp_elim imp with x1 into conc
+  exact conc
 
 -- Implies-elimination, applying a hypothesis to the goal.
 elab "imp_elim" imp:ident : tactic =>
