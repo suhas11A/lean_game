@@ -5,7 +5,16 @@ World "VariablesAndQuantifiers"
 Level 4
 Title "Existential Quantifier in the Hypothesis"
 
-Introduction "Definition 1.2.17 states the elimination rule of the existential quantifier
+Introduction "
+Let p(x) be a logical formula with free variable x with range X.
+Definition 1.2.17 states ∃x ∈ X, p(x)
+is the logical formula defined according to the following introduction and elimination rule:
+
+(∃I) If a ∈ X and p(a) is true, then ∃x ∈ X, p(x).
+(∃E) If ∃x ∈ X, p(x) is true, and q can be derived from the assumption that p(a)
+is
+
+Definition 1.2.17 states the elimination rule of the existential quantifier
 is: If \"∃ x ∈ X, p(x)\" is true, and q can be derived from
 the assumption \"p(a) is true for some fixed a ∈ X\", then q is true,
 which is invoked with the `exists_elim` tactic.
