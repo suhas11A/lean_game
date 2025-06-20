@@ -367,7 +367,7 @@ example : ∀ (x : Nat), x = x := by
 
 -- Universal quantification elimination
 elab "forall_elim" hyp:ident "of" obj:term "into" conc:ident : tactic =>
-  withMainContext $ do
+  withMainContext do
     let obj ← elabTerm obj none
     liftMetaTactic λ goal => do
       if let some hyp := (← getLCtx).findFromUserName? (hyp.getId) then
@@ -392,3 +392,44 @@ example (h : ∀ (x : Nat), x = x) : 2 = 2 := by
 example (h : ∀ (x : Nat), x = x) (y : Nat) : y + 1 = y + 1 := by
   forall_elim h of y + 1 into h1
   exact h1
+
+
+-- Existential quantification introduction
+elab "exists_intro" obj:term : tactic =>
+  withMainContext do
+    let obj ← elabTerm obj none
+    liftMetaTactic λ goal => do
+      if let .app (.app (.const ``Exists _) α) p ← whnf =<< goal.getType then
+        if ← isDefEq α =<< inferType obj then
+          goal.apply =<< mkAppOptM ``Exists.intro #[none, p, obj]
+        else
+          throwTacticEx `exists_intro goal m!"{← goal.getType} is not quantified over {← inferType obj}"
+      else
+        throwTacticEx `exists_intro goal m!"{← goal.getType} is not existentially quantified"
+
+example : ∃ (x : Nat), 2 * x = 4 := by
+  exists_intro 2
+  trivial
+
+
+-- Existential quantification elimination
+elab "exists_elim" hyp:ident "into" var:ident "," conc:ident : tactic =>
+  withMainContext $ liftMetaTactic λ goal => do
+    if let some hyp := (← getLCtx).findFromUserName? (hyp.getId) then
+      if let .app (.app (.const ``Exists _) _) _ ← whnf hyp.type then
+        if let [goal] ← goal.apply =<< mkAppOptM ``Exists.elim #[none, none, ← inferType (.mvar goal),
+                                                                  some (.fvar hyp.fvarId)] then
+          let ⟨_, goal⟩ ← goal.introN 2 [var.getId, conc.getId]
+          pure [goal]
+        else
+          throwTacticEx `forall_elim goal m!"this should not happen"
+      else
+        throwTacticEx `forall_elim goal m!"{hyp.type} is not existentially quantified"
+    else
+      throwTacticEx `forall_elim goal m!"assumption {hyp} not found"
+
+example (h : ∃ (x : Nat), 2 * x = 4) : ∃ (x : Nat), ∃ (y : Nat), x * y = 4 := by
+  exists_elim h into x, h
+  exists_intro 2
+  exists_intro x
+  exact h
