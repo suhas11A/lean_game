@@ -348,3 +348,47 @@ example (p q : Prop) : (P ↔ Q) → (P → Q) ∧ (Q → P) := by
   and_intro
   · exact h1
   · exact h2
+
+
+-- Universal quantification introduction
+elab "forall_intro" var:ident : tactic =>
+  withMainContext $ liftMetaTactic λ goal => do
+    let goalType ← goal.getType
+    if let .forallE _ hypType _ _ ← whnf goalType then
+      if ← not <$> Expr.isProp <$> inferType hypType then
+        let ⟨_, goal⟩ ← goal.intro var.getId
+        return [goal]
+    throwTacticEx `imp_intro goal m!"{goalType} is not universally quantified"
+
+example : ∀ (x : Nat), x = x := by
+  forall_intro y
+  rfl
+
+
+-- Universal quantification elimination
+elab "forall_elim" hyp:ident "of" obj:term "into" conc:ident : tactic =>
+  withMainContext $ do
+    let obj ← elabTerm obj none
+    liftMetaTactic λ goal => do
+      if let some hyp := (← getLCtx).findFromUserName? (hyp.getId) then
+        let objType ← inferType obj
+        if let .forallE _ hypObjType _ _ ← whnf hyp.type then
+          if ← not <$> Expr.isProp <$> inferType hypObjType then
+            if ← isDefEq hypObjType objType then
+              let hypVal ← mkAppM' (.fvar hyp.fvarId) #[obj]
+              let ⟨_, goal⟩ ← goal.assert conc.getId (← inferType hypVal) hypVal
+                               >>= MVarId.intro1P
+              return [goal]
+            else
+              throwTacticEx `forall_elim goal m!"{hypObjType} is not quantified over {objType}"
+        throwTacticEx `forall_elim goal m!"{hyp.type} is not universally quantified"
+      else
+        throwTacticEx `forall_elim goal m!"assumption {hyp} not found"
+
+example (h : ∀ (x : Nat), x = x) : 2 = 2 := by
+  forall_elim h of 2 into h1
+  exact h1
+
+example (h : ∀ (x : Nat), x = x) (y : Nat) : y + 1 = y + 1 := by
+  forall_elim h of y + 1 into h1
+  exact h1
