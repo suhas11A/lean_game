@@ -5,7 +5,8 @@ World "PropositionalLogic"
 Level 7
 Title "Biconditional in the Goal"
 
-Introduction "Definition 1.1.28 explains that a biconditional p ↔ q (read as \"p if and only if q\")
+Introduction "
+A biconditional p ↔ q (read as \"p if and only if q\")
 is logically equivalent to (p → q) ∧ (q → p). Similar to how proving
 p ∧ q requires separate proofs of p and q, p ↔ q
 requires separate proofs of p → q and q → p. When the goal is of the form

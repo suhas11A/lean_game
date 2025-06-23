@@ -14,6 +14,9 @@ rule is \\"If p(x) can be derived from the assumption that x is an
 arbitrary element of X, then \forall x \in X, p(x),\\" which we will invoke
 using the
 `forall_intro` tactic."
-Statement
+Statement : ∀ x ∈ ℤ, x<x+1 := by
+  forall_intro y
+
+
 NewTactic
 Conclusion

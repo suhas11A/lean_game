@@ -6,29 +6,26 @@ World "PropositionalLogic"
 Level 1
 Title "Conjunction in the Goal"
 
-Introduction "Definition 1.1.4 gives the one introduction rule (∧I) and two elimination rules of
-the conjunction operator (∧E₁ and ∧E₂). Introduction rules are used when the operator (or
-quantifier, as seen in the next world) appears in the goal. Elimination rules are used when the
-operator or quantifier is in a hypothesis.
-
+Introduction "
+The introduction rule for ∧ is
 (∧I) If p is true and q is true, then p ∧ q is true.
+This means that to *prove a goal* of the form p ∧ q, it suffices
+to prove p and (separately) q.
 
-In this level, we invoke ∧I with the tactic `and_intro`.
-When the goal of our proof has a conjunction ∧ as its outermost operator, we use the `and_intro`
-tactic to separate the goal of proving p ∧ q is true into two separate goals, proving p is true
-and proving q is true. Try using `and_intro` to start the proof."
+In this level, our goal is indeed of the form
+p ∧ q. We invoke ∧I with the tactic `and_intro` which will split
+the goal of proving (2+2=4) ∧ (3<5) into two separate goals: proving 2+2=4
+is true and proving 3<5 is true. Try using `and_intro` to split the goal."
 
-Statement (h1:x=3) (h2:y=5) : x=3 ∧ y=5 := by
+Statement : (2+2=4) ∧ (3<5) := by
   and_intro
-  Hint "Next, we can use the `exact` tactic to resolve a goal that exactly matches one of the
-  hypotheses. Since the goal x=3 exactly matches hypothesis h1, we can use `exact h1` to resolve
-  this goal."
+  Hint "Notice that we now have two separate goals.
+  For simple arithmetic like proving 2+2=4, we can use `trivial` tactic."
+  trivial
+  Hint "Your first use of `trivial` resolved the goal 2+2=4. Use it once more to
+  prove 3<5."
+  trivial
 
-  exact h1
-  Hint "Do something similar to resolve the goal y=5."
-
-  exact h2
-
-NewTactic and_intro exact
+NewTactic and_intro trivial
 
 Conclusion ""

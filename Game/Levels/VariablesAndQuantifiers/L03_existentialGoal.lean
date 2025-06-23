@@ -17,7 +17,7 @@ to mean x₀ ∈ X and p(x₀) is true, so replace the goal with p(x₀), as it 
 p(x₀) is indeed true. Determine which natural number n we should use to prove the statement at
 right, and type `exists_intro n` to begin the proof."
 
-Statement (h: x=1) : ∃ n : ℕ, x=n+1 := by
+Statement : ∃ n : ℕ, n>0 := by
   exists_intro 0
   Hint "Now use the `rw` tactic to rewrite the right side of the equation x=0+1."
   rw [zero_add]
