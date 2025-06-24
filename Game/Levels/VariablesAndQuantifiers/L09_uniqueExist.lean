@@ -11,9 +11,10 @@ World "VariablesAndQuantifiers"
 Level 9
 Title "Unique Existential Quantifier"
 
-Introduction ""
+Introduction "unique existential quantifier in the goal (skip in teh assumptions)"
 
-Statement : ∀ x ∈ ℤ, ∃! y ∈ ℤ, x+y=0 := by
+Statement : ∀x:ℤ, ∃!y:ℤ, x+y=0 := by
+  -- TODO: need unique_exists tactic
   unique_exists
 
 NewTactic

@@ -1,5 +1,8 @@
 import Game.Metadata
 import GameServer.Commands
+import Mathlib.Data.Real.Basic
+import Mathlib.Order.Basic
+import Mathlib.Data.Nat.Basic
 
 World "VariablesAndQuantifiers"
 Level 1
@@ -19,13 +22,10 @@ arbitrary element of ℤ and changing the goal to proving y<y+1 is true. Try usi
 with the correct syntax to begin the proof.
 "
 
-Statement : ∀x:ℤ, x<x+1 := by
+Statement : ∀x:ℕ, x<x+1 := by
   forall_intro y
   -- TODO: finish writing the proof
-  simp
-
-
-
+  apply Nat.lt.base y
 
 NewTactic forall_intro
-Conclusion
+Conclusion ""
