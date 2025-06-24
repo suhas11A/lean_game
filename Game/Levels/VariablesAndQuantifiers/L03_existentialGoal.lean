@@ -6,24 +6,20 @@ Level 3
 Title "Existential Quantifier in the Goal"
 
 
-Introduction "Definition 1.2.17 states if p(x)
-is a logical formula with free variable x with range X,
-then ∃ x ∈ X, p(x) is the logical formula with
-introduction rule: If a ∈ X and p(a) is true, then ∃ x ∈ X, p(x).
-We can invoke the introduction rule of the existential quantifier
-with the `exists_intro` tactic. When we have a statement of the form
-∃ x ∈ X, p(x) for some logical formula p(x) as our goal, we write `exists_intro x₀`
-to mean x₀ ∈ X and p(x₀) is true, so replace the goal with p(x₀), as it remains that
-p(x₀) is indeed true. Determine which natural number n we should use to prove the statement at
-right, and type `exists_intro n` to begin the proof."
+Introduction "
+Let p(x) be a logical formula with free variable x with range X.
+The introduction rule of the existential quantifier (∃) is
+(∃I) If a ∈ X and p(a) is true, then ∃x ∈ X, p(x).
+This means that to *prove a goal* of the form `∃x ∈ X, p(x)`, it suffices to prove
+there is some a ∈ X such that p(a) is true.
 
-Statement : ∃ n : ℕ, n>0 := by
+If we have a goal of the form `∃x ∈ X, p(x)`, we use `exists_intro y` where y is an element of X
+to change the goal into proving p(y) is true."
+
+Statement : ∃n : ℕ, n>0 := by
   exists_intro 1
-
-  -- Hint "Now use the `rw` tactic to rewrite the right side of the equation x=0+1."
-  -- rw [zero_add]
-  -- Hint "Finish off the proof!"
-  -- exact h
+  -- TODO: check proof is finished
+  trivial
 
 
 NewTactic exists_intro
