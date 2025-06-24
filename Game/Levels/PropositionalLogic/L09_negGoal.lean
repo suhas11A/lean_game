@@ -7,14 +7,10 @@ Level 9
 Title "Negation in the Goal"
 
 Introduction "
-`False` is a goal which cannot be
-deduced from a consistent set of assumptions. If the goal is `False`, the
-hypotheses should be contradictory. The logical formula `¬p` is actually defined as the implication
-`p → False`,
-so we can use `imp_intro` and `imp_elim` as before when negation appears in the goal and hypotheses,
-respectively.
+In Lean, negation (¬) is defined by declaring ¬p
+to mean p → False, where False is a contradiction.
 
-The introduction rule for ¬ is
+The introduction rule for negation (¬) is
 (¬I) If a contradiction can be derived from the assumption that p is true, then ¬p is true.
 This means that to *prove a goal* of the form ¬p, it suffices
 to assume p is true and derive a contradiction.
@@ -25,12 +21,18 @@ Try using `imp_intro` with the correct syntax to begin the proof.
 "
 
 Statement : ¬(2=3) := by
-  imp_intro h2
+  -- unfold Not
+  imp_intro h
   Hint "The `contradiction` tactic searches for a contradiction
-  among the hypotheses of the current goal. Since 2=3 is a contradiction, we can use the
+  among the assumptions.
+
+  Since 2=3 is a contradiction, we can use the
   `contradiction` tactic to complete the proof."
   contradiction
 
 NewTactic contradiction
+
+-- two ways a contradiction can happen:
+-- assumptions contradict each other, or assumption is false
 
 Conclusion ""

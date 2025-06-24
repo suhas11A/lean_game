@@ -5,18 +5,26 @@ World "VariablesAndQuantifiers"
 Level 1
 Title "Universal Quantifier in the Goal"
 
--- ch.0: arithmetic, exponents, inequalities
 
-Introduction "Definition 1.2.9 states that if p(x) is a logical formula
-with free variable x with range X, then \\"\forall x \in X, p(x)\\" is
-the logical formula defined according to two rules. The introduction
-rule is \\"If p(x) can be derived from the assumption that x is an
-arbitrary element of X, then \forall x \in X, p(x),\\" which we will invoke
-using the
-`forall_intro` tactic."
-Statement : ∀ x ∈ ℤ, x<x+1 := by
+Introduction "
+Let p(x) be a logical formula with free variable x with range X.
+The introduction rule of ∀ is
+(∀I) If p(x) can be derived from the assumption that x is an arbitrary
+element of X, then ∀x ∈ X, p(x).
+This means that to *prove a goal* of the form `∀x ∈ X, p(x)`, it suffices to take
+an arbitrary y ∈ X and prove p(y) is true.
+
+In this level, we have goal `∀x ∈ ℤ, x<x+1`. `forall_intro y` invokes ∀I by taking y to be an
+arbitrary element of ℤ and changing the goal to proving y<y+1 is true. Try using `forall_intro`
+with the correct syntax to begin the proof.
+"
+
+Statement : ∀ x : ℤ, x<x+1 := by
   forall_intro y
+  simp
 
 
-NewTactic
+
+
+NewTactic forall_intro
 Conclusion

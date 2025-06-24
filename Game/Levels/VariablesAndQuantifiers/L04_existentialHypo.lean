@@ -26,8 +26,8 @@ can introduce a variable a ∈ X and assume p(a) is true. We use
 Statement (n:ℤ) (h: ∃q:ℤ, n=4*q) : ∃p:ℤ, n=2*p := by
   exists_elim h into q', hq'
   exists_intro 2*q'
-  rw [two_mul_two_eq_four]
-  exact hq
+  rw [hq']
+  simp
 
 
 NewTactic exists_elim

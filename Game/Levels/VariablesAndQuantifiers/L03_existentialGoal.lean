@@ -18,11 +18,12 @@ p(x₀) is indeed true. Determine which natural number n we should use to prove 
 right, and type `exists_intro n` to begin the proof."
 
 Statement : ∃ n : ℕ, n>0 := by
-  exists_intro 0
-  Hint "Now use the `rw` tactic to rewrite the right side of the equation x=0+1."
-  rw [zero_add]
-  Hint "Finish off the proof!"
-  exact h
+  exists_intro 1
+
+  -- Hint "Now use the `rw` tactic to rewrite the right side of the equation x=0+1."
+  -- rw [zero_add]
+  -- Hint "Finish off the proof!"
+  -- exact h
 
 
 NewTactic exists_intro

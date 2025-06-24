@@ -7,7 +7,7 @@ Level 1
 Title "Conjunction in the Goal"
 
 Introduction "
-The introduction rule for ∧ is
+The introduction rule for conjunction (∧) is
 (∧I) If p is true and q is true, then p ∧ q is true.
 This means that to *prove a goal* of the form p ∧ q, it suffices
 to prove p and (separately) q.

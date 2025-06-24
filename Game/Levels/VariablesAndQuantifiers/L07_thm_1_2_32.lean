@@ -1,1 +1,0 @@
--- provide more practice with intro and elim rules in more general setting

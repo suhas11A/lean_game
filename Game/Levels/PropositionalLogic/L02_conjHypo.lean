@@ -7,7 +7,7 @@ Level 2
 Title "Conjunction in the Hypothesis"
 
 Introduction "
-The elimination rules for ∧ are
+The elimination rules for conjunction (∧) are
 (∧E₁) If p ∧ q is true, then p is true.
 (∧E₂) If p ∧ q is true, then q is true.
 This means that if our *assumption* is of the form p ∧ q, then we
@@ -22,7 +22,7 @@ Statement (h:2+2=4 ∧ 3<5) : 2+2=4 := by
   Hint "Now that we have the hypotheses `2+2=4` and `3<5`, our goal matches one of these
   hypotheses exactly. Use `exact h'` where h' is the name of the hypothesis that matches
   the goal to finish the proof."
-  exact h2
+  exact h1
 
 NewTactic and_elim
 
