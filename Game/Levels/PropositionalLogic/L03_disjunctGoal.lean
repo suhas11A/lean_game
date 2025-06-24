@@ -8,9 +8,12 @@ Title "Disjunction in the Goal"
 
 Introduction "
 The introduction rules for disjunction (∨) are
+
 (∨I₁) If p is true, then p ∨ q is true.
+
 (∨I₂) If q is true, then p ∨ q is true.
-This means that to *prove a goal* of the form p ∨ q, it suffices
+
+This means that to **prove a goal** of the form p ∨ q, it suffices
 to either prove p is true or prove q is true.
 
 When we have a goal of the form

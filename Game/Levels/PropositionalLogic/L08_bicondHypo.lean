@@ -7,7 +7,7 @@ Level 8
 Title "Biconditional in the Hypothesis"
 
 Introduction "
-When we have an *assumption* of the form `h: p ↔ q`, use `iff_elim h into h1, h2` to invoke
+When we have an **assumption** of the form `h: p ↔ q`, use `iff_elim h into h1, h2` to invoke
 the biconditional elimination rule and split h into two separate hypotheses `h1: p → q` and `h2: q → p`.
 Try using `iff_elim` with the correct syntax to begin the proof."
 

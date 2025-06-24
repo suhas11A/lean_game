@@ -8,8 +8,10 @@ Title "Disjunction in the Hypothesis"
 
 Introduction "
 The elimination rule for disjunction (∨) is
+
 (∨E) If p ∨ q is true, and if r can be derived from p and from q, then r is true.
-This means that if our *assumption* is of the form p ∨ q, then we
+
+This means that if our **assumption** is of the form p ∨ q, then we
 must prove the goal assuming p is true (but not necessarily q), and we must also
 prove the goal assuing q is true (but not necessarily p).
 
@@ -30,6 +32,6 @@ Statement (h:x=0 ∨ x=1) : x*x=x := by
   rewrite [h2]
   trivial
 
-NewTactic or_elim
+NewTactic or_elim rewrite
 
 Conclusion ""

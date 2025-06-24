@@ -1,10 +1,10 @@
-import Game.Levels.Basics
+-- import Game.Levels.Basics
 import Game.Levels.PropositionalLogic
-import Game.Levels.Sets
-import Game.Levels.SetOperations
-import Game.Levels.Functions
+-- import Game.Levels.Sets
+-- import Game.Levels.SetOperations
+-- import Game.Levels.Functions
 -- import Game.Levels.VariablesAndQuantifiers
-import Game.Levels.Peano'sAxioms
+-- import Game.Levels.Peano'sAxioms
 
 -- Here's what we'll put on the title screen
 Title "Infinite Descent in Lean"
@@ -21,10 +21,10 @@ For example: Game version, Credits, Link to Github and Zulip, etc.
 
 Use markdown.
 "
-Dependency Basics → PropositionalLogic
-Dependency PropositionalLogic → Sets
-Dependency PropositionalLogic → SetOperations
-Dependency Sets → Functions
+-- Dependency Basics → PropositionalLogic
+-- Dependency PropositionalLogic → Sets
+-- Dependency PropositionalLogic → SetOperations
+-- Dependency Sets → Functions
 
 /-! Information to be displayed on the servers landing page. -/
 Languages "English"

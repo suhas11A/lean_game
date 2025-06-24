@@ -11,8 +11,10 @@ In Lean, negation (¬) is defined by declaring ¬p
 to mean p → False, where False is a contradiction.
 
 The introduction rule for negation (¬) is
+
 (¬I) If a contradiction can be derived from the assumption that p is true, then ¬p is true.
-This means that to *prove a goal* of the form ¬p, it suffices
+
+This means that to **prove a goal** of the form ¬p, it suffices
 to assume p is true and derive a contradiction.
 
 When we have a goal of the form `¬p`, we can use `imp_intro h` to invoke ¬I and introduce assumption

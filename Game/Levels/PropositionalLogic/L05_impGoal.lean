@@ -7,8 +7,10 @@ Title "Implication in the Goal"
 
 Introduction "
 The introduction rule for implication (→) is
+
 (→I) If q can be derived from the assumption that p is true, then p → q is true.
-This means that to *prove a goal* of the form p → q, it suffices
+
+This means that to **prove a goal** of the form p → q, it suffices
 to assume p is true and derive that q is true.
 
 In this level, our goal is indeed of the form
@@ -18,7 +20,7 @@ the correct syntax to begin the proof."
 
 Statement (n:ℕ) : n=1 → n+1=2 := by
   imp_intro h
-  Hint "Use the `rewrite` tactic to complete the proof."
+  Hint "Use the `rewrite` and `trivial` tactics to complete the proof."
   rewrite [h]
   trivial
 

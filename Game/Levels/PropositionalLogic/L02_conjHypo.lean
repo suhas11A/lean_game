@@ -8,9 +8,12 @@ Title "Conjunction in the Hypothesis"
 
 Introduction "
 The elimination rules for conjunction (∧) are
+
 (∧E₁) If p ∧ q is true, then p is true.
+
 (∧E₂) If p ∧ q is true, then q is true.
-This means that if our *assumption* is of the form p ∧ q, then we
+
+This means that if our **assumption** is of the form p ∧ q, then we
 can deduce that p is true and that q is true.
 
 When we have an assumption of the form `h: p ∧ q`, we can invoke ∧E₁ and ∧E₂
@@ -24,6 +27,7 @@ Statement (h:2+2=4 ∧ 3<5) : 2+2=4 := by
   the goal to finish the proof."
   exact h1
 
-NewTactic and_elim
+NewTactic and_elim exact
+NewHiddenTactic  «into»
 
 Conclusion ""
