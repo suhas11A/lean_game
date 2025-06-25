@@ -10,7 +10,8 @@ Introduction "
 Let p(x) be a logical formula with free variable x with range X.
 The introduction rule of the existential quantifier (∃) is
 (∃I) If a ∈ X and p(a) is true, then ∃x ∈ X, p(x).
-This means that to *prove a goal* of the form `∃x ∈ X, p(x)`, it suffices to prove
+The expression `∃x ∈ X, p(x)` represents \"there exists x ∈ X such that p(x)\".
+This means that to **prove a goal** of the form `∃x ∈ X, p(x)`, it suffices to prove
 there is some a ∈ X such that p(a) is true.
 
 If we have a goal of the form `∃x ∈ X, p(x)`, we use `exists_intro y` where y is an element of X

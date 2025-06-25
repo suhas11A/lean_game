@@ -11,7 +11,8 @@ Let p(x) be a logical formula with free variable x with range X.
 The introduction rule of the universal quantifier (∀) is
 (∀I) If p(x) can be derived from the assumption that x is an arbitrary
 element of X, then ∀x ∈ X, p(x).
-This means that to *prove a goal* of the form `∀x ∈ X, p(x)`, it suffices to take
+The expression `∀x ∈ X, p(x)` represents \"for all x ∈ X, p(x)\".
+This means that to **prove a goal** of the form `∀x ∈ X, p(x)`, it suffices to take
 an arbitrary y ∈ X and prove p(y) is true.
 
 In this level, we have goal `∀x ∈ ℤ, x<x+1`. `forall_intro y` invokes ∀I by taking y to be an

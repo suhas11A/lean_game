@@ -12,7 +12,7 @@ Let p(x) be a logical formula with free variable x with range X.
 The elimination rule of the existential quantifier (∃) is
 (∃E) If ∃x ∈ X, p(x) is true, and q can be derived from the assumption that p(a)
 is true for some fixed a ∈ X, then q is true.
-This means that if our *assumption* is of the form `∃x ∈ X, p(x)`, then we
+This means that if our **assumption** is of the form `∃x ∈ X, p(x)`, then we
 can take an a ∈ X and assert that p(a) is true.
 
 When we have an assumption of the form `h: ∃x ∈ X, p(x)`, we can invoke ∃E

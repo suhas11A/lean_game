@@ -1,11 +1,3 @@
-/-
-reinforce intro and elim rules for quantifiers
-change p(x,y) prop to x+y=0
-
-exercise 1.2.32a
-
--/
-
 import Game.Metadata
 import GameServer.Commands
 
