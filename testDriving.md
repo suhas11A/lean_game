@@ -37,3 +37,11 @@ can fix:
 - make clearer elim modifies hypo and intro modifies goal; however, imp_elim modifying goal changes the philosophy
 - neg being equivalent to implies false is not obviously same as thinking of negation as operator on booleans
 - make rewrite tactic not have brackets
+
+Assorted notes from test drive; K and W came this afternoon
+W had issues with the naming conventions for tactics. Said that and_intro, or_intro, and iff_intro were fine. elim might be more elegantly phrased as split (I think this is a great idea), and imp_elim and imp_intro are confusing because there are existing math phrases in use; fix, assume, and apply might be better to use for those tactics specifically
+K suggested having variants of or_intro that work like left and right, so that students don’t have to type out the whole disjunct if it is long and there are only 2
+K was also confused by the naming schemes for the introduction/elimination rules
+Various comments on UI; frankly I’ll put them off for now since I want to focus on content but we can discuss them if you guys want to
+W liked having prepositions be part of the syntax for tactics, made them feel more natural
+Wynn seemed to go through the whole game without internalizing much, i.e. they did not know what some basic tactics did even after doing all of ch 1.1. (Although I would not expect someone to be fully comfortable at that point anyways).
