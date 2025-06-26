@@ -10,3 +10,8 @@ making an assumption is not same as stating that something is necessarily true. 
 - maybe it would help to state in general terms:
 ((p \imp r) \and (\neg p \imp r)) \imp r
 - nonconstructive proof, andreij bauer
+
+**June 26**
+- _little_ more explanation that p(a) = p(b) -> a = b is same as uniqueness (there is only one x \in X satisfying p(x))
+- free versus bound variables
+- density of rationals
