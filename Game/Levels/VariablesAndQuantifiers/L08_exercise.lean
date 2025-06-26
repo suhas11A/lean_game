@@ -8,18 +8,34 @@ import Game.Metadata
 import GameServer.Commands
 
 World "VariablesAndQuantifiers"
-Level 7
+Level 8
 Title "Exercise"
 
 Introduction "Try the exercise below."
 
--- TODO: how to handle Prop generally here
-Statement (X Y:Set) (p: property): (∃y:Y, ∀x:X, p x y) → (∀x:X, ∃y:Y, p x y) := by
-  imp_intro h
+-- maybe i should be naming my levels
+-- and also give the prompt from the exercise instead of just "try the exercise"
+-- what is the precedence of ¬ operator? binds to ∀ or should have parentheses around everything
+
+/-
+h1: ∀ x ≥ 0, ∃ y ∈ ℝ, y^2=x → False
+∀ y ∈ ℝ, y^2 ≠ 2
+
+TODO: finish pf
+
+-/
+
+Statement : (¬∀ x ≥ 0, ∃ y ∈ ℝ, y^2=x) ↔ (∃ x ≥ 0, ∀ y ∈ ℝ, y^2 ≠ x) := by
+  iff_intro -- split goal into proving each of the two directions
+  intro h1
+  unfold Not at h1
+  -- how to handle negation in the hypothesis?
+  exists_intro 2
+  forall_elim h1 of 2, hx
 
 
 
-∀x:ℝ, x>1 → (∃y:ℝ, (x<y ∧ ¬(x^2 ≤ y)))
+
 
 NewTactic
 

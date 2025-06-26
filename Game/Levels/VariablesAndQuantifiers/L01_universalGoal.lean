@@ -27,7 +27,7 @@ with the correct syntax to begin the proof.
 
 Statement : ∀x:ℕ, x<x+1 := by
   forall_intro y
-  -- TODO: finish writing the proof
+  -- TODO: revise proof
   apply Nat.lt.base y
 
 NewTactic forall_intro

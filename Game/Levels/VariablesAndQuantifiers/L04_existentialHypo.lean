@@ -25,6 +25,7 @@ Try using `exists_elim` with the correct syntax to begin the proof.
 Statement (n:ℤ) (h: ∃q:ℤ, n=4*q) : ∃p:ℤ, n=2*p := by
   exists_elim h into q', hq'
   exists_intro 2*q'
+  -- TODO: revise proof
   rewrite [hq']
   ring
 
