@@ -1,0 +1,1 @@
+{"version":2,"references":{"c:Set":{"usages":[[20,15,20,18,"MyGame.Sets.level1",19,0,23,10,0,0,0,0]],"definition":null},"c:Nat":{"usages":[[20,19,20,20,"MyGame.Sets.level1",19,0,23,10,0,0,0,0]],"definition":null}},"module":"Game.Levels.Sets.L01_intro"}

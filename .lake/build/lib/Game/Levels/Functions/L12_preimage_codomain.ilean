@@ -1,0 +1,1 @@
+{"version":2,"references":{"c:Set.univ":{"usages":[[18,43,18,47,"MyGame.Functions.level12",16,0,21,5,0,0,0,0],[18,50,18,54,"MyGame.Functions.level12",16,0,21,5,0,0,0,0]],"definition":null},"c:Set.mem_preimage":{"usages":[[20,6,20,18,"MyGame.Functions.level12",16,0,21,5,0,0,0,0]],"definition":null}},"module":"Game.Levels.Functions.L12_preimage_codomain"}

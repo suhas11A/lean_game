@@ -1,0 +1,1 @@
+{"version":2,"references":{"c:Set.powerset":{"usages":[[14,55,14,67,"MyGame.Sets.level9",13,0,35,9,0,0,0,0]],"definition":null},"c:Set.mem_powerset_iff":{"usages":[[18,5,18,21,"MyGame.Sets.level9",13,0,35,9,0,0,0,0]],"definition":null}},"module":"Game.Levels.Sets.L09_power"}
