@@ -8,7 +8,7 @@ Title "Exercise"
 Introduction "Try the exercise below."
 
 Statement : ¬(∃y:ℤ, ∀x:ℤ, x+y=0) := by
-  -- TODO : unfold Not
+  unfold Not
   imp_intro h
   exists_elim h into y', h'
   -- TODO: deal with the ℕ versus ℤ typing here, and add hints

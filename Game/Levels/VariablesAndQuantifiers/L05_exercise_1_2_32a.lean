@@ -6,16 +6,18 @@ World "VariablesAndQuantifiers"
 Level 5
 Title "Exercise"
 
-Introduction "Try the exercise below."
+-- CONSIDERATION : must address quantifiers in the order they appear, worth clarifying.
+
+Introduction "The statement \"∀x ∈ X, ∃y ∈ Y, p(x,y)\" translates
+to \"for any x in X, there exists a y in Y such that p(x,y) is true\". Note that the element y ∈ Y
+such that p(x,y) is true is not necessarily the same for every x ∈ X. We choose x first then y, so
+we must also invoke the proof strategies in that order, `forall_intro` then `exists_intro`. Try
+this exercise on your own!"
 
 Statement : ∀x:ℤ, ∃y:ℤ, x+y=0 := by
-
-  -- QUESTION / THOUGHT : in math (and prob lean as well) you have to address the quantifiers
-  -- in the order they appear, so first you pick x then your y is based on the chosen x
   forall_intro x'
   exists_intro -x'
-
-  -- TODO: finish pf
+  trivial
 
 NewTactic
 

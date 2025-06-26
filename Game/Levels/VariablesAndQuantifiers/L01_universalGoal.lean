@@ -12,8 +12,10 @@ Title "Universal Quantifier in the Goal"
 Introduction "
 Let p(x) be a logical formula with free variable x with range X.
 The introduction rule of the universal quantifier (∀) is
+
 (∀I) If p(x) can be derived from the assumption that x is an arbitrary
 element of X, then ∀x ∈ X, p(x).
+
 The expression `∀x ∈ X, p(x)` represents \"for all x ∈ X, p(x)\".
 This means that to **prove a goal** of the form `∀x ∈ X, p(x)`, it suffices to take
 an arbitrary y ∈ X and prove p(y) is true.

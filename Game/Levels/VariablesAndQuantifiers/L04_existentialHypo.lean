@@ -1,6 +1,5 @@
 import Game.Metadata
 import GameServer.Commands
-import Mathlib
 
 World "VariablesAndQuantifiers"
 Level 4
@@ -14,10 +13,7 @@ The elimination rule of the existential quantifier (∃) is
 
 (∃E) If ∃x ∈ X, p(x) is true, and q can be derived from the assumption that p(a)
 is true for some fixed a ∈ X, then q is true.
-<<<<<<< HEAD
-=======
 
->>>>>>> 97d355c28b900bb1592496f961c7bae913adfdde
 This means that if our **assumption** is of the form `∃x ∈ X, p(x)`, then we
 can take an a ∈ X and assert that p(a) is true.
 
@@ -30,10 +26,7 @@ Statement (n:ℤ) (h: ∃q:ℤ, n=4*q) : ∃p:ℤ, n=2*p := by
   exists_elim h into q', hq'
   exists_intro 2*q'
   rewrite [hq']
-  -- TODO: finish pf, maybe delete mathlib import
   ring
-
-
 
 NewTactic exists_elim ring
 

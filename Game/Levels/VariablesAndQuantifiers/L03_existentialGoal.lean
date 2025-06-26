@@ -11,11 +11,8 @@ Let p(x) be a logical formula with free variable x with range X.
 The introduction rule of the existential quantifier (∃) is
 
 (∃I) If a ∈ X and p(a) is true, then ∃x ∈ X, p(x).
-<<<<<<< HEAD
-The expression `∃x ∈ X, p(x)` represents \"there exists x ∈ X such that p(x)\".
-=======
 
->>>>>>> 97d355c28b900bb1592496f961c7bae913adfdde
+The expression `∃x ∈ X, p(x)` represents \"there exists x ∈ X such that p(x)\".
 This means that to **prove a goal** of the form `∃x ∈ X, p(x)`, it suffices to prove
 there is some a ∈ X such that p(a) is true.
 
