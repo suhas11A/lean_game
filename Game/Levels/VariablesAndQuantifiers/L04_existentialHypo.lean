@@ -1,5 +1,6 @@
 import Game.Metadata
 import GameServer.Commands
+import Mathlib.Tactic.Ring
 
 World "VariablesAndQuantifiers"
 Level 4

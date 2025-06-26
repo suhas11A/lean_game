@@ -1,6 +1,7 @@
 -- Exercise 1.2.32a except change p(x,y) to x+y=0
 import Game.Metadata
 import GameServer.Commands
+import Mathlib.Tactic.Ring
 
 World "VariablesAndQuantifiers"
 Level 5
@@ -17,7 +18,7 @@ this exercise on your own!"
 Statement : ∀x:ℤ, ∃y:ℤ, x+y=0 := by
   forall_intro x'
   exists_intro -x'
-  trivial
+  ring
 
 NewTactic
 

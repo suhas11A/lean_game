@@ -6,6 +6,7 @@ or its negation and ask sudents to prove on their own
 
 import Game.Metadata
 import GameServer.Commands
+import Mathlib.Data.Real.Basic
 
 World "VariablesAndQuantifiers"
 Level 8
@@ -25,13 +26,12 @@ TODO: finish pf
 
 -/
 
-Statement : (¬∀ x ≥ 0, ∃ y ∈ ℝ, y^2=x) ↔ (∃ x ≥ 0, ∀ y ∈ ℝ, y^2 ≠ x) := by
-  iff_intro -- split goal into proving each of the two directions
-  intro h1
+example (U : Type) (p : U → U → Prop): (¬∀ x : U, ∃ y : U, p x y) ↔ (∃ x : U, ∀ y : U, ¬p x y) := by
+  iff_intro
+  imp_intro h1
   unfold Not at h1
-  -- how to handle negation in the hypothesis?
-  exists_intro 2
-  forall_elim h1 of 2, hx
+
+
 
 
 
