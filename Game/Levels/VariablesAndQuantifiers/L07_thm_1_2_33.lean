@@ -1,6 +1,3 @@
--- provide more practice with intro and elim rules in more general setting
-
-
 import Game.Metadata
 import GameServer.Commands
 
@@ -10,8 +7,10 @@ Title "Exercise"
 
 Introduction "Try the exercise below."
 
-def is_sum_even (m n : Nat) : Prop
-Statement (X Y:Set) (p: Prop X Y): (∃y:Y, ∀x:X, p x y) → (∀x:X, ∃y:Y, p x y) := by
+-- TODO: how to handle Prop generally here
+axiom property (x:X) (y:Y) :
+Statement (X Y:Set) (p: property): (∃y:Y, ∀x:X, p x y) → (∀x:X, ∃y:Y, p x y) := by
+  imp_intro h
 
 
 NewTactic

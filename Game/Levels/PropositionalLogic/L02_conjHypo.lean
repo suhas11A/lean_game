@@ -28,6 +28,6 @@ Statement (h:2+2=4 ∧ 3<5) : 2+2=4 := by
   exact h1
 
 NewTactic and_elim exact
-NewHiddenTactic  «into»
+NewHiddenTactic «into»
 
 Conclusion ""

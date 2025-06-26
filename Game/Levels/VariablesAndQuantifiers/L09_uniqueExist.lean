@@ -14,7 +14,8 @@ Title "Unique Existential Quantifier"
 Introduction ""
 
 Statement : ∀ x ∈ ℤ, ∃! y ∈ ℤ, x+y=0 := by
-  unique_exists
+  forall_intro x'
+  unique_exists -- have to prove both existence and uniqueness (splits into two goals?)
 
 NewTactic
 

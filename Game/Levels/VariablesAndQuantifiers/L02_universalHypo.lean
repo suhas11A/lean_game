@@ -8,7 +8,12 @@ Title "Universal Quantifier in the Hypothesis"
 Introduction "
 Let p(x) be a logical formula with free variable x with range X.
 The elimination rule of the universal quantifier (∀) is
+
 (∀E) If a ∈ X and ∀x ∈ X, p(x) is true, then p(a) is true.
+<<<<<<< HEAD
+=======
+
+>>>>>>> 97d355c28b900bb1592496f961c7bae913adfdde
 This means that if our **assumption** is of the form `∀x ∈ X, p(x)`, then we
 can take any a ∈ X and assert that p(a) is true.
 
@@ -21,9 +26,8 @@ Statement (h: ∀ x : ℤ, x^2 ≥ 0) : (-5)^2 ≥ 0 := by
   forall_elim h of -5 into h1
   exact h1
 
+NewTactic forall_elim
+NewHiddenTactic «of»
 
 
-
-NewTactic
-
-Conclusion
+Conclusion ""
