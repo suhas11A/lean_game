@@ -21,15 +21,14 @@ Introduction "Try the exercise below."
 /-
 h1: ∀ x ≥ 0, ∃ y ∈ ℝ, y^2=x → False
 ∀ y ∈ ℝ, y^2 ≠ 2
-
-TODO: finish pf
-
 -/
 
 example (U : Type) (p : U → U → Prop): (¬∀ x : U, ∃ y : U, p x y) ↔ (∃ x : U, ∀ y : U, ¬p x y) := by
   iff_intro
   imp_intro h1
   unfold Not at h1
+
+  -- TODO: finish proof, maybe choose different one
 
 
 

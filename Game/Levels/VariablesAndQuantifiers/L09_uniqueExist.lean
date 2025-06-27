@@ -11,11 +11,16 @@ World "VariablesAndQuantifiers"
 Level 9
 Title "Unique Existential Quantifier"
 
+/-
+∃! y : ℤ, x'+y=0
+unique_exists_intro
+-/
+
 Introduction ""
 
 Statement : ∀ x : ℤ, ∃! y : ℤ, x+y=0 := by
   forall_intro x'
-  unique_exists -- have to prove both existence and uniqueness (splits into two goals?)
+  unique_exists_intro
 
 NewTactic
 
