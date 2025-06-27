@@ -40,7 +40,6 @@ Statement : ∃n : ℤ, n^2 = 2*n := by
   -- todo: there is an ugly ↑ as a result of having to coerce 2 from ℕ to ℤ.
   -- Is there a way to get rid of this?
   exists_intro 2
-  Hint "Use the `trivial` tactic to finish the proof."
   trivial
 
 NewTactic exists_intro
