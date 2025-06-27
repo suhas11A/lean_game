@@ -24,3 +24,5 @@ making an assumption is not same as stating that something is necessarily true. 
 - \neg (p \imp q) congruent to p \and \neg q
 - don't need density of reals for that exercise, should add it back (just take average of the two numbers and prove that it is greater than x
 and less than y)
+
+

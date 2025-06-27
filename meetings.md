@@ -45,3 +45,10 @@ section 1.1/1.2 thoughts:
 - might want to change `and_intro` name
 - are we changing trivial? (separate trivial and contradiction, look into which tactics trivial runs, might get confused as to why trivial sometimes works and sometimes doesn't)
 next: sections 1.2, 1.3, then revise ch.2 & 3
+
+**June 27**
+take look at section 1.2, suggestions so far (need to build up tactics, write hints, will send back for feedback)
+approach for section 1.3?
+introduce defiition of lofiacl equivalence and tautology, logical equivalence more or less same as \iff
+p ||| q metalanguage
+p \iff q is object language
