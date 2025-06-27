@@ -15,3 +15,12 @@ making an assumption is not same as stating that something is necessarily true. 
 - _little_ more explanation that p(a) = p(b) -> a = b is same as uniqueness (there is only one x \in X satisfying p(x))
 - free versus bound variables
 - density of rationals
+
+**June 27**
+- commas are ambiguous, should specify "for some" or "there exists __ such that"
+- p \or q logically equivalent to \neg p \imp q, suggests proof strategy of assuming p is not true and deducing that q is true, otherwise, p is true. in both cases, p or q is true
+- maximally negated: negation only appears in front of predicates (we can push negation inside logical operators and quantifiers)
+- \neg in front of the first quantifier actually means parentheses around entire thing, not just the first quantifer
+- \neg (p \imp q) congruent to p \and \neg q
+- don't need density of reals for that exercise, should add it back (just take average of the two numbers and prove that it is greater than x
+and less than y)
