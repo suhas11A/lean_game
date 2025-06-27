@@ -37,8 +37,6 @@ p(y).  Try using `exists_intro` in this proof.
   There exists an integer $n$ such that $n^2=2n$.
  -/
 Statement : ∃n : ℤ, n^2 = 2*n := by
-  -- todo: there is an ugly ↑ as a result of having to coerce 2 from ℕ to ℤ.
-  -- Is there a way to get rid of this?
   exists_intro 2
   trivial
 

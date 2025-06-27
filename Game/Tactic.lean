@@ -415,15 +415,15 @@ example (h : ∀ (x : Nat), x = x) (y : Nat) : y + 1 = y + 1 := by
 -- Existential quantification introduction
 elab "exists_intro" obj:term : tactic =>
   withMainContext do
-    let obj ← elabTerm obj none
-    liftMetaTactic λ goal => do
-      if let .app (.app (.const ``Exists _) α) p ← whnf =<< goal.getType then
-        if let .some obj ← coerce? obj α then
-          goal.apply =<< mkAppOptM ``Exists.intro #[none, p, obj]
-        else
-          throwTacticEx `exists_intro goal m!"{← goal.getType} is not quantified over {← inferType obj}"
+    let goal ← getMainGoal
+    if let .app (.app (.const ``Exists _) α) p ← whnf (← goal.getType) then
+      let obj ← elabTerm obj α
+      if ← isDefEq α (← inferType obj) then
+        replaceMainGoal =<< goal.apply (← mkAppOptM ``Exists.intro #[none, p, obj])
       else
-        throwTacticEx `exists_intro goal m!"{← goal.getType} is not existentially quantified"
+        throwTacticEx `exists_intro goal m!"{← goal.getType} is not quantified over {← inferType obj}"
+    else
+      throwTacticEx `exists_intro goal m!"{← goal.getType} is not existentially quantified"
 
 example : ∃ (x : Nat), 2 * x = 4 := by
   exists_intro 2
