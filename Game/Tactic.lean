@@ -418,7 +418,7 @@ elab "exists_intro" obj:term : tactic =>
     let obj ← elabTerm obj none
     liftMetaTactic λ goal => do
       if let .app (.app (.const ``Exists _) α) p ← whnf =<< goal.getType then
-        if ← isDefEq α =<< inferType obj then
+        if let .some obj ← coerce? obj α then
           goal.apply =<< mkAppOptM ``Exists.intro #[none, p, obj]
         else
           throwTacticEx `exists_intro goal m!"{← goal.getType} is not quantified over {← inferType obj}"
