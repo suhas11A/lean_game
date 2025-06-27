@@ -2,6 +2,7 @@
 
 import Lean
 import GameServer.Commands
+import Mathlib.Init.Logic
 
 open Lean Elab.Tactic Meta MonadLCtx
 
@@ -350,6 +351,23 @@ example (p q : Prop) : (P ↔ Q) → (P → Q) ∧ (Q → P) := by
   · exact h2
 
 
+-- Law of the excluded middle
+elab "excluded_middle" hyp:term "as" name:ident : tactic =>
+  withMainContext do
+    let hyp ← elabTerm hyp none
+    liftMetaTactic λ goal ↦ do
+      if ← not <$> Expr.isProp <$> inferType hyp then
+        throwTacticEx `excluded_middle goal m!"{← inferType hyp} is not a proposition"
+      let ⟨_, goal⟩ ← goal.assertHypotheses
+        #[{ userName := name.getId, type := ← mkAppM ``Or #[hyp, ← mkAppM ``Not #[hyp]],
+            value := ← mkAppM ``Classical.em #[hyp] }]
+      pure [goal]
+
+example {p : Prop} : p ∨ ¬ p := by
+  excluded_middle p as hp
+  exact hp
+
+
 -- Universal quantification introduction
 elab "forall_intro" var:ident : tactic =>
   withMainContext $ liftMetaTactic λ goal => do
@@ -433,3 +451,63 @@ example (h : ∃ (x : Nat), 2 * x = 4) : ∃ (x : Nat), ∃ (y : Nat), x * y = 4
   exists_intro 2
   exists_intro x
   exact h
+
+
+-- Unique existential quantification introduction
+elab "exists_unique_intro" obj:term : tactic =>
+  withMainContext do
+    let obj ← elabTerm obj none
+    liftMetaTactic λ goal => do
+      let α ← mkFreshExprMVar none
+      let p ← mkFreshExprMVar none
+      if ← isExprDefEq (.app (.app (.const ``ExistsUnique (← List.singleton <$> mkFreshLevelMVar)) α) p) =<< goal.getType then
+        if ← isDefEq α =<< inferType obj then
+          goal.apply =<< mkAppOptM ``ExistsUnique.intro #[none, p, obj]
+        else
+          throwTacticEx `exists_unique_intro goal m!"{← goal.getType} is not quantified over {← inferType obj}"
+      else
+        throwTacticEx `exists_unique_intro goal m!"{← goal.getType} is not uniquely existentially quantified"
+
+example : ∃! (x : Nat), x = 1 := by
+  exists_unique_intro 1
+  · rfl
+  · intros
+    assumption
+
+
+-- Unique existential elimination
+elab "exists_unique_elim" hyp:ident "into" var:ident "," ex:ident "," un:ident : tactic =>
+  withMainContext $ liftMetaTactic λ goal => do
+    if let some hyp := (← getLCtx).findFromUserName? (hyp.getId) then
+      if let .app (.app (.const ``Exists _) _) _ ← whnf hyp.type then
+        if let [goal] ← goal.apply =<< mkAppOptM ``ExistsUnique.elim #[none, none, ← inferType (.mvar goal),
+                                                                        some (.fvar hyp.fvarId)] then
+          let ⟨_, goal⟩ ← goal.introN 3 [var.getId, ex.getId, un.getId]
+          pure [goal]
+        else
+          throwTacticEx `forall_elim goal m!"this should not happen"
+      else
+        throwTacticEx `forall_elim goal m!"{hyp.type} is not existentially quantified"
+    else
+      throwTacticEx `forall_elim goal m!"assumption {hyp} not found"
+
+example (h : ∃! (x : Nat), 2 * x = 4) : ∃ (x : Nat), ∃ (y : Nat), x * y = 4 := by
+  exists_unique_elim h into x, h, hu
+  exists_intro 2
+  exists_intro x
+  exact h
+
+
+elab "by_contradiction" hyp:ident : tactic =>
+  withMainContext $ liftMetaTactic λ goal ↦ do
+    let goalType ← goal.getType
+    let newGoal ← (mkArrow (← mkAppM ``Not #[goalType]) (.const ``False [])
+                    >>= mkFreshExprMVar ∘ some) <&> Expr.mvarId!
+    goal.assign =<< mkAppM ``Classical.byContradiction #[.mvar newGoal]
+    let ⟨_, newGoal⟩ ← newGoal.intro hyp.getId
+    pure [newGoal]
+
+example (p : Prop) (h : ¬¬P) : P := by
+  by_contradiction h'
+  imp_elim h
+  exact h'
