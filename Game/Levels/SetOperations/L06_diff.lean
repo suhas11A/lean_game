@@ -22,16 +22,16 @@ Statement (U : Type)(A X Y : Set U): A \ (X ∪ Y) ⊆ (A \ X) ∩ (A \ Y) := by
   intro x hx
   rw[mem_diff] at hx
   and_elim hx into h1, h2
-  simp at h2
+  rw[mem_union] at h2
   rw[not_or] at h2
   and_elim h2 into a_1, a_2
-  simp
-  exact And.intro (And.intro h1 a_1) (And.intro h1 a_2)
-
-
+  rw[mem_inter_iff, mem_diff, mem_diff]
+  and_intro
+  exact h1
+  exact a_1
+  exact h1
+  exact a_2
 
 Conclusion "--conc--"
 
-
 NewTheorem not_or
-NewTactic simp

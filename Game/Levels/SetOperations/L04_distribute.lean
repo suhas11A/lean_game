@@ -21,27 +21,26 @@ Statement (U : Type)(X Y Z : Set U): X ∩ (Y ∪ Z) = (X ∩ Y) ∪ (X ∩ Z) :
   Hint "Now in the goal you see a bunch of intersections and unions, we could use `rw`` to manually rewrite them or use LEAN's `simp` tactic."
   Hint "Applying `simp` might do a lot of simplification that might not correspond to what you would do if you had to prove on paper, hence use `simp only`."
   Hint "To simplify the unions and intersections only, execute `simp only[mem_inter_iff, mem_union]`."
-  simp only[mem_inter_iff, mem_union]
+  rw[mem_union, mem_inter_iff, mem_inter_iff]
   Hint "Similarly simplify intersections and unions at `hx`."
   rw[mem_inter_iff, mem_union] at hx
   Hint "Now use theorems and tactics learned in World-1 to close the current goal."
   and_elim hx into h_1, h_2
   cases h_2
   left
-  exact And.intro h_1 h
+  and_intro
+  exact h_1
+  exact h
   right
-  exact And.intro h_1 h
+  and_intro
+  exact h_1
+  exact h
   intro a a_1
   Hint "Similar to previous goal, use `simp only` to simplify both the goal and the hypotheses."
-  simp only[mem_union, mem_inter_iff]
-  simp only[mem_union, mem_inter_iff] at a_1
-  cases a_1
+  rw[mem_inter_iff, mem_union]
+  rw[mem_union, mem_inter_iff, mem_inter_iff] at a_1
   rw[and_or_left]
-  left
-  exact h
-  rw[and_or_left]
-  right
-  exact h
+  exact a_1
 
 Conclusion "--conc--"
 

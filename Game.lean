@@ -1,7 +1,7 @@
 -- import Game.Levels.Basics
 import Game.Levels.PropositionalLogic
--- import Game.Levels.Sets
--- import Game.Levels.SetOperations
+import Game.Levels.Sets
+import Game.Levels.SetOperations
 -- import Game.Levels.Functions
 import Game.Levels.VariablesAndQuantifiers
 -- import Game.Levels.Peano'sAxioms
@@ -22,7 +22,7 @@ For example: Game version, Credits, Link to Github and Zulip, etc.
 Use markdown.
 "
 -- Dependency Basics → PropositionalLogic
--- Dependency PropositionalLogic → Sets
+-- Dependency PropositionalLogic → VariablesAndQuantifiers
 -- Dependency PropositionalLogic → SetOperations
 -- Dependency Sets → Functions
 

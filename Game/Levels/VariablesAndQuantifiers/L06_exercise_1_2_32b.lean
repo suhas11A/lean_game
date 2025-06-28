@@ -19,6 +19,7 @@ Statement : ¬(∃y:ℤ, ∀x:ℤ, x+y=0) := by
   trivial
 
 
-NewTactic
+NewTactic unfold
+NewDefinition Not
 
 Conclusion ""

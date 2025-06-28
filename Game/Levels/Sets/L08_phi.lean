@@ -5,7 +5,7 @@ import Mathlib.Order.Basic
 
 World "Sets"
 Level 8
-Title "Basic example in intervals"
+Title "Triviality"
 
 Introduction "
 This example is inspired from Exercise 2.1.32 from infinite descent.
@@ -13,9 +13,10 @@ This example is inspired from Exercise 2.1.32 from infinite descent.
 open Set
 /-- If p is proposition in x. Show that ∀ x ∈ ∅, p(x) is true. -/
 Statement (U : Type)(p : U → Prop): ∀ x ∈ (∅ : Set U), p x := by
-  Hint "This is a simple proof, you are on your own."
-  intro x hx
-  cases hx
+  Hint "This is a simple proof, you are on your own. We believe in you, less gooo..."
+  forall_intro x
+  imp_intro h
+  cases h
 
 Conclusion "
 This exercise is a logical technicality, which is counterintuitive for the same reason

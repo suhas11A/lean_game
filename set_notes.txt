@@ -1,9 +1,6 @@
-didnt write hints for sets-L07; operations-L08
-used ext in sets-L07; operations-L08
-unfinished levels - sets-L07,09; operations-L08
-conc - everything(almost)
-title - everything(almost)
+didnt write hints for sets-L07, Operations-L03
+unfinished levels - sets-L07,09
 
 try to reduce `have` usage
 
-Make nicer proofs in Sets-L07
+need - intro x hx, apply Susset.Antisymm

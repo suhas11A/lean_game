@@ -5,7 +5,7 @@ import Mathlib.Order.Basic
 
 World "Sets"
 Level 3
-Title "Basic example in intervals"
+Title "Sets vs Types"
 
 Introduction "
 This level is to introduce the difference between Sets and Types in LEAN.
@@ -31,5 +31,5 @@ Statement (U : Type)(x : U)(A : Set U)(h : x ∈ A): x ∈ A := by
   Hint "Functions are defined from a type to another type not from a Set to another Set."
   exact h
 
-Conclusion "--conc--"
+Conclusion "Now that we have a strong understanding of what Sets and Types mean, we will look at objects of a general type U instead of know types like ℝ or ℕ."
 NewTactic rfl
