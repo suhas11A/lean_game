@@ -6,7 +6,6 @@ import Game.Levels.Sets.L05_equality
 import Game.Levels.Sets.L06_phi
 import Game.Levels.Sets.L07_emptiness
 import Game.Levels.Sets.L08_phi
-import Game.Levels.Sets.L09_power
 
 World "Sets"
 Title "Section 2.1: Sets"

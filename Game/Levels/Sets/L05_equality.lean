@@ -29,7 +29,7 @@ Statement (U : Type)(A : Set U): (Aᶜ)ᶜ = A := by
   Hint "We have seen that `a ∉ A` is equivalent to `¬a ∈ A` so what does `¬a ∉ A` mean??
    `¬a ∉ A` is negation of `a ∉ A` i.e negation of `¬a ∈ A` which in turn is `a ∈ A` (by Law of double negation).
    So `¬a ∉ A` means that a is an element of A."
-  Hint "Learn new Tactic `push_neg` to push the negation inside. Try executing `push_neg at a_1` to push the negation."
+  Hint "Recall Tactic `push_neg` to push the negation inside. Try executing `push_neg at a_1` to push the negation."
   push_neg at a_1
   exact a_1
   Hint "You can take it from here!!"

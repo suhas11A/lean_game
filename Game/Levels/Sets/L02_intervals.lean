@@ -20,9 +20,9 @@ open Set
 /-- Suppose a < c and d < b. Show that [c, d] ⊆ (a,b). -/
 Statement (a b c d : ℝ)(ha : a < c)(hc : d < b): Icc c d ⊆ Ioo a b := by
   Hint "We have seen how to prove a goal of form `A ⊆ B`, and it requires us to assume `x ∈ A` and
-   show `x ∈ B`. Now that we know  what exactly it  means for a Set to ba subset of another set,
-   we will be using `todo` tactic to  directly change a goal of form `A ⊆ B` into a new hypotheses
-   `hx : x ∈ A` and goal `x ∈ B`."
+   show `x ∈ B`. Now that we know  what exactly it  means for a Set to be a subset of another set,
+   we will be using `intro` tactic to  directly change a goal of form `A ⊆ B` into a new hypotheses
+   `hx : x ∈ A` and goal `x ∈ B`. Execute `intro x hx` to do this."
   intro x hx
   Hint "If `a ∈ Icc x y` it means two things, `a ≥ x` and `a ≤ y`. Use tactic `rw` and theorem `mem_Icc` to rewrite `x ∈ Icc c d` to `c ≤ x ∧ x ≤ d`."
   rw [mem_Icc] at hx

@@ -32,7 +32,10 @@ Statement : ¬(2=3) := by
   `contradiction` tactic to complete the proof."
   contradiction
 
+DefinitionDoc Not as "Not / ¬"
+
 NewTactic contradiction
+NewDefinition Not
 
 -- two ways a contradiction can happen:
 -- assumptions contradict each other, or assumption is false

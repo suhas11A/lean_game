@@ -6,7 +6,7 @@ import Mathlib.Order.Basic
 import Mathlib.Logic.Basic
 
 World "SetOperations"
-Level 4
+Level 5
 Title "Basic example in intervals"
 
 Introduction "

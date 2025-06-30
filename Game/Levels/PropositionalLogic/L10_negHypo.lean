@@ -18,6 +18,5 @@ using the `contradiction` tactic, which was described in the previous level.
 Statement (h1:¬(x=1)) (h2: x=1) : False := by
   contradiction
 
-NewTactic
 
 Conclusion ""

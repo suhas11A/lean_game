@@ -5,7 +5,7 @@ import Mathlib.Data.Set.Intervals.Basic
 import Mathlib.Order.Basic
 
 World "SetOperations"
-Level 3
+Level 4
 Title "Exercise involving Intersection and Iff"
 
 Introduction "
@@ -43,4 +43,3 @@ Statement (U : Type)(X Y : Set U): X ⊆ Y ↔ (X ∩ Y = X) := by
 
 
 Conclusion "We now go on to prove the famous De Morgans laws for Sets."
-

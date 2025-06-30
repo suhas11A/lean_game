@@ -12,26 +12,56 @@ Level 6
 Title "Basic example in intervals"
 
 Introduction "
-Following along with Theorem 2.2.31, we will show one of the De Morgan's law for Sets.
+This example is inspired from Example 2.2.27, We use this exercise to understand the concept of relative complement(`\\`).
 "
+def evens : Set ℕ := { n | n % 2 =0 }
+def odds : Set ℕ := { n | n % 2 = 1 }
 
 open Set
-/-- Let X, Y and A be sets. Prove that A \ (X ∪ Y) = (A \ X) ∩ (A \ Y). -/
-Statement (U : Type)(A X Y : Set U): A \ (X ∪ Y) ⊆ (A \ X) ∩ (A \ Y) := by
-  Hint "This example can be proved with theorems and tactics that you have already learnt. Try closing the goal on your own."
-  intro x hx
-  rw[mem_diff] at hx
-  and_elim hx into h1, h2
-  rw[mem_union] at h2
-  rw[not_or] at h2
-  and_elim h2 into a_1, a_2
-  rw[mem_inter_iff, mem_diff, mem_diff]
-  and_intro
-  exact h1
-  exact a_1
-  exact h1
-  exact a_2
+/-- Let evens and odds be set of even and odd Natural numbers. Prove that univ \ evens = odds. -/
+Statement : Set.univ \ evens = odds := by
+  apply Subset.antisymm
+  intro n hn
+  Hint "`A \\ B` is the set of all elements in A that are not members of B."
+  Hint "Theorem `mem_diff` can be used to rewrite ` x ∈ A \\ B` into `x ∈ A ∧ x ∉ B`."
+  rw[mem_diff] at hn
+  Hint "Any Natural number is either odd or even, in other words `n % 2 = 0 ∨ n % 2 = 1`. Theorem `Nat.mod_two_eq_zero_or_one n` tells exactly that.
+   `have h := Nat.mod_two_eq_zero_or_one n` is used to create a new hypotheses saying that."
+  have h := Nat.mod_two_eq_zero_or_one n
+  Hint "Split `{h}` into two cases by using appropriate tactic (Hint :- It's `or_elim`)"
+  or_elim h into h, h
+  Hint "If `n % 2 = 0` then `n ∈ evens` and in LEAN both are definitionally equal.
+   You can have a new hypotheses `have h1 : n ∈ evens := {h}` but since both are definitionally equal, wherever you need `n ∈ evens` you can use `{h}` instead."
+  Hint "Hypotheses are contradicting each other hence irrespective of the what the goal is, it can be closed."
+  have h1 : n ∈ evens := h
+  Hint "Eliminate `∧` in `{hn}` to have 2 contradicting hypotheses."
+  have a_1 := hn.2
+  Hint "Now we can use the tactic `contradiction` to close the goal."
+  contradiction
+  exact h
+  intro n hn
+  Hint "There are many ways to close this goal, one of the ways is to use the strategy \"Proof by Contradiction\"."
+  by_contra h
+  Hint "Use `mem_diff` to rewrite {h}."
+  rw[mem_diff] at h
+  Hint "Push the negation inside using the tactic `push_neg`."
+  push_neg at h
+  Hint "n is obviously a member of `univ`, use `have` and `trivial` to get a new hypotheses `hj : n ∈ univ`."
+  have hj : n ∈ univ := trivial
+  Hint "we can now use imp_elim to show `n ∈ evens` from {h} and {hj}."
+  imp_elim h with hj into kl
+  Hint "Using `have` try to get 2 new hypotheses, `h1 : n % 2 = 0` and `h2 : n % 2 = 1`."
+  have h1 : n%2 =0 := kl
+  have h2 : n%2 =1 := hn
+  rw[h1] at h2
+  trivial
 
-Conclusion ""
 
-NewTheorem not_or
+
+Conclusion "Let us try one more exercise on relative compliment."
+
+/-- If `A` and `B` are sets, then `A / B` is the relative compliment of `A` with respect to `B`. -/
+DefinitionDoc diff as "/"
+
+NewTheorem Set.mem_union lt_trans and_or_left Nat.mod_two_eq_zero_or_one Set.mem_diff Set.univ Nat.one_ne_zero
+NewDefinition diff

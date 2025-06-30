@@ -20,6 +20,5 @@ Statement : ¬(∃y:ℤ, ∀x:ℤ, x+y=0) := by
 
 
 NewTactic unfold
-NewDefinition Not
 
 Conclusion ""

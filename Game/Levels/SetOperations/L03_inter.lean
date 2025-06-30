@@ -5,7 +5,7 @@ import Mathlib.Data.Set.Intervals.Basic
 import Mathlib.Order.Basic
 
 World "SetOperations"
-Level 2
+Level 3
 Title "An Example involving intervals"
 
 Introduction "

@@ -1,10 +1,11 @@
 import Game.Levels.SetOperations.L01_intro
-import Game.Levels.SetOperations.L02_inter
-import Game.Levels.SetOperations.L03_sub
-import Game.Levels.SetOperations.L04_distribute
-import Game.Levels.SetOperations.L05_diff
+import Game.Levels.SetOperations.L02_power
+import Game.Levels.SetOperations.L03_inter
+import Game.Levels.SetOperations.L04_sub
+import Game.Levels.SetOperations.L05_distribute
 import Game.Levels.SetOperations.L06_diff
-import Game.Levels.SetOperations.L07_cartesion
+import Game.Levels.SetOperations.L07_diff
+import Game.Levels.SetOperations.L08_cartesion
 
 World "SetOperations"
 Title "Section 2.2: Set Operations"

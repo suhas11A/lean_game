@@ -16,7 +16,7 @@ open Set
 /-- Suppose A ⊆ B, B ⊆ C. Then A ⊆ C. -/
 Statement (U : Type)(A B C : Set U)(ha : A ⊆ B)(hb : B ⊆ C): A ⊆ C := by
   Hint "We now know how we can prove a goal of form `A ⊆ B`, proceed."
-  intro x h1
+  intro x hx
   Hint "What does it mean when you have `ha : A ⊆ B`?? It means that every element of A is also a mem of B.
    Thus `ha: A ⊆ B` is the proof of `x ∈ A → x ∈ B`."
   Hint "Unfold the definition of Subset at `ha` and `hb` using theorem `subset_def`."
@@ -27,7 +27,7 @@ Statement (U : Type)(A B C : Set U)(ha : A ⊆ B)(hb : B ⊆ C): A ⊆ C := by
   forall_elim ha of x into h2
   forall_elim hb of x into h3
   Hint "We now know enough about implications and related tactics, you can take it from here."
-  imp_elim h2 with h1 into conc1
+  imp_elim h2 with hx into conc1
   imp_elim h3 with conc1 into conc2
   exact conc2
 
