@@ -38,7 +38,7 @@ sorryAx Prop true \imp y < y + 1 in forall_intro level
 
 **June 25**
 thoughts on lecture
-test driving today/tmrw, share julian & orlando's feedback
+test driving today/tmrw, share people's feedback
 offner's suggestion of detour worlds for more exercises
 section 1.1/1.2 thoughts:
 - should we do unfold Not for negation? (yes)
@@ -49,6 +49,17 @@ next: sections 1.2, 1.3, then revise ch.2 & 3
 **June 27**
 take look at section 1.2, suggestions so far (need to build up tactics, write hints, will send back for feedback)
 approach for section 1.3?
-introduce defiition of lofiacl equivalence and tautology, logical equivalence more or less same as \iff
+introduce defiition of logical equivalence and tautology, logical equivalence more or less same as \iff
 p ||| q metalanguage
 p \iff q is object language
+
+**June 30**
+section 1.2 has more details than section 1.1, maybe too much detail
+forall_elim and exists_elim: 
+trying to guess what the student would do
+- we don't like simp 
+- also should we use the name ring, too early to introduce, never do ring axioms anyway
+- can give students handful of useful theorems
+quantifier elimination levels have both quantifiers in the goal and assumption 
+- many confuse introduction and elmination so this is confusing, so save the current
+thm for a later exercise

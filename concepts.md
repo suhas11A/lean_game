@@ -38,10 +38,8 @@ So any elt of A is in Y
 So A \in P(Y)
 - (0,1) example: using the principle of explosion is more formal but might make sense to just say that the second case is impossible so only the first case can happen
 - proving if E and E' are empty sets then they are equal: instead of principle of explosion can use one of the previous examples where p(x) is x \in E'
-- 
 
 actionable items:
 - unfold subset defn in set world
-- 
 
 
