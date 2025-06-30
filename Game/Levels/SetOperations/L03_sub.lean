@@ -24,26 +24,23 @@ Statement (U : Type)(X Y : Set U): X ⊆ Y ↔ (X ∩ Y = X) := by
   apply Subset.antisymm
   Hint "To show `A ⊆ B` it is enough to show ..."
   intro a a_1
-  rw[mem_inter_iff] at a_1
+  Hint "Recall first level in this world"
   exact a_1.1
   intro a a_1
-  Hint "To prove `x ∈ A ∩ B` we need to show `x ∈ A` and `x ∈ B`."
+  Hint "To prove `x ∈ A ∩ B` we need to show `x ∈ A` and `x ∈ B`. To rewrite the goal `{a} ∈ X ∩ Y` into `{a} ∈ X ∧ {a} ∈ Y` we use a theorem we have previously learned."
   rw[mem_inter_iff]
-  have h4 := h a_1
   and_intro
   exact a_1
-  exact h4
+  exact h a_1
+  Hint "We now prove the second part of the iff goal first presented."
   imp_intro h
   intro a a_1
-  Hint "`h : X ∩ Y = X` so you can rewrite `a ∈ X` into `a ∈ X ∩ Y` which inturn means `a ∈ Y`."
+  Hint "Since we have `{h} : X ∩ Y = X` we can replace `X` in `{a_1}` with `X ∩ Y`."
   rw[← h] at a_1
   rw[mem_inter_iff] at a_1
   exact a_1.2
 
 
 
-Conclusion "--conc--"
+Conclusion "We now go on to prove the famous De Morgans laws for Sets."
 
-
-NewTheorem Set.mem_inter_iff Set.Subset.antisymm
-NewTactic apply

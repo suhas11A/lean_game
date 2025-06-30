@@ -34,9 +34,6 @@ Statement (a b : ℝ): Icc a b = ∅ ↔ a > b := by
   intro
   cases x_1
 
-Conclusion "
---conc--
-"
+Conclusion ""
 
-NewTactic ext apply
-NewTheorem le_trans not_le_of_gt le_of_eq le_of_lt lt_trichotomy Iff.intro
+NewTheorem le_trans not_le_of_gt le_of_eq le_of_lt

@@ -32,6 +32,6 @@ Statement (U : Type)(A X Y : Set U): A \ (X ∪ Y) ⊆ (A \ X) ∩ (A \ Y) := by
   exact h1
   exact a_2
 
-Conclusion "--conc--"
+Conclusion ""
 
 NewTheorem not_or

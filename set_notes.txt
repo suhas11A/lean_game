@@ -1,6 +1,6 @@
-didnt write hints for sets-L07, Operations-L03
+didnt write hints for sets-L07
 unfinished levels - sets-L07,09
 
 try to reduce `have` usage
 
-need - intro x hx, apply Susset.Antisymm
+need - intro x hx, apply Subset.Antisymm, rw[\l stuff] in world zero, push_neg in 1.3, rw takes multiple theorems in order

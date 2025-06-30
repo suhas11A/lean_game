@@ -8,12 +8,12 @@ Level 1
 Title "Intro to Intersection of 2 sets"
 
 Introduction "
-Let us prove a basic result involving intersection(`∩`) to get a better understanding.
+Let us prove a basic result involving intersection(`∩`) to get a better understanding. Click on `∩` to know more about it.
 "
 open Set
 /-- Suppose x∈A∩B. Then x∈B. -/
 Statement (U : Type)(x : U)(A B : Set U)(h : x ∈ A ∩ B): x ∈ B := by
-  Hint "`x ∈ A ∩ B` means that the element x is a member of both A and B."
+  Hint "`x ∈ A ∩ B` is equivalent to saying that the element x is a member of both A and B."
   Hint "Read and use the theorem `mem_inter_iff` (member of intersection if and only if) to rewrite `x ∈ A ∩ B` into `x ∈ A ∧ x ∈ B`."
   rw[mem_inter_iff] at h
   Hint "if `p ∧ q` is assumed then `p` can be proved, recall how."

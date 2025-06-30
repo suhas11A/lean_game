@@ -1,9 +1,9 @@
 -- import Game.Levels.Basics
 import Game.Levels.PropositionalLogic
+import Game.Levels.VariablesAndQuantifiers
 import Game.Levels.Sets
 import Game.Levels.SetOperations
 -- import Game.Levels.Functions
-import Game.Levels.VariablesAndQuantifiers
 -- import Game.Levels.Peano'sAxioms
 
 -- Here's what we'll put on the title screen
