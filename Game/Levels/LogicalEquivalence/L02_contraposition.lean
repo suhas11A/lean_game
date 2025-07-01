@@ -22,7 +22,7 @@ exercises: proofs in natural numbers
 -/
 
 World "LogicalEquivalence"
-Level 3
+Level 2
 Title "Proof by Contraposition"
 
 Introduction ""
