@@ -4,7 +4,7 @@ import Mathlib.Data.Real.Basic
 import Mathlib.Data.Set.Intervals.Basic
 import Mathlib.Order.Basic
 
-World "SetOperations"
+World "Set Operations"
 Level 4
 Title "Exercise involving Intersection and Iff"
 

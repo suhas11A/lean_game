@@ -4,7 +4,7 @@ import Game.Levels.VariablesAndQuantifiers
 import Game.Levels.Sets
 import Game.Levels.SetOperations
 -- import Game.Levels.Functions
--- import Game.Levels.Peano'sAxioms
+import Game.Levels.WeakInd
 
 -- Here's what we'll put on the title screen
 Title "Infinite Descent in Lean"
@@ -22,9 +22,6 @@ For example: Game version, Credits, Link to Github and Zulip, etc.
 Use markdown.
 "
 -- Dependency Basics → PropositionalLogic
--- Dependency PropositionalLogic → VariablesAndQuantifiers
--- Dependency PropositionalLogic → SetOperations
--- Dependency Sets → Functions
 
 /-! Information to be displayed on the servers landing page. -/
 Languages "English"

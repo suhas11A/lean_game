@@ -3,7 +3,7 @@ import Mathlib.Data.Set.Basic
 import Mathlib.Data.Set.Intervals.Basic
 import Mathlib.Order.Basic
 
-World "SetOperations"
+World "Set Operations"
 Level 1
 Title "Intro to Intersection of 2 sets"
 

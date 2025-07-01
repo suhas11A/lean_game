@@ -1,5 +1,5 @@
 import Game.Metadata
-World "Peano'sAxioms"
+World "Weak Induction"
 Level 1
 Title "--title--"
 

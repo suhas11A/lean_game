@@ -7,7 +7,7 @@ import Mathlib.Logic.Basic
 import Mathlib.Data.Nat.Parity
 import Mathlib.Data.Nat.Basic
 
-World "SetOperations"
+World "Set Operations"
 Level 7
 Title "Basic example in intervals"
 

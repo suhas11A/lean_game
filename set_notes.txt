@@ -1,5 +1,5 @@
-didnt write hints for sets-L07
-unfinished levels - sets-L07,09
+didn't write hints for sets-L07
+unfinished levels
 
 try to reduce `have` usage
 

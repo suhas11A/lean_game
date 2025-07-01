@@ -7,7 +7,7 @@ import Game.Levels.SetOperations.L06_diff
 import Game.Levels.SetOperations.L07_diff
 import Game.Levels.SetOperations.L08_cartesion
 
-World "SetOperations"
+World "Set Operations"
 Title "Section 2.2: Set Operations"
 
 Introduction "

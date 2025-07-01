@@ -4,7 +4,7 @@ import Mathlib.Data.Set.Intervals.Basic
 import Mathlib.Order.Basic
 
 
-World "SetOperations"
+World "Set Operations"
 Level 2
 Title "Power Set"
 
