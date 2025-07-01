@@ -30,7 +30,12 @@ Introduction ""
 -- fix naturals n, m. mn>64 → m > 8 or n > 8
 
 Statement (n m : ℕ) : m*n > 64 → m > 8 ∨ n > 8 := by
-
+  contrapose
+  simp -- simp does too much here
+  intros h1 h2
+  have hmn : m * n ≤ 8 * 8 := Nat.mul_le_mul h1 h2
+  apply le_trans hmn
+  rfl
 
 NewTactic
 
