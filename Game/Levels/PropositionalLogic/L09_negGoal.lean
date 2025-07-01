@@ -7,29 +7,37 @@ Level 9
 Title "Negation in the Goal"
 
 Introduction "
-In Lean, negation (¬) is defined by declaring ¬p
-to mean p → False, where False is a contradiction.
+In standard mathematics, a negated proposition $¬p$ ($¬$ is written
+`\\neg`) is defined to be a proposition that is true whenever $p$ is
+false, and vice versa.  In Lean, $¬p$ is defined to be $p →
+\\rm{False}$.  $\\rm{False}$ is the trivially false proposition; by
+definition, you can’t prove it.
 
-The introduction rule for negation (¬) is
+The introduction rule for negation (¬) is:
 
-(¬I) If a contradiction can be derived from the assumption that p is true, then ¬p is true.
+(¬I) *If a contradiction can be derived from the assumption that $p$ is true, then $¬p$ is true.*
 
-This means that to **prove a goal** of the form ¬p, it suffices
-to assume p is true and derive a contradiction.
-
-When we have a goal of the form `¬p`, we can use `imp_intro h` to invoke ¬I and introduce assumption
-`h: p` and change the goal to `False`, which means we must derive a contradiction from the hypotheses.
-Try using `imp_intro` with the correct syntax to begin the proof.
+This means that to **prove a goal** of the form $¬p$, it suffices
+to assume $p$ is true and derive a contradiction.  We can do this using
+the `by_contra` tactic.  By typing `by_contra h`, $p$ will be assumed
+and the assumption will be given the name `h`, and the goal will
+change to `False`.
 "
 
 Statement : ¬(2=3) := by
-  -- unfold Not
-  imp_intro h
-  Hint "The `contradiction` tactic searches for a contradiction
-  among the assumptions.
+  by_contra h
+  Hint "We can’t prove the goal (False) directly.  Instead, we have to
+  use our assumptions to find a contradiction.  Once we have found a
+  contradiction, the proof will close automatically.
 
-  Since 2=3 is a contradiction, we can use the
-  `contradiction` tactic to complete the proof."
+  The `contradiction` tactic searches for a contradiction
+  among the assumptions.  A contradiction can be either two
+  assumptions which contradict each other, i.e., $p$ and $¬p$, or one
+  assumption that is trivially false.
+
+  Since 2=3 is trivially false, we can use the `contradiction` tactic
+  to complete the proof.
+  "
   contradiction
 
 DefinitionDoc Not as "Not / ¬"

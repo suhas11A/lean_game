@@ -1,8 +1,7 @@
 import GameServer.Commands
 import Game.Tactic
 
-import Mathlib.Init.Data.Nat.Notation
-import Mathlib.Tactic.Common
+import Mathlib.Tactic
 
 /-! Use this file to add things that should be available in all levels.
 
@@ -17,5 +16,3 @@ in a random order. Therefore, you should keep the structure of one file lean fil
 that imports all its levels.
 -/
 
--- Add the opposite of Int.mul_assoc to the simp set.  Used in Variables and Quantifiers, level 4.
-@[simp] def mul_assoc_rev (a b c : Int) := Eq.symm (Int.mul_assoc a b c)

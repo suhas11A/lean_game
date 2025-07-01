@@ -1,25 +1,29 @@
 -- Exercise 1.2.32a except change p(x,y) to x+y=0
 import Game.Metadata
 import GameServer.Commands
-import Mathlib.Tactic.Ring
 
 World "VariablesAndQuantifiers"
 Level 5
 Title "Exercise"
 
--- CONSIDERATION : must address quantifiers in the order they appear, worth clarifying.
+Introduction "
+Pay attention to the order of quantifiers in this exercise.  Because
+$x$ is bound before $y$, the choice of $y$ in the proof can depend on
+the value of $x$.  If we were to reverse the order of the quantifiers,
+this statement would not be true; there is no *single* value of $y$
+such that for all $x∈ℤ$, $x+y=0$.
 
-Introduction "The statement \"∀x ∈ X, ∃y ∈ Y, p(x,y)\" translates
-to \"for any x in X, there exists a y in Y such that p(x,y) is true\". Note that the element y ∈ Y
-such that p(x,y) is true is not necessarily the same for every x ∈ X. We choose x first then y, so
-we must also invoke the proof strategies in that order, `forall_intro` then `exists_intro`. Try
-this exercise on your own!"
+We first fix $x$ and then choose $y$, so we must also invoke the
+proof strategies in that order: `forall_intro` and then
+`exists_intro`.  Try this exercise on your own!
+"
 
+/--
+  For all integers $x$, there exists an integer $y$ such that $x+y=0$.
+ -/
 Statement : ∀x:ℤ, ∃y:ℤ, x+y=0 := by
-  forall_intro x'
-  exists_intro -x'
-  ring
-
-NewTactic
+  forall_intro x
+  exists_intro -x
+  apply Int.add_right_neg
 
 Conclusion ""

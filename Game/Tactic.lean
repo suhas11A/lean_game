@@ -254,23 +254,22 @@ example (x : Nat) : x = 1 → x = 1 := by
 
 
 -- Implies-elimination, applying one hypothesis with another.
-elab "imp_elim" imp:ident "with" hyp:ident "into" conc:ident : tactic =>
-  withMainContext $ liftMetaTactic λ goal => do
-    if let some imp := (← getLCtx).findFromUserName? (imp.getId) then
+elab "imp_elim" imp:term "with" hyp:ident "into" conc:ident : tactic =>
+  withMainContext do
+    let imp ← elabTerm imp none
+    liftMetaTactic λ goal => do
       if let some hyp := (← getLCtx).findFromUserName? (hyp.getId) then
-        if let .forallE _ hypType concType _ ← whnf imp.type then
+        if let .forallE _ hypType concType _ ← whnf (← inferType imp) then
           if ← isDefEq hypType hyp.type then
-            let ⟨_, goal⟩ ← goal.assert conc.getId concType (.app (.fvar imp.fvarId) (.fvar hyp.fvarId))
+            let ⟨_, goal⟩ ← goal.assert conc.getId concType (.app imp (.fvar hyp.fvarId))
                              >>= MVarId.intro1P
             pure [goal]
           else
-            throwTacticEx `imp_elim goal m!"the hypothesis of {imp.type} is not {hyp.type}"
+            throwTacticEx `imp_elim goal m!"the hypothesis of {← inferType imp} is not {hyp.type}"
         else
-          throwTacticEx `imp_elim goal m!"{imp.type} is not an implication"
+          throwTacticEx `imp_elim goal m!"{← inferType imp} is not an implication"
       else
         throwTacticEx `imp_elim goal m!"assumption {hyp} not found"
-    else
-      throwTacticEx `imp_elim goal m!"assumption {imp} not found"
 
 example (x y : Nat) : (x = 1 → y = 2) → x = 1 → y = 2 := by
   imp_intro imp
@@ -279,18 +278,17 @@ example (x y : Nat) : (x = 1 → y = 2) → x = 1 → y = 2 := by
   exact conc
 
 -- Implies-elimination, applying a hypothesis to the goal.
-elab "imp_elim" imp:ident : tactic =>
-  withMainContext $ liftMetaTactic λ goal => do
-    if let some imp := (← getLCtx).findFromUserName? (imp.getId) then
-      if let .forallE _ _ goalType _ ← whnf imp.type then
+elab "imp_elim" imp:term : tactic =>
+  withMainContext do
+    let imp ← elabTerm imp none
+    liftMetaTactic λ goal => do
+     if let .forallE _ _ goalType _ ← whnf (← inferType imp) then
         if ← isDefEq goalType (← goal.getType) then
-          goal.apply (.fvar imp.fvarId)
+          goal.apply imp
         else
-          throwTacticEx `imp_elim goal m!"the conclusion of {imp.type} is not {← goal.getType}"
+          throwTacticEx `imp_elim goal m!"the conclusion of {← inferType imp} is not {← goal.getType}"
       else
-        throwTacticEx `imp_elim goal m!"{imp.type} is not an implication"
-    else
-      throwTacticEx `imp_elim goal m!"assumption {imp} not found"
+        throwTacticEx `imp_elim goal m!"{← inferType imp} is not an implication"
 
 example (x y : Nat) : (x = 1 → y = 2) → x = 1 → y = 2 := by
   imp_intro imp
@@ -386,22 +384,21 @@ example : ∀ (x : Nat), x = x := by
 -- Universal quantification elimination
 elab "forall_elim" hyp:ident "of" obj:term "into" conc:ident : tactic =>
   withMainContext do
-    let obj ← elabTerm obj none
-    liftMetaTactic λ goal => do
-      if let some hyp := (← getLCtx).findFromUserName? (hyp.getId) then
-        let objType ← inferType obj
-        if let .forallE _ hypObjType _ _ ← whnf hyp.type then
-          if ← not <$> Expr.isProp <$> inferType hypObjType then
-            if ← isDefEq hypObjType objType then
-              let hypVal ← mkAppM' (.fvar hyp.fvarId) #[obj]
-              let ⟨_, goal⟩ ← goal.assert conc.getId (← inferType hypVal) hypVal
-                               >>= MVarId.intro1P
-              return [goal]
-            else
-              throwTacticEx `forall_elim goal m!"{hypObjType} is not quantified over {objType}"
-        throwTacticEx `forall_elim goal m!"{hyp.type} is not universally quantified"
-      else
-        throwTacticEx `forall_elim goal m!"assumption {hyp} not found"
+    let goal ← getMainGoal
+    if let some hyp := (← getLCtx).findFromUserName? (hyp.getId) then
+      if let .forallE _ hypObjType _ _ ← whnf hyp.type then
+        if ← not <$> Expr.isProp <$> inferType hypObjType then
+          let obj ← elabTerm obj hypObjType
+          let objType ← inferType obj
+          if ← isDefEq hypObjType objType then
+            let hypVal ← mkAppM' (.fvar hyp.fvarId) #[obj]
+            let ⟨_, goal⟩ ← MVarId.intro1P (← goal.assert conc.getId (← inferType hypVal) hypVal)
+            return ← replaceMainGoal [goal]
+          else
+            throwTacticEx `forall_elim goal m!"{hypObjType} is not quantified over {objType}"
+      throwTacticEx `forall_elim goal m!"{hyp.type} is not universally quantified"
+    else
+      throwTacticEx `forall_elim goal m!"assumption {hyp} not found"
 
 example (h : ∀ (x : Nat), x = x) : 2 = 2 := by
   forall_elim h of 2 into h1

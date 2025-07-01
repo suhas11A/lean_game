@@ -5,20 +5,27 @@ World "VariablesAndQuantifiers"
 Level 6
 Title "Exercise"
 
-Introduction "Try the exercise below."
+Introduction "
+Remember how we said in the previous exercise that if you reversed the
+order of the quantifiers, the statement would no longer be true?  In
+this exercise, your job is to prove that.
 
+There are multiple ways to proceed with this proof, but you will need
+to use proof by contradiction and end up with a conclusion that says
+that two different numbers are equal—say, $0=1$.  From there, use
+`contradiction` to end the proof.
+"
+
+/--
+  There does not exist $y∈ℤ$ such that, for all $x∈ℤ$, $x+y=0$.
+  -/
 Statement : ¬(∃y:ℤ, ∀x:ℤ, x+y=0) := by
-  unfold Not
-  imp_intro h
+  by_contra h
   exists_elim h into y', h'
-  -- TODO: deal with the ℕ versus ℤ typing here, and add hints
-  forall_elim h' of (0:ℤ) into h0
-  forall_elim h' of (1:ℤ) into h1
-  simp at h0
+  forall_elim h' of 0 into h0
+  forall_elim h' of 1 into h1
+  rewrite [zero_add] at h0
   rewrite [h0] at h1
-  trivial
-
-
-NewTactic unfold
+  contradiction
 
 Conclusion ""

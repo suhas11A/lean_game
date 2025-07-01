@@ -28,11 +28,14 @@ correct syntax to begin the proof.
   Given an integer $n$, if there exists an integer $q$ such that
   $n=4q$, then there exists an integer $p$ such that $n=2p$.
  -/
-Statement (n:ℤ) (h: ∃q:ℤ, n=4*q) : ∃p:ℤ, n=2*p := by
+Statement : ∀ n:ℤ, (∃q:ℤ, n=4*q) → ∃p:ℤ, n=2*p := by
+  forall_intro n
+  imp_intro h
   exists_elim h into q', hq'
   exists_intro 2*q'
   rewrite [hq']
-  simp
+  rewrite [← Int.mul_assoc]
+  trivial
 
 NewTactic exists_elim
 
