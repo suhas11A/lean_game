@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {α} (x s : Set α) : x ∈ 𝒫 s ↔ x ⊆ s",
+ "name": "Set.mem_powerset_iff",
+ "displayName": "Set.mem_powerset_iff",
+ "content": "(missing)",
+ "category": "Set"}

@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {α} [Preorder α] {a b x} : x ∈ Set.Icc a b ↔ a ≤ x ∧ x ≤ b",
+ "name": "Set.mem_Icc",
+ "displayName": "Set.mem_Icc",
+ "content": "(missing)",
+ "category": "Set"}

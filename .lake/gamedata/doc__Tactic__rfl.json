@@ -1,0 +1,7 @@
+{"type": "Tactic",
+ "statement": "",
+ "name": "rfl",
+ "displayName": "rfl",
+ "content":
+ "*(lean docstring)*\\\n`rfl` tries to close the current goal using reflexivity.\nThis is supposed to be an extensible tactic and users can add their own support\nfor new reflexive relations.\n\nRemark: `rfl` is an extensible tactic. We later add `macro_rules` to try different\nreflexivity theorems (e.g., `Iff.rfl`).\n",
+ "category": ""}

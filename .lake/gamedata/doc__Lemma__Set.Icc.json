@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {α} [Preorder α] (a b : α) : Set α",
+ "name": "Set.Icc",
+ "displayName": "Set.Icc",
+ "content": "*(lean docstring)*\\\nLeft-closed right-closed interval ",
+ "category": "Set"}

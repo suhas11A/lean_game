@@ -1,0 +1,1331 @@
+msgid ""
+msgstr "Project-Id-Version: Game v4.7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: Mon Jun 30 21:23:15 2025\n"
+"Last-Translator: \n"
+"Language-Team: none\n"
+"Language: en\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: GameServer.RpcHandlers
+msgid "level completed! 🎉"
+msgstr ""
+
+#: GameServer.RpcHandlers
+msgid "level completed with warnings… 🎭"
+msgstr ""
+
+#: GameServer.RpcHandlers
+msgid "intermediate goal solved! 🎉"
+msgstr ""
+
+#: Game.Tactic
+msgid "If the goal is a conjunction, `and_intro` will replace the goal with\n"
+"  each of its conjuncts, in turn.\n"
+"\n"
+"  This follows Strategy 1.1.7 in Infinite Descent."
+msgstr ""
+
+#: Game.Tactic
+msgid "todo i have to update this, don't wanna rn lol\n"
+"  If `h` is the name of an assumption of the form `p ∧ q`, then\n"
+"  `and_elim h into ha hb` replaces `h` with two assumptions, `ha`\n"
+"  which proves `p` and `hb` which proves `q`.\n"
+"\n"
+"  This follows Strategy 1.1.9 in Infinite Descent."
+msgstr ""
+
+#: Game.Tactic
+msgid "If the goal is a disjunction, and `disj` one of its disjuncts, then\n"
+"  `or_intro disj` will replace the goal with `disj` for you to prove.\n"
+"\n"
+"  For instance, if the goal is `x = y ∨ y = y ∨ y = z`, then `or_intro\n"
+"  y = y` will replace the goal with `y = y`.\n"
+"\n"
+"  This follows Strategy 1.1.13, proving disjunctions, in Infinite Descent."
+msgstr ""
+
+#: Game.Tactic
+msgid "If `h` is a disjunction assumption with `n` disjuncts, then\n"
+"    `or_elim h into h1, h2, h3, ..., hn` will add a goal where each\n"
+"    one of the disjuncts is true in turn, and will name the ith\n"
+"    disjunct `hi`.  You may pass whatever names for the disjuncts that\n"
+"    you wish, but you need to provide as many names as there are\n"
+"    disjuncts."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L01_conjGoal
+msgid "Conjunction in the Goal"
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L01_conjGoal
+msgid "The introduction rule for conjunction (∧) is\n"
+"\n"
+"(∧I) If p is true and q is true, then p ∧ q is true.\n"
+"\n"
+"This means that to **prove a goal** of the form p ∧ q, it suffices\n"
+"to prove p and (separately) q.\n"
+"\n"
+"In this level, our goal is indeed of the form\n"
+"p ∧ q. We invoke ∧I with the tactic `and_intro` which will split\n"
+"the goal of proving (2+2=4) ∧ (3<5) into two separate goals: proving 2+2=4\n"
+"is true and proving 3<5 is true. Try using `and_intro` to split the goal."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L01_conjGoal
+msgid "Notice that we now have two separate goals.\n"
+"For simple arithmetic like proving 2+2=4, we can use `trivial` tactic."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L01_conjGoal
+msgid "Your first use of `trivial` resolved the goal 2+2=4. Use it once more to\n"
+"prove 3<5."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L01_conjGoal
+msgid ""
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L02_conjHypo
+msgid "Conjunction in the Hypothesis"
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L02_conjHypo
+msgid "The elimination rules for conjunction (∧) are\n"
+"\n"
+"(∧E₁) If p ∧ q is true, then p is true.\n"
+"\n"
+"(∧E₂) If p ∧ q is true, then q is true.\n"
+"\n"
+"This means that if our **assumption** is of the form p ∧ q, then we\n"
+"can deduce that p is true and that q is true.\n"
+"\n"
+"When we have an assumption of the form `h: p ∧ q`, we can invoke ∧E₁ and ∧E₂\n"
+"and produce new assumptions `h1: p` and `h2: q` by typing `and_elim h into h1, h2`.\n"
+"Try using `and_elim` with the correct syntax to begin the proof."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L02_conjHypo
+msgid "Now that we have the hypotheses `2+2=4` and `3<5`, our goal matches one of these\n"
+"hypotheses exactly. Use `exact h'` where h' is the name of the hypothesis that matches\n"
+"the goal to finish the proof."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L02_conjHypo
+msgid ""
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L04_disjunctHypo
+msgid "Disjunction in the Hypothesis"
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L04_disjunctHypo
+msgid "The elimination rule for disjunction (∨) is\n"
+"\n"
+"(∨E) If p ∨ q is true, and if r can be derived from p and from q, then r is true.\n"
+"\n"
+"This means that if our **assumption** is of the form p ∨ q, then we\n"
+"must prove the goal assuming p is true (but not necessarily q), and we must also\n"
+"prove the goal assuing q is true (but not necessarily p).\n"
+"\n"
+"When we have an assumption of the form `h: p ∨ q`, we can invoke ∨E\n"
+"and separate the proof into two cases, one assuming `h1: p` and one assuming `h2: q`, by typing `or_elim h into h1, h2`.\n"
+"Try using `or_elim` with the correct syntax to begin the proof."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L04_disjunctHypo
+msgid "We use the `rewrite` tactic to make substitutions from one hypothesis\n"
+"into another or into our goal. For example, `rewrite [h1]`, where `h1:x=0`, would\n"
+"substitute the value 0 for x in the goal `x*x=x`. Alternatively, if there were hypotheses\n"
+"`h1:x=1` and `h2:x+1=2`, `rewrite [h1] at h2` would change h2 into `h2:1+1=2`."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L04_disjunctHypo
+msgid "Use the `rewrite` and `trivial` tactics to complete the proof"
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L04_disjunctHypo
+msgid ""
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L03_disjunctGoal
+msgid "Disjunction in the Goal"
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L03_disjunctGoal
+msgid "The introduction rules for disjunction (∨) are\n"
+"\n"
+"(∨I₁) If p is true, then p ∨ q is true.\n"
+"\n"
+"(∨I₂) If q is true, then p ∨ q is true.\n"
+"\n"
+"This means that to **prove a goal** of the form p ∨ q, it suffices\n"
+"to either prove p is true or prove q is true.\n"
+"\n"
+"When we have a goal of the form\n"
+"`h: p ∨ q`, we can use either `or_intro p` to invoke ∨I₁ or `or_intro q` to invoke ∨I₂.\n"
+"Note that we should be careful whether we choose to prove p or q, as one\n"
+"might be more difficult or even impossible to prove. In this case, we must go back\n"
+"and prove the other proposition.\n"
+"Try using either `or_intro 3<2` or `or_intro 2+2=4` to begin the proof."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L03_disjunctGoal
+msgid "Use the `trivial` tactic to finish the proof."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L03_disjunctGoal
+msgid ""
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L05_impGoal
+msgid "Implication in the Goal"
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L05_impGoal
+msgid "The introduction rule for implication (→) is\n"
+"\n"
+"(→I) If q can be derived from the assumption that p is true, then p → q is true.\n"
+"\n"
+"This means that to **prove a goal** of the form p → q, it suffices\n"
+"to assume p is true and derive that q is true.\n"
+"\n"
+"In this level, our goal is indeed of the form\n"
+"p → q. We invoke →I with `imp_intro h` which will change the goal of proving\n"
+"n=1 → n+1=2 into n+1=2 and add `h: n=1` as a hypothesis. Try using `imp_intro` with\n"
+"the correct syntax to begin the proof."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L05_impGoal
+msgid "Use the `rewrite` and `trivial` tactics to complete the proof."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L05_impGoal
+msgid ""
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L06_impHypo
+msgid "Implication in the Hypothesis"
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L06_impHypo
+msgid "The elimination rule for implication (→) is\n"
+"\n"
+"(→E) If p → q is true and p is true, then q is true.\n"
+"\n"
+"This means that if our **assumption** is of the form `h: p → q` and we have goal q, then it is sufficient\n"
+"to prove p is true. We use `imp_elim h` to turn the goal into proving p is true.\n"
+"Alternatively, if our *assumption* is of the form `h: p → q` and we have assumption `h1: p`, then\n"
+"we can deduce that q is true. We use `imp_elim h with h1 into h2` to add the hypothesis `h2: q`.\n"
+"\n"
+"Try using `imp_elim` with the correct syntax to begin the proof."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L06_impHypo
+msgid "Use the `exact` tactic to finish the proof."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L06_impHypo
+msgid ""
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L07_bicondGoal
+msgid "Biconditional in the Goal"
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L07_bicondGoal
+msgid "A biconditional (↔) is defined by declaring p ↔ q\n"
+"to mean (p → q) ∧ (q → p). Similar to how proving\n"
+"p ∧ q requires separate proofs of p and q, p ↔ q\n"
+"requires separate proofs of p → q and q → p.\n"
+"This means that to **prove a goal** of the form p ↔ q,\n"
+"use `iff_intro` to separate the proof into two parts, one where\n"
+"the goal is to prove p → q and one where the goal is to prove q → p."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L07_bicondGoal
+msgid "The `simp` tactic performs arithmetic to simplify a statement. Use `simp`\n"
+"to simplify the goal and `simp at h` to simplify a hypothesis h.\n"
+"Use the `imp_intro`, `simp` and `exact` tactics to resolve each of the two new goals."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L07_bicondGoal
+msgid ""
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L08_bicondHypo
+msgid "Biconditional in the Hypothesis"
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L08_bicondHypo
+msgid "When we have an **assumption** of the form `h: p ↔ q`, use `iff_elim h into h1, h2` to invoke\n"
+"the biconditional elimination rule and split h into two separate hypotheses `h1: p → q` and `h2: q → p`.\n"
+"Try using `iff_elim` with the correct syntax to begin the proof."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L08_bicondHypo
+msgid "Notice that the goal is of the form p ∧ q. Recall how to invoke the introduction rule for ∧ to complete the next step of the proof."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L08_bicondHypo
+msgid "Finish off the proof!"
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L08_bicondHypo
+msgid ""
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L09_negGoal
+msgid "Negation in the Goal"
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L09_negGoal
+msgid "In Lean, negation (¬) is defined by declaring ¬p\n"
+"to mean p → False, where False is a contradiction.\n"
+"\n"
+"The introduction rule for negation (¬) is\n"
+"\n"
+"(¬I) If a contradiction can be derived from the assumption that p is true, then ¬p is true.\n"
+"\n"
+"This means that to **prove a goal** of the form ¬p, it suffices\n"
+"to assume p is true and derive a contradiction.\n"
+"\n"
+"When we have a goal of the form `¬p`, we can use `imp_intro h` to invoke ¬I and introduce assumption\n"
+"`h: p` and change the goal to `False`, which means we must derive a contradiction from the hypotheses.\n"
+"Try using `imp_intro` with the correct syntax to begin the proof."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L09_negGoal
+msgid "The `contradiction` tactic searches for a contradiction\n"
+"among the assumptions.\n"
+"\n"
+"Since 2=3 is a contradiction, we can use the\n"
+"`contradiction` tactic to complete the proof."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L09_negGoal
+msgid ""
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L10_negHypo
+msgid "Negation in the Hypothesis"
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L10_negHypo
+msgid "The elimination rule for negation (¬) is\n"
+"\n"
+"(¬E) If ¬p and p are both true, then a contradiction may be derived.\n"
+"\n"
+"When we have an **assumption** of the form `h: ¬p`, we can invoke ¬E\n"
+"using the `contradiction` tactic, which was described in the previous level."
+msgstr ""
+
+#: Game.Levels.PropositionalLogic.L10_negHypo
+msgid ""
+msgstr ""
+
+#: Game.Levels.PropositionalLogic
+msgid "Chapter 1: PropositionalLogic"
+msgstr ""
+
+#: Game.Levels.PropositionalLogic
+msgid "Consider the following two propositions:\n"
+"\n"
+"· If c divides b and b divides a, then c divides a.\n"
+"\n"
+"· If n > 2 and n is prime, then n is odd.\n"
+"\n"
+"Both share the same _logical form_: `If P and Q, then R`, where P, Q, and R\n"
+"are _propositional variables_. A proposition's logical\n"
+"form tells us which proof strategies we should use to prove it\n"
+"(or to use it as an assumption), and the same strategies apply to all\n"
+"propositions with that form.\n"
+"\n"
+"In this world, we begin our study of the logical forms\n"
+"that propositions can take by considering _propositional formulas_,\n"
+"the simplest kinds of logical form. These are built from propositional\n"
+"variables using _logical operators_ or _logical connectives_:\n"
+"conjunction, disjunction, implication, biconditional, and negation.\n"
+"\n"
+"Each logical operator is defined by introduction and elimination rules:\n"
+"\n"
+"· Introduction rules explain how to **prove a goal** when that operator\n"
+"  appears as the outermost logical connective in the goal.\n"
+"\n"
+"· Elimination rules explain how to **use an assumption** when that operator\n"
+"  appears as the outermost logical connective in the assumption.\n"
+"\n"
+"We'll explore the proof strategies associated to the introduction\n"
+"and elimination rules for each operator in turn."
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L01_universalGoal
+msgid "Universal Quantifier in the Goal"
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L01_universalGoal
+msgid "Consider a logical formula $p(x)$ parametrized over a variable $x$\n"
+"with domain of discourse $X$.  The formula $∀x∈X, p(x)$ ($∀$ is typed\n"
+"as `\\forall` and read as “for all”) expresses that $p(x)$ holds\n"
+"whenever $x$ is an element of $X$.  We say that this kind of formula\n"
+"is *universally quantified*.\n"
+"\n"
+"For instance, $∀n∈ℤ, n<n+1$ means that every integer is less than\n"
+"itself plus one.  This is obviously true; how do we prove it?\n"
+"\n"
+"To prove a goal of the form $∀x ∈ X, p(x)$, we use the following strategy:\n"
+"\n"
+"(∀I) *If $p(x)$ can be derived from the assumption that $x$ is an arbitrary\n"
+"element of $X$, then $∀x ∈ X, p(x)$.*\n"
+"\n"
+"By arbitrary, we mean that we assume nothing about $x$ other than that\n"
+"it is an element of $X$.  In particular, we can’t assume that it is\n"
+"any *particular* element of $X$.  When we prove $∀n∈ℤ, n<n+1$, we will\n"
+"introduce a new integer $n$, but we won't know what $n$ actually is,\n"
+"since our proof must work for every possible $n∈ℤ$.\n"
+"\n"
+"To prove a universally quantified statement in Lean, use the\n"
+"`forall_intro` tactic.  Typing `forall_intro y` invokes ∀I by taking\n"
+"$y$ to be an arbitrary element of the domain of discourse and changing\n"
+"the goal to proving that $p(y)$ is true.  (You can use whatever\n"
+"variable name you want instead of `y`.)  Try using `forall_intro` with\n"
+"the correct syntax to begin the proof."
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L01_universalGoal
+msgid "For all integers $n$, $n$ is less than $n+1$."
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L01_universalGoal
+msgid "Observe that `«{y}»` has been added as a new object, and that the goal\n"
+"has changed to `«{y}» < «{y}» + 1`—`n` has been replaced with `«{y}»`.  To\n"
+"finish the proof, we can use `simp`."
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L01_universalGoal
+msgid "If you haven’t noticed, we use the $∈$ symbol (`\\in`, read `in`) with\n"
+"$∀$ in convential math notation, but in Lean, we use a colon instead:\n"
+"`∀n : ℤ, n < n + 1`."
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L02_universalHypo
+msgid "Universal Quantifier in the Hypothesis"
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L02_universalHypo
+msgid "If we have proven or assumed a universally quantified statement $∀x∈X,\n"
+"p(x)$, then we can use it in our proofs with the elimination rule for\n"
+"universal quantification:\n"
+"\n"
+"(∀E) *If $a ∈ X$ and $∀x ∈ X, p(x)$ is true, then $p(a)$ is true.*\n"
+"\n"
+"This means that if our **assumption** is of the form $∀x ∈ X, p(x)$,\n"
+"then we can take any particular $a ∈ X$ and assert that $p(a)$ is\n"
+"true.  Note that we have to decide on a specific $a$ to use.\n"
+"\n"
+"When we have an assumption of the form `h: ∀x : X, p(x)`, and either\n"
+"an object `a:X` or an expression `a` that is a valid `X`, we can\n"
+"invoke ∀E and produce the new assumption `h': p(a)` by typing:\n"
+"\n"
+"`forall_elim h of a into h'`\n"
+"\n"
+"Keep in mind, you can’t just type in `a`; you have to provide the\n"
+"specific element of `X` that you want in place of it.\n"
+"\n"
+"You’ll need to use `forall_elim` twice during this proof."
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L02_universalHypo
+msgid "Let $p(x)$ and $q(x)$ be propositions defined on the natural\n"
+"  numbers.  If, for all $x∈ℕ$, $p(x)$ is true, and for all $x∈ℕ$,\n"
+"  $q(x)$ is true, then for all $x∈ℕ$, the formula $p(x)∧q(x)$ is true."
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L02_universalHypo
+msgid ""
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L03_existentialGoal
+msgid "Existential Quantifier in the Goal"
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L03_existentialGoal
+msgid "For a logical formula $p(x)$ parametrized over $x∈X$, the formula\n"
+"$∃x∈X, p(x)$ ($∃$ is typed `\\exists` and read “there exists…such\n"
+"that”) expresses that there is a particular $a∈X$ such that $p(a)$\n"
+"holds.  We say that such a formula is *existentially quantified*.\n"
+"\n"
+"For instance, $∃n∈ℤ, n^2 = 2n$ is read “there exists an integer $n$\n"
+"such that $n$ squared equals two times $n$”.  In order to prove such a\n"
+"statement, we must use the introduction rule for existential\n"
+"quantification:\n"
+"\n"
+"(∃I) *If $a ∈ X$ and $p(a)$ is true, then we can conclude $∃x ∈ X, p(x)$.*\n"
+"\n"
+"In other words, we must give a particular $a∈X$ and prove that $p(a)$\n"
+"holds to conclude $∃x∈X, p(x)$.  Here, $a$ is often called a *witness*\n"
+"to the statement $∃x∈X, p(x)$.  Note that some choices of the witness\n"
+"may be incorrect; for instance, we cannot pick $n=3$ as a witness for\n"
+"$∃n∈ℤ, n^2 = 2n$, since $3^2=9$ but $2(3)=6$.  And there may be\n"
+"multiple different correct choices of a witness; the previously\n"
+"mentioned proposition has two correct witnesses, and either will\n"
+"suffice to prove it.\n"
+"\n"
+"In Lean, if we have a goal of the form `∃x ∈ X, p(x)`, we can use\n"
+"`exists_intro y`, where y is an element of X, to change the goal into\n"
+"p(y).  Try using `exists_intro` in this proof."
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L03_existentialGoal
+msgid "There exists an integer $n$ such that $n^2=2n$."
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L03_existentialGoal
+msgid ""
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L04_existentialHypo
+msgid "Existential Quantifier in the Hypothesis"
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L04_existentialHypo
+msgid "If we have proven or assumed an existenatially quantified statement $∃x∈X,\n"
+"p(x)$, then we can use it in our proofs with the elimination rule for\n"
+"universal quantification:\n"
+"\n"
+"(∃E) *If $∃x ∈ X, p(x)$ is true, and $q$ can be derived from the assumption that $p(a)$\n"
+"is true for some fixed $a ∈ X$, then $q$ is true.*\n"
+"\n"
+"This means that if our **assumption** is of the form $∃x ∈ X, p(x)$, then we\n"
+"can take an $a ∈ X$ and assert that $p(a)$ is true.\n"
+"\n"
+"When we have an assumption of the form `h : ∃x : X, p(x)`, we can\n"
+"invoke ∃E and produce the new assumptions `a : X` and `h' : p(a)` by\n"
+"typing `exists_elim h into a, h'`.  Try using `exists_elim` with the\n"
+"correct syntax to begin the proof."
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L04_existentialHypo
+msgid "Given an integer $n$, if there exists an integer $q$ such that\n"
+"  $n=4q$, then there exists an integer $p$ such that $n=2p$."
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L04_existentialHypo
+msgid ""
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L05_exercise_1_2_32a
+msgid "Exercise"
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L05_exercise_1_2_32a
+msgid "The statement \"∀x ∈ X, ∃y ∈ Y, p(x,y)\" translates\n"
+"to \"for any x in X, there exists a y in Y such that p(x,y) is true\". Note that the element y ∈ Y\n"
+"such that p(x,y) is true is not necessarily the same for every x ∈ X. We choose x first then y, so\n"
+"we must also invoke the proof strategies in that order, `forall_intro` then `exists_intro`. Try\n"
+"this exercise on your own!"
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L05_exercise_1_2_32a
+msgid ""
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L06_exercise_1_2_32b
+msgid "Exercise"
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L06_exercise_1_2_32b
+msgid "Try the exercise below."
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L06_exercise_1_2_32b
+msgid ""
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L07_thm_1_2_33
+msgid "Exercise"
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L07_thm_1_2_33
+msgid "Try the exercise below."
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers.L07_thm_1_2_33
+msgid ""
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers
+msgid "Chapter 2: VariablesAndQuantifiers"
+msgstr ""
+
+#: Game.Levels.VariablesAndQuantifiers
+msgid "todo"
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Introduction to Subsets"
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "This example is inspired from Example 2.1.16 from infinite descent, let's prove a basic set theorem using Lean.\n"
+"\n"
+"A set A is a subset of a set B if all elements of A are also elements of B, so `A ⊆ B` is equivalent to saying `∀ x ∈ A → x ∈ B`.\n"
+"\n"
+"So to prove a goal of form `A ⊆ B`, we need to show that if something is an element of A, then it is also an element of B i.e we\n"
+"need to prove `∀ x ∈ A → x ∈ B`\n"
+"(To enter the symbol ⊆ type `\\sub`, and for ∈ type `\\mem` (is a member of) or `\\in`).\n"
+"\n"
+"To prove this goal the first theorem you're going to use is `subset_def` which expands `A ⊆ B` into `∀ x ∈ A, x ∈ B`.\n"
+"Type in `rw [subset_def]` to get started, this will change the goal into `∀ x ∈ A, x ∈ A`. Read the documentation on the right by clicking on `Set.subset_def`."
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Suppose A is a set. Then A⊆A."
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Recall how to deal with `∀` in goal from Chapter 1.2, we need to show that any general variable x will satisfy `x ∈ A → x ∈ A`"
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "We now have a goal of from `p → q` and you know what to do to prove an implication goal."
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Now that we have a goal that matches one of the hypotheses. We use `exact` tactic to close the goal."
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "Congratulations! You have completed your first proof in Sets using LEAN!"
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "`x ∈ A` means that `x` is an element of `A`.  To enter the symbol `∈`, type\n"
+"`\\mem` or `\\in`."
+msgstr ""
+
+#: Game.Levels.Sets.L01_intro
+msgid "`A ⊆ B` means that `A` is a subset of `B`.  To enter the symbol `⊆`,\n"
+"type `\\sub`."
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "Basic example in intervals"
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "This example is inspired from Example 2.1.17 from infinite descent.\n"
+"\n"
+"We will be proving a simple result involving intervals.\n"
+"\n"
+"Closed interval [a,b] is the set of all values x that satisfies `x ≥ a ∧ x ≤ b`.\n"
+" In LEAN the interval [a,b] is represented as `Icc a b` (Interval closed closed a b)."
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "Suppose a < c and d < b. Show that [c, d] ⊆ (a,b)."
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "We have seen how to prove a goal of form `A ⊆ B`, and it requires us to assume `x ∈ A` and\n"
+"show `x ∈ B`. Now that we know  what exactly it  means for a Set to ba subset of another set,\n"
+"we will be using `todo` tactic to  directly change a goal of form `A ⊆ B` into a new hypotheses\n"
+"`hx : x ∈ A` and goal `x ∈ B`."
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "If `a ∈ Icc x y` it means two things, `a ≥ x` and `a ≤ y`. Use tactic `rw` and theorem `mem_Icc` to rewrite `x ∈ Icc c d` to `c ≤ x ∧ x ≤ d`."
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "If `a ∈ Ioo x y` it means two things, `a > x` and `a < y`. Similarly use theorem `mem_Ioo` to rewrite `x ∈ Ioo a b` to `a < x ∧ x < b`."
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "Use `and_elim to proceed further."
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "When `a < b` and `b ≤ c`, it is obvious that `a < c`, but how does lean know that. Well there are theorems that we can use!"
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "See theorems `lt_of_lt_of_le` and `lt_of_le_of_lt` and how to use them."
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "Recall `have` from previous world, we use `have` to introduce a new hypotheses from known results and hypotheses.\n"
+"Theorem `lt_of_lt_of_le` says that `a < b → b ≤ c → a < c` which can be interpreted as `(a < b ∧ b ≤ c) → a < c`.\n"
+"`have h_ax := lt_of_lt_of_le «{ha}» «{h1}»` will adds the hypotheses `h_ax : a < x` into our tactic state.\n"
+"Similarly try to show `x < b` using the same idea."
+msgstr ""
+
+#: Game.Levels.Sets.L02_intervals
+msgid "We will now go on to learn how LEAN treats Sets and what are Types that we first talked about at the beginning of this world."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "Sets vs Types"
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "This level is to introduce the difference between Sets and Types in LEAN."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "What is a Type?."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "In objects field you can see `x : U` and `A : Set U` and what they mean is that x is an object of type `U`\n"
+"and A is an object of type `Set U` it means A is a Set of elements of Type U."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "In the previous 2 Levels, the elements were from either of type Natural numbers\n"
+"or of type Real numbers."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "In LEAN Sets and Types are different, what it means is that `ℕ` is a type and not a Set."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "`x : ℕ` means that x is of type `ℕ`."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "Now that we have realized `ℕ` is a type and not a Set, how do we get Set of all elements of Type `ℕ`."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "Set of all Natural numbers (Set of all elements of Type `ℕ`) is univ on type `ℕ`."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "`univ : Set ℕ`, here `univ` is the set of Natural numbers."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "`evens : Set ℕ := ⦃n ∣ n % 2 = 0⦄`, here evens is a Set and not a type."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "Sets can only be pulled from a specific Type, you can't have a Set of all natural numbers and -1."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "In LEAN, the object `0 : ℕ` is different from `0 : ℝ`. If you wanted to have set of (1,π) then the element 1 can't be of type `ℕ` it has to be of the same type as π."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "Functions are defined from a type to another type not from a Set to another Set."
+msgstr ""
+
+#: Game.Levels.Sets.L03_types
+msgid "Now that we have a strong understanding of what Sets and Types mean, we will look at objects of a general type U instead of know types like ℝ or ℕ."
+msgstr ""
+
+#: Game.Levels.Sets.L04_subsets
+msgid "Subset Trasitivity"
+msgstr ""
+
+#: Game.Levels.Sets.L04_subsets
+msgid "This example is inspired from Proposition 2.1.20 in Infinite Descent.\n"
+"\n"
+"From this level we will be talking of objects being of a general type `U`, and set of these objects being of type `Set U`."
+msgstr ""
+
+#: Game.Levels.Sets.L04_subsets
+msgid "Suppose A ⊆ B, B ⊆ C. Then A ⊆ C."
+msgstr ""
+
+#: Game.Levels.Sets.L04_subsets
+msgid "We now know how we can prove a goal of form `A ⊆ B`, proceed."
+msgstr ""
+
+#: Game.Levels.Sets.L04_subsets
+msgid "What does it mean when you have `ha : A ⊆ B`?? It means that every element of A is also a mem of B.\n"
+"Thus `ha: A ⊆ B` is the proof of `x ∈ A → x ∈ B`."
+msgstr ""
+
+#: Game.Levels.Sets.L04_subsets
+msgid "Unfold the definition of Subset at `ha` and `hb` using theorem `subset_def`."
+msgstr ""
+
+#: Game.Levels.Sets.L04_subsets
+msgid "`ha : ∀ x ∈ A, x ∈ B` is same as `ha : x ∈ A → x ∈ B`, we can eliminate ∀ in `ha` and make it into `x ∈ A → x ∈ B` using the tactic `forall_elim`.\n"
+"Similarly do the same for `hb`."
+msgstr ""
+
+#: Game.Levels.Sets.L04_subsets
+msgid "We now know enough about implications and related tactics, you can take it from here."
+msgstr ""
+
+#: Game.Levels.Sets.L04_subsets
+msgid "We are now familiar with proof strategies to prove a goal of form `A ⊆ B` and to use a hypotheses of form `A ⊆ B`."
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "Equality of 2 Sets"
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "In order to prove `X = Y`, it suffices to prove `X ⊆ Y` and `X ⊇ Y`."
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "Suppose A is a set. Then (Aᶜ)ᶜ = A."
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "`A = B` means every element of A is an element of B and every element of B is an element of A.\n"
+"More precisely, the equality `A = B` holds if and only if `A ⊆ B ∧ B ⊆ A`.\n"
+"You could also look at `A = B` this way `x ∈ A ↔ x ∈ B` (but we avoid this for now).\n"
+"`apply Subset.antisymm` to the goal to split it into 2 goals `(Aᶜ)ᶜ ⊆ A` and `A ⊆ (Aᶜ)ᶜ`"
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "We have to prove a goal of form `A ⊆ B`, you know what to do..."
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "Aᶜ is the Set of all elements that are not members of A, what this means is that `«{a}» ∈ Aᶜ` is equivalent to `¬«{a}» ∈ A`.\n"
+"Read `mem_compl_iff` and use this theorem to rewrite `«{a}» ∈ Aᶜ` into `«{a}» ∉ A`."
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "Note:- `a ∉ A` is equivalent to `¬a ∈ A`"
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "We still have `«{a}» ∉ Aᶜ`, and we need to rewrite this again using the correct theorem as above."
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "We have seen that `a ∉ A` is equivalent to `¬a ∈ A` so what does `¬a ∉ A` mean??\n"
+"`¬a ∉ A` is negation of `a ∉ A` i.e negation of `¬a ∈ A` which in turn is `a ∈ A` (by Law of double negation).\n"
+"So `¬a ∉ A` means that a is an element of A."
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "Learn new Tactic `push_neg` to push the negation inside. Try executing `push_neg at a_1` to push the negation."
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "You can take it from here!!"
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "We have now learned what it means for 2 Sets to be equal and how to use a new Tactic `push_neg`."
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "`A = B` means that every element of `A` is an element of `B` and vice-versa. What it means is that `A ⊆ B` and `B ⊆ A`."
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid "If `A` is a set, then `Aᶜ` is the complement of `A`.\n"
+"To enter the symbol `ᶜ`, type `\\compl` or `\\^c`."
+msgstr ""
+
+#: Game.Levels.Sets.L05_equality
+msgid ""
+msgstr ""
+
+#: Game.Levels.Sets.L06_phi
+msgid "Concept of Empty Set(∅)"
+msgstr ""
+
+#: Game.Levels.Sets.L06_phi
+msgid "We will now prove a very simple yet important result in Sets."
+msgstr ""
+
+#: Game.Levels.Sets.L06_phi
+msgid "Let X be a set. Prove that ∅ ⊆ X"
+msgstr ""
+
+#: Game.Levels.Sets.L06_phi
+msgid "When there is hypotheses `x ∈ ∅` (which is not possible as no such x exists) any goal is trivially true (Recall from Chapter 1 that from a false assumption anything can be shown). To prove this in LEAN execute `cases hx`."
+msgstr ""
+
+#: Game.Levels.Sets.L06_phi
+msgid "`cases` is a tactic that can be used to split a hypotheses into cases."
+msgstr ""
+
+#: Game.Levels.Sets.L06_phi
+msgid "If we have `hx : x ∈ Set(a,b)`, then `cases hx` would split the tactic state into 2 tactic states (with goals same as the original goal) but with diff hypotheses: `hx : x = a` in the first state and `hx : x = b` in the second state."
+msgstr ""
+
+#: Game.Levels.Sets.L06_phi
+msgid "Using this we can prove any 2 empty sets are equal. Say A and B are empty sets, from the above proof A ⊆ B and B ⊆ A, and from\n"
+"definition of equality in sets, A = B."
+msgstr ""
+
+#: Game.Levels.Sets.L07_emptiness
+msgid "A non trivial example"
+msgstr ""
+
+#: Game.Levels.Sets.L07_emptiness
+msgid "This example is inspired from Exercise 2.1.31 from infinite descent."
+msgstr ""
+
+#: Game.Levels.Sets.L07_emptiness
+msgid "Let a,b ∈ R. Prove that [a, b] is empty if and only if a > b."
+msgstr ""
+
+#: Game.Levels.Sets.L07_emptiness
+msgid ""
+msgstr ""
+
+#: Game.Levels.Sets.L08_phi
+msgid "Triviality"
+msgstr ""
+
+#: Game.Levels.Sets.L08_phi
+msgid "This example is inspired from Exercise 2.1.32 from infinite descent."
+msgstr ""
+
+#: Game.Levels.Sets.L08_phi
+msgid "If p is proposition in x. Show that ∀ x ∈ ∅, p(x) is true."
+msgstr ""
+
+#: Game.Levels.Sets.L08_phi
+msgid "This is a simple proof, you are on your own. We believe in you, less gooo..."
+msgstr ""
+
+#: Game.Levels.Sets.L08_phi
+msgid "This exercise is a logical technicality, which is counterintuitive for the same reason\n"
+"that makes the principle of explosion (If a contradiction is assumed, any consequence may be derived) difficult to grasp. However, it\n"
+"is extremely useful for proving facts about the empty set."
+msgstr ""
+
+#: Game.Levels.Sets.L09_power
+msgid "Power Set"
+msgstr ""
+
+#: Game.Levels.Sets.L09_power
+msgid "This example is inspired from Example 2.1.37 from infinite descent."
+msgstr ""
+
+#: Game.Levels.Sets.L09_power
+msgid "Suppose A = {a,b}. Then P(A) = {∅, {a}, {b}, {a,b}}."
+msgstr ""
+
+#: Game.Levels.Sets.L09_power
+msgid "An element `x` is a member of `𝒫(A)` if and only if `x ⊆ A`.\n"
+"Theorem `mem_powerset_iff` can be used to rewrite `x ∈ 𝒫(A)` into `x ⊆ A`."
+msgstr ""
+
+#: Game.Levels.Sets.L09_power
+msgid "When we have `x ∈ Set(a,b,c)` it means that `x` is either `a` or `b` or `c`, in other words `x = a ∨ x ∈ Set(b,c)`."
+msgstr ""
+
+#: Game.Levels.Sets.L09_power
+msgid "We have discussed earlier that executing `cases` tactic on `h : x ∈ Set(a,b)` will convert it into 2 separate Tactic states with `h : x = a` in the first and `h : x = b` in the second."
+msgstr ""
+
+#: Game.Levels.Sets.L09_power
+msgid "Similarly `cases` can be executed on `h : x ∈ Set(a,b,c,d)`."
+msgstr ""
+
+#: Game.Levels.Sets.L09_power
+msgid "We now have `«{h}» : x = ∅` and we have to prove `x ⊆ Set(a,b)`, use `rw` to rewrite `x` into `∅` in the goal."
+msgstr ""
+
+#: Game.Levels.Sets.L09_power
+msgid "In this state we need to prove `∅ ⊆ Set(a,b)` and its obviously true, in such cases use the tactic `simp`."
+msgstr ""
+
+#: Game.Levels.Sets.L09_power
+msgid "Continue executing `cases` to split h into different cases."
+msgstr ""
+
+#: Game.Levels.Sets.L09_power
+msgid "`simp` can be used to close the goal"
+msgstr ""
+
+#: Game.Levels.Sets.L09_power
+msgid "Any set is subset of itself and it is trivially true, we can use `trivial` tactic to close this goal."
+msgstr ""
+
+#: Game.Levels.Sets.L09_power
+msgid "We are now familiar with the basics of Sets, let's move on to the next world to know more about them."
+msgstr ""
+
+#: Game.Levels.Sets
+msgid "Section 2.1: Sets"
+msgstr ""
+
+#: Game.Levels.Sets
+msgid "Welcome to Set World!\n"
+"\n"
+"To specify that an object `x` belongs to the set of Natural Numbers `ℕ`, we write `x : ℕ`.\n"
+"To specify that `A` is a set of objects from `ℕ`, we write `A : Set ℕ`.\n"
+"(The terminology used in Lean is that `x` has type `ℕ` and `A` has type `Set ℕ`).\n"
+"\n"
+"To say that `x` is an element of `A`, we write `x ∈ A`.\n"
+"\n"
+"The notation A ⊆ B means that A is a subset of B.\n"
+"\n"
+"Click on 'Start' below to get started."
+msgstr ""
+
+#: Game.Levels.SetOperations.L01_intro
+msgid "Intro to Intersection of 2 sets"
+msgstr ""
+
+#: Game.Levels.SetOperations.L01_intro
+msgid "Let us prove a basic result involving intersection(`∩`) to get a better understanding. Click on `∩` to know more about it."
+msgstr ""
+
+#: Game.Levels.SetOperations.L01_intro
+msgid "Suppose x∈A∩B. Then x∈B."
+msgstr ""
+
+#: Game.Levels.SetOperations.L01_intro
+msgid "`x ∈ A ∩ B` is equivalent to saying that the element x is a member of both A and B."
+msgstr ""
+
+#: Game.Levels.SetOperations.L01_intro
+msgid "Read and use the theorem `mem_inter_iff` (member of intersection if and only if) to rewrite `x ∈ A ∩ B` into `x ∈ A ∧ x ∈ B`."
+msgstr ""
+
+#: Game.Levels.SetOperations.L01_intro
+msgid "if `p ∧ q` is assumed then `p` can be proved, recall how."
+msgstr ""
+
+#: Game.Levels.SetOperations.L01_intro
+msgid "Directly executing `and_elim h into ha, hb` without rewriting with `mem_inter_iff` will also change the hypotheses, but it is important to understand what `x ∈ A ∩ B` means."
+msgstr ""
+
+#: Game.Levels.SetOperations.L01_intro
+msgid "If `A` and `B` are sets, then `A ∩ B` is the intersection of `A` and `B`.\n"
+"To enter the symbol `∩`, type `\\inter` or `\\cap`."
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "An Example involving intervals"
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "This example is inspired from Exercise 2.2.14 from infinite descent.\n"
+"\n"
+"`Ico a b` represent the interval [a,b) in LEAN."
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "Suppose a < c < b < d. Then show that [a,b) ∩ [c,d) = [c,b)."
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "There are 2 ways you can prove `A = B`, first one being splitting goal into `A ⊆ B` and `B ⊆ A` or second strategy being\n"
+"changing the goal into `x ∈ A ↔ x ∈ B`. Here I will be using `apply Subset.antisymm` since it gives us clearer understanding of the concept of equality."
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "There is tactic named `clear` that will clear any hypotheses or variable that you think its not useful anymore."
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "Read and learn theorems `le_of_lt`, `lt_trans` and `mem_Ico` as they will be useful."
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "Recall how to solve a goal of type `A ⊆ B` from previous world."
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "`rw[mem_Ico]` only works when the goal or hypotheses is of form `«{h}» : x ∈ Ico a b`, but if it's of the form `h : x ∈ Ico a b ∩ Ico c d` then `rw[mem_Ico]` will fail.\n"
+"We need to first expand the definition of intersection and then use `mem_Ico` twice to completely expand «{h}»."
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "It is better to first rewrite all terms that contain `Ico` (In both goal and hypotheses) because then you'd only have to work with inequalities."
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "Recall how to show a goal of form `p ∧ q`."
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "First rewrite all `x ∈ Interval` into inequalities in goal and hypotheses."
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "Eliminate and in «{h}» so that we can work with the inequalities separately."
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "Now use theorems `lt_trans`, `le_of_lt` to get required inequalities.\n"
+"Executing `have hd : x < d := lt_trans «{hb}» «{h3}»` will create a new hypotheses `hd : x < d `.\n"
+"Similarly try to get a new hypotheses `ha : a ≤ x` using known theorems related to comparison."
+msgstr ""
+
+#: Game.Levels.SetOperations.L02_inter
+msgid "Nice! You now have a solid understanding of intervals and intersection."
+msgstr ""
+
+#: Game.Levels.SetOperations.L03_sub
+msgid "Exercise involving Intersection and Iff"
+msgstr ""
+
+#: Game.Levels.SetOperations.L03_sub
+msgid "This example is inspired from Exercise 2.2.30 from infinite descent.\n"
+"\n"
+"Here the goal is of form `↔`. First we need to split the goal into 2 sub-goals."
+msgstr ""
+
+#: Game.Levels.SetOperations.L03_sub
+msgid "Let X and Y be sets. Prove that X ⊆ Y if and only if X∩Y=X."
+msgstr ""
+
+#: Game.Levels.SetOperations.L03_sub
+msgid "Recall which tactic is used to split an `↔` goal."
+msgstr ""
+
+#: Game.Levels.SetOperations.L03_sub
+msgid "To prove a result of type `p → q` we need to assume `p` and show `q`."
+msgstr ""
+
+#: Game.Levels.SetOperations.L03_sub
+msgid "To prove that 2 Sets are equal it suffices to show ..."
+msgstr ""
+
+#: Game.Levels.SetOperations.L03_sub
+msgid "To show `A ⊆ B` it is enough to show ..."
+msgstr ""
+
+#: Game.Levels.SetOperations.L03_sub
+msgid "Recall first level in this world"
+msgstr ""
+
+#: Game.Levels.SetOperations.L03_sub
+msgid "To prove `x ∈ A ∩ B` we need to show `x ∈ A` and `x ∈ B`. To rewrite the goal `«{a}» ∈ X ∩ Y` into `«{a}» ∈ X ∧ «{a}» ∈ Y` we use a theorem we have previously learned."
+msgstr ""
+
+#: Game.Levels.SetOperations.L03_sub
+msgid "We now prove the second part of the iff goal first presented."
+msgstr ""
+
+#: Game.Levels.SetOperations.L03_sub
+msgid "Since we have `«{h}» : X ∩ Y = X` we can replace `X` in `«{a_1}»` with `X ∩ Y`."
+msgstr ""
+
+#: Game.Levels.SetOperations.L03_sub
+msgid "We now go on to prove the famous De Morgans laws for Sets."
+msgstr ""
+
+#: Game.Levels.SetOperations.L04_distribute
+msgid "Basic example in intervals"
+msgstr ""
+
+#: Game.Levels.SetOperations.L04_distribute
+msgid "Let us understand the concept of union (`∪`) and prove a very famous result in Set theory along the way.\n"
+"\n"
+"Click on `∪` to read more about it."
+msgstr ""
+
+#: Game.Levels.SetOperations.L04_distribute
+msgid "Let X, Y and Z be sets. Prove that X∩(Y∪Z) = (X∩Y)∪(X∩Z)."
+msgstr ""
+
+#: Game.Levels.SetOperations.L04_distribute
+msgid "Once again we have to prove 2 sets are equal, and our go-to move is ..."
+msgstr ""
+
+#: Game.Levels.SetOperations.L04_distribute
+msgid "Now in the goal you see a bunch of intersections and unions with a specific precedence, use `rw` to carefully\n"
+"to open the definitions of intersection and union."
+msgstr ""
+
+#: Game.Levels.SetOperations.L04_distribute
+msgid "Similarly simplify intersections and unions at `hx`."
+msgstr ""
+
+#: Game.Levels.SetOperations.L04_distribute
+msgid "Now use theorems and tactics learned in previous worlds to close the current goal, note that this is now an exercise\n"
+"in propositional logic and not of sets."
+msgstr ""
+
+#: Game.Levels.SetOperations.L04_distribute
+msgid "We are once again faced with proving a set is subset of another set."
+msgstr ""
+
+#: Game.Levels.SetOperations.L04_distribute
+msgid "Similar to previous goal, use `rw` and necessary theorems to simplify intersections and unions in both the goal and the hypotheses."
+msgstr ""
+
+#: Game.Levels.SetOperations.L04_distribute
+msgid "This is also an exercise ni propositional logic similar to previous goal, you can take it from here (Believe in yourself)"
+msgstr ""
+
+#: Game.Levels.SetOperations.L04_distribute
+msgid "Bored with proving boring results on intersection of Sets?? Well we have a new concept for you."
+msgstr ""
+
+#: Game.Levels.SetOperations.L04_distribute
+msgid "If `A` and `B` are sets, then `A ∪ B` is the union of `A` and `B`.\n"
+"To enter the symbol `∪`, type `\\union`."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "Basic example in intervals"
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "This example is inspired from Example 2.2.27, We use this exercise to understand the concept of relative complement(`\\`)."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "Let evens and odds be set of even and odd Natural numbers. Prove that univ \\ evens = odds."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "`A \\ B` is the set of all elements in A that are not members of B."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "Theorem `mem_diff` can be used to rewrite ` x ∈ A \\ B` into `x ∈ A ∧ x ∉ B`."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "Any Natural number is either odd or even, in other words `n % 2 = 0 ∨ n % 2 = 1`. Theorem `Nat.mod_two_eq_zero_or_one n` tells exactly that.\n"
+"`have h := Nat.mod_two_eq_zero_or_one n` is used to create a new hypotheses saying that."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "Split `«{h}»` into two cases by using appropriate tactic (Hint :- It's `or_elim`)"
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "If `n % 2 = 0` then `n ∈ evens` and in LEAN both are definitionally equal.\n"
+"You can have a new hypotheses `have h1 : n ∈ evens := «{h}»` but since both are definitionally equal, wherever you need `n ∈ evens` you can use `«{h}»` instead."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "Hypotheses are contradicting each other hence irrespective of the what the goal is, it can be closed."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "Eliminate `∧` in `«{hn}»` to have 2 contradicting hypotheses."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "Now we can use the tactic `contradiction` to close the goal."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "There are many ways to close this goal, one of the ways is to use the strategy \"Proof by Contradiction\", to do this apply `by_contra` tactic."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "Use `mem_diff` to rewrite «{h}»."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "Push the negation inside using the tactic `push_neg`."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "n is obviously a member of `univ`, use `have` and `trivial` to get a new hypotheses `hj : n ∈ univ`."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "we can now use imp_elim to show `n ∈ evens` from «{h}» and «{hj}»."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "Using `have` try to get 2 new hypotheses, `h1 : n % 2 = 0` and `h2 : n % 2 = 1`."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "Let us try one more exercise on relative compliment."
+msgstr ""
+
+#: Game.Levels.SetOperations.L05_diff
+msgid "If `A` and `B` are sets, then `A / B` is the relative compliment of `A` with respect to `B`."
+msgstr ""
+
+#: Game.Levels.SetOperations.L06_diff
+msgid "Basic example in intervals"
+msgstr ""
+
+#: Game.Levels.SetOperations.L06_diff
+msgid "Following along with Theorem 2.2.31, we will show one of the De Morgan's law for Sets."
+msgstr ""
+
+#: Game.Levels.SetOperations.L06_diff
+msgid "Let X, Y and A be sets. Prove that A \\ (X ∪ Y) = (A \\ X) ∩ (A \\ Y)."
+msgstr ""
+
+#: Game.Levels.SetOperations.L06_diff
+msgid "This example can be proved with theorems and tactics that you have already learnt. Try closing the goal on your own."
+msgstr ""
+
+#: Game.Levels.SetOperations.L06_diff
+msgid ""
+msgstr ""
+
+#: Game.Levels.SetOperations.L07_cartesion
+msgid "Basic example in intervals"
+msgstr ""
+
+#: Game.Levels.SetOperations.L07_cartesion
+msgid "Following along with Example 2.2.36 we'll learn the concept of Cartesian product.\n"
+"\n"
+"The cartesian product s ×ˢ t is the set of (a, b) such that a ∈ s and b ∈ t."
+msgstr ""
+
+#: Game.Levels.SetOperations.L07_cartesion
+msgid "Let X be a set. Prove that X × ∅ = ∅."
+msgstr ""
+
+#: Game.Levels.SetOperations.L07_cartesion
+msgid "Say «{a}» is a tuple of 2 members (x,y) then «{a}».1 represents x and «{a}».2 represents y. Theorem `mem_prod` can be used to rewrite `«{a}» ∈ A ×ˢ B` into `«{a}».1 ∈ A ∧ «{a}».2 ∈ B`."
+msgstr ""
+
+#: Game.Levels.SetOperations.L07_cartesion
+msgid "You should now be familiar with Sets, Move on to Next world to explore Functions."
+msgstr ""
+
+#: Game.Levels.SetOperations.L07_cartesion
+msgid "The cartesian product s ×ˢ t is the set of (a, b) such that a ∈ s and b ∈ t.\n"
+"To enter the symbol `×ˢ`, type `\\xs`."
+msgstr ""
+
+#: Game.Levels.SetOperations
+msgid "Section 2.2: Set Operations"
+msgstr ""
+
+#: Game.Levels.SetOperations
+msgid "Welcome to Set Operations!\n"
+"\n"
+"Click on 'Start' below to get started."
+msgstr ""
+
+#: Game
+msgid "Infinite Descent in Lean"
+msgstr ""
+
+#: Game
+msgid "An adaptation of [Infinite Descent into Pure Mathematics](https://infinitedescent.xyz) into Lean."
+msgstr ""
+
+#: Game
+msgid "Here you can put additional information about the game. It is accessible\n"
+"from the starting through the drop-down menu.\n"
+"\n"
+"For example: Game version, Credits, Link to Github and Zulip, etc.\n"
+"\n"
+"Use markdown."
+msgstr ""
+
+#: Game
+msgid "Game Template"
+msgstr ""
+
+#: Game
+msgid "You should use this game as a template for your own game and add your own levels."
+msgstr ""

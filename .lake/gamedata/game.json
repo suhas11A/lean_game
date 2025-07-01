@@ -1,0 +1,53 @@
+{"worlds":
+ {"nodes":
+  {"VariablesAndQuantifiers":
+   {"title": "Chapter 2: VariablesAndQuantifiers",
+    "name": "VariablesAndQuantifiers",
+    "introduction": "todo",
+    "image": ""},
+   "Sets":
+   {"title": "Section 2.1: Sets",
+    "name": "Sets",
+    "introduction":
+    "Welcome to Set World!\n\nTo specify that an object `x` belongs to the set of Natural Numbers `ℕ`, we write `x : ℕ`.\nTo specify that `A` is a set of objects from `ℕ`, we write `A : Set ℕ`.\n(The terminology used in Lean is that `x` has type `ℕ` and `A` has type `Set ℕ`).\n\nTo say that `x` is an element of `A`, we write `x ∈ A`.\n\nThe notation A ⊆ B means that A is a subset of B.\n\nClick on 'Start' below to get started.",
+    "image": ""},
+   "SetOperations":
+   {"title": "Section 2.2: Set Operations",
+    "name": "SetOperations",
+    "introduction":
+    "Welcome to Set Operations!\n\nClick on 'Start' below to get started.",
+    "image": ""},
+   "PropositionalLogic":
+   {"title": "Chapter 1: PropositionalLogic",
+    "name": "PropositionalLogic",
+    "introduction":
+    "Consider the following two propositions:\n\n· If c divides b and b divides a, then c divides a.\n\n· If n > 2 and n is prime, then n is odd.\n\nBoth share the same _logical form_: `If P and Q, then R`, where P, Q, and R\nare _propositional variables_. A proposition's logical\nform tells us which proof strategies we should use to prove it\n(or to use it as an assumption), and the same strategies apply to all\npropositions with that form.\n\nIn this world, we begin our study of the logical forms\nthat propositions can take by considering _propositional formulas_,\nthe simplest kinds of logical form. These are built from propositional\nvariables using _logical operators_ or _logical connectives_:\nconjunction, disjunction, implication, biconditional, and negation.\n\nEach logical operator is defined by introduction and elimination rules:\n\n· Introduction rules explain how to **prove a goal** when that operator\n  appears as the outermost logical connective in the goal.\n\n· Elimination rules explain how to **use an assumption** when that operator\n  appears as the outermost logical connective in the assumption.\n\nWe'll explore the proof strategies associated to the introduction\nand elimination rules for each operator in turn.",
+    "image": ""}},
+  "edges":
+  [["VariablesAndQuantifiers", "Sets"],
+   ["PropositionalLogic", "VariablesAndQuantifiers"],
+   ["Sets", "SetOperations"]]},
+ "worldSize":
+ {"VariablesAndQuantifiers": 7,
+  "Sets": 9,
+  "SetOperations": 7,
+  "PropositionalLogic": 10},
+ "title": "Infinite Descent in Lean",
+ "tile":
+ {"worlds": 4,
+  "title": "Infinite Descent in Lean",
+  "short": "Game Template",
+  "prerequisites": [],
+  "long":
+  "You should use this game as a template for your own game and add your own levels.",
+  "levels": 33,
+  "languages": ["English"],
+  "image": ""},
+ "name": "MyGame",
+ "introduction":
+ "An adaptation of [Infinite Descent into Pure Mathematics](https://infinitedescent.xyz) into Lean.",
+ "info":
+ "Here you can put additional information about the game. It is accessible\nfrom the starting through the drop-down menu.\n\nFor example: Game version, Credits, Link to Github and Zulip, etc.\n\nUse markdown.",
+ "image": "",
+ "conclusion": "",
+ "authors": []}

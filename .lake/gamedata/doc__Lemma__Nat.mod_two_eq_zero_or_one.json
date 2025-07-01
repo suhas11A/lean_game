@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " (n : ℕ) : n % 2 = 0 ∨ n % 2 = 1",
+ "name": "Nat.mod_two_eq_zero_or_one",
+ "displayName": "Nat.mod_two_eq_zero_or_one",
+ "content": "(missing)",
+ "category": "Nat"}

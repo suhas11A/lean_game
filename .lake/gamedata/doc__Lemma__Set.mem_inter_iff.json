@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {α} (x : α) (a b : Set α) : x ∈ a ∩ b ↔ x ∈ a ∧ x ∈ b",
+ "name": "Set.mem_inter_iff",
+ "displayName": "Set.mem_inter_iff",
+ "content": "(missing)",
+ "category": "Set"}

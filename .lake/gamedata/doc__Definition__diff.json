@@ -1,0 +1,7 @@
+{"type": "Definition",
+ "statement": "",
+ "name": "diff",
+ "displayName": "/",
+ "content":
+ "If `A` and `B` are sets, then `A / B` is the relative compliment of `A` with respect to `B`.",
+ "category": ""}

@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {α} [Preorder α] {a b} (a✝ : a < b) : a ≤ b",
+ "name": "le_of_lt",
+ "displayName": "le_of_lt",
+ "content": "(missing)",
+ "category": "[anonymous]"}

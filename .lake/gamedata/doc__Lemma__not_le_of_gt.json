@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {α} [Preorder α] {a b} (h : a > b) : ¬a ≤ b",
+ "name": "not_le_of_gt",
+ "displayName": "not_le_of_gt",
+ "content": "(missing)",
+ "category": "[anonymous]"}

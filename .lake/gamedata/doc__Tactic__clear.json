@@ -1,0 +1,7 @@
+{"type": "Tactic",
+ "statement": "",
+ "name": "clear",
+ "displayName": "clear",
+ "content":
+ "*(lean docstring)*\\\nClears all hypotheses it can besides those provided ",
+ "category": ""}

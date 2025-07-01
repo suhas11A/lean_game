@@ -1,0 +1,7 @@
+{"type": "Definition",
+ "statement": "",
+ "name": "Set.eq",
+ "displayName": "=",
+ "content":
+ "`A = B` means that every element of `A` is an element of `B` and vice-versa. What it means is that `A ⊆ B` and `B ⊆ A`.",
+ "category": ""}

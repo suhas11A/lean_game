@@ -1,0 +1,7 @@
+{"type": "Tactic",
+ "statement": "",
+ "name": "and_elim",
+ "displayName": "and_elim",
+ "content":
+ "todo i have to update this, don't wanna rn lol\n  If `h` is the name of an assumption of the form `p ∧ q`, then\n  `and_elim h into ha hb` replaces `h` with two assumptions, `ha`\n  which proves `p` and `hb` which proves `q`.\n\n  This follows Strategy 1.1.9 in Infinite Descent.",
+ "category": ""}

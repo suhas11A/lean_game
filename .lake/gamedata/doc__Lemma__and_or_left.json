@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {a b c} : a ∧ (b ∨ c) ↔ a ∧ b ∨ a ∧ c",
+ "name": "and_or_left",
+ "displayName": "and_or_left",
+ "content": "*(lean docstring)*\\\n`∧` distributes over `∨` (on the left). ",
+ "category": "[anonymous]"}

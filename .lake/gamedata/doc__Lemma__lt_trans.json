@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {α} [Preorder α] {a b c} (a✝ : a < b) (a✝¹ : b < c) : a < c",
+ "name": "lt_trans",
+ "displayName": "lt_trans",
+ "content": "(missing)",
+ "category": "[anonymous]"}

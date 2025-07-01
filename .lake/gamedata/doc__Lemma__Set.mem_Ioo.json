@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {α} [Preorder α] {a b x} : x ∈ Set.Ioo a b ↔ a < x ∧ x < b",
+ "name": "Set.mem_Ioo",
+ "displayName": "Set.mem_Ioo",
+ "content": "(missing)",
+ "category": "Set"}

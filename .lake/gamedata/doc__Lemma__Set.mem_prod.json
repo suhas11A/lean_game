@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {α} {β} {s} {t} {p} : p ∈ s ×ˢ t ↔ p.1 ∈ s ∧ p.2 ∈ t",
+ "name": "Set.mem_prod",
+ "displayName": "Set.mem_prod",
+ "content": "(missing)",
+ "category": "Set"}

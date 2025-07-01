@@ -1,0 +1,7 @@
+{"type": "Definition",
+ "statement": "",
+ "name": "Not",
+ "displayName": "Not",
+ "content":
+ "*(lean docstring)*\\\n`Not p`, or `¬p`, is the negation of `p`. It is defined to be `p → False`,\nso if your goal is `¬p` you can use `intro h` to turn the goal into\n`h : p ⊢ False`, and if you have `hn : ¬p` and `h : p` then `hn h : False`\nand `(hn h).elim` will prove anything.\nFor more information: [Propositional Logic](https://lean-lang.org/theorem_proving_in_lean4/propositions_and_proofs.html#propositional-logic)\n",
+ "category": ""}

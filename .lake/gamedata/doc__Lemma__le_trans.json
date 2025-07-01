@@ -1,0 +1,7 @@
+{"type": "Lemma",
+ "statement": " {α} [Preorder α] {a b c} (a✝ : a ≤ b) (a✝¹ : b ≤ c) : a ≤ c",
+ "name": "le_trans",
+ "displayName": "le_trans",
+ "content":
+ "*(lean docstring)*\\\nThe relation `≤` on a preorder is transitive. ",
+ "category": "[anonymous]"}

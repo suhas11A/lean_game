@@ -1,0 +1,7 @@
+{"type": "Definition",
+ "statement": "",
+ "name": "Set.prod",
+ "displayName": "×ˢ",
+ "content":
+ "The cartesian product s ×ˢ t is the set of (a, b) such that a ∈ s and b ∈ t.\nTo enter the symbol `×ˢ`, type `\\xs`.",
+ "category": ""}

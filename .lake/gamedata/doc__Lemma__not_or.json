@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {p q} : ¬(p ∨ q) ↔ ¬p ∧ ¬q",
+ "name": "not_or",
+ "displayName": "not_or",
+ "content": "(missing)",
+ "category": "[anonymous]"}

@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {α} {a b} (h₁ : a ⊆ b) (h₂ : b ⊆ a) : a = b",
+ "name": "Set.Subset.antisymm",
+ "displayName": "Set.Subset.antisymm",
+ "content": "(missing)",
+ "category": "Set.Subset"}

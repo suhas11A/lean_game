@@ -63,3 +63,9 @@ trying to guess what the student would do
 quantifier elimination levels have both quantifiers in the goal and assumption 
 - many confuse introduction and elmination so this is confusing, so save the current
 thm for a later exercise
+
+**July 1**
+- L10 section 1.1 change to use by_contra
+- difference in writing styles, we will let it be for now
+- getting increasingly frustrated with simp, how to resolve
+(for now just do everything in small steps with rewrite and apply, no simp)

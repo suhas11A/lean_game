@@ -1,0 +1,7 @@
+{"type": "Tactic",
+ "statement": "",
+ "name": "push_neg",
+ "displayName": "push_neg",
+ "content":
+ "*(lean docstring)*\\\nPush negations into the conclusion of a hypothesis.\nFor instance, a hypothesis `h : ¬ ∀ x, ∃ y, x ≤ y` will be transformed by `push_neg at h` into\n`h : ∃ x, ∀ y, y < x`. Variable names are conserved.\nThis tactic pushes negations inside expressions. For instance, given a hypothesis\n```lean\nh : ¬ ∀ ε > 0, ∃ δ > 0, ∀ x, |x - x₀| ≤ δ → |f x - y₀| ≤ ε)\n```\nwriting `push_neg at h` will turn `h` into\n```lean\nh : ∃ ε, ε > 0 ∧ ∀ δ, δ > 0 → (∃ x, |x - x₀| ≤ δ ∧ ε < |f x - y₀|),\n```\n(The pretty printer does *not* use the abbreviations `∀ δ > 0` and `∃ ε > 0` but this issue\nhas nothing to do with `push_neg`).\n\nNote that names are conserved by this tactic, contrary to what would happen with `simp`\nusing the relevant lemmas. One can also use this tactic at the goal using `push_neg`,\nat every hypothesis and the goal using `push_neg at *` or at selected hypotheses and the goal\nusing say `push_neg at h h' ⊢` as usual.\n\nThis tactic has two modes: in standard mode, it transforms `¬(p ∧ q)` into `p → ¬q`, whereas in\ndistrib mode it produces `¬p ∨ ¬q`. To use distrib mode, use `set_option push_neg.use_distrib true`.\n",
+ "category": ""}

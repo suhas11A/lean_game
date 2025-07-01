@@ -1,0 +1,7 @@
+{"type": "Tactic",
+ "statement": "",
+ "name": "or_elim",
+ "displayName": "or_elim",
+ "content":
+ "If `h` is a disjunction assumption with `n` disjuncts, then\n    `or_elim h into h1, h2, h3, ..., hn` will add a goal where each\n    one of the disjuncts is true in turn, and will name the ith\n    disjunct `hi`.  You may pass whatever names for the disjuncts that\n    you wish, but you need to provide as many names as there are\n    disjuncts.",
+ "category": ""}

@@ -1,0 +1,7 @@
+{"type": "Tactic",
+ "statement": "",
+ "name": "or_intro",
+ "displayName": "or_intro",
+ "content":
+ "If the goal is a disjunction, and `disj` one of its disjuncts, then\n  `or_intro disj` will replace the goal with `disj` for you to prove.\n\n  For instance, if the goal is `x = y ∨ y = y ∨ y = z`, then `or_intro\n  y = y` will replace the goal with `y = y`.\n\n  This follows Strategy 1.1.13, proving disjunctions, in Infinite Descent.",
+ "category": ""}

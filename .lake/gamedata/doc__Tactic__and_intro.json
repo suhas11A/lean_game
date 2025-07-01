@@ -1,0 +1,7 @@
+{"type": "Tactic",
+ "statement": "",
+ "name": "and_intro",
+ "displayName": "and_intro",
+ "content":
+ "If the goal is a conjunction, `and_intro` will replace the goal with\n  each of its conjuncts, in turn.\n\n  This follows Strategy 1.1.7 in Infinite Descent.",
+ "category": ""}

@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {α} {s t} (x : α) : x ∈ s \\ t ↔ x ∈ s ∧ x ∉ t",
+ "name": "Set.mem_diff",
+ "displayName": "Set.mem_diff",
+ "content": "(missing)",
+ "category": "Set"}

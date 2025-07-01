@@ -1,0 +1,7 @@
+{"type": "Definition",
+ "statement": "",
+ "name": "compl",
+ "displayName": "ᶜ",
+ "content":
+ "If `A` is a set, then `Aᶜ` is the complement of `A`.\nTo enter the symbol `ᶜ`, type `\\compl` or `\\^c`.",
+ "category": ""}

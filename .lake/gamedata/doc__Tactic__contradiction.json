@@ -1,0 +1,7 @@
+{"type": "Tactic",
+ "statement": "",
+ "name": "contradiction",
+ "displayName": "contradiction",
+ "content":
+ "*(lean docstring)*\\\n`contradiction` closes the main goal if its hypotheses are \"trivially contradictory\".\n- Inductive type/family with no applicable constructors\n```lean\nexample (h : False) : p := by contradiction\n```\n- Injectivity of constructors\n```lean\nexample (h : none = some true) : p := by contradiction  --\n```\n- Decidable false proposition\n```lean\nexample (h : 2 + 2 = 3) : p := by contradiction\n```\n- Contradictory hypotheses\n```lean\nexample (h : p) (h' : ¬ p) : q := by contradiction\n```\n- Other simple contradictions such as\n```lean\nexample (x : Nat) (h : x ≠ x) : p := by contradiction\n```\n",
+ "category": ""}

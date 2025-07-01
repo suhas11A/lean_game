@@ -1,0 +1,7 @@
+{"type": "Lemma",
+ "statement": " {α} : Set α",
+ "name": "Set.univ",
+ "displayName": "Set.univ",
+ "content":
+ "*(lean docstring)*\\\nThe universal set on a type `α` is the set containing all elements of `α`.\n\nThis is conceptually the \"same as\" `α` (in set theory, it is actually the same), but type theory\nmakes the distinction that `α` is a type while `Set.univ` is a term of type `Set α`. `Set.univ` can\nitself be coerced to a type `↥Set.univ` which is in bijection with (but distinct from) `α`. ",
+ "category": "Set"}

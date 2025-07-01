@@ -1,0 +1,6 @@
+{"type": "Lemma",
+ "statement": " {α} (s : Set α) (x : α) : x ∈ sᶜ ↔ x ∉ s",
+ "name": "Set.mem_compl_iff",
+ "displayName": "Set.mem_compl_iff",
+ "content": "(missing)",
+ "category": "Set"}
