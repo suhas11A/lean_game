@@ -10,6 +10,6 @@ import Game.Levels.VariablesAndQuantifiers.L07_thm_1_2_33
 
 
 World "VariablesAndQuantifiers"
-Title "Chapter 2: VariablesAndQuantifiers"
+Title "Chapter 2: Variables and Quantifiers"
 
 Introduction "todo"
