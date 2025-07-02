@@ -19,11 +19,11 @@ Statement : x+2=3 ↔ x=1 := by
   Hint "
   The `simp` tactic performs arithmetic to simplify a statement. Use `simp`
   to simplify the goal and `simp at h` to simplify a hypothesis h.
-  Use the `imp_intro`, `simp` and `exact` tactics to resolve each of the two new goals."
-  imp_intro h1
+  Use the `assume`, `simp` and `exact` tactics to resolve each of the two new goals."
+  assume h1
   simp at h1
   exact h1
-  imp_intro h2
+  assume h2
   simp
   exact h2
 

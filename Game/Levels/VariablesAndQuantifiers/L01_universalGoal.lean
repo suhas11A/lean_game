@@ -31,16 +31,16 @@ introduce a new integer $n$, but we won't know what $n$ actually is,
 since our proof must work for every possible $n∈ℤ$.
 
 To prove a universally quantified statement in Lean, use the
-`forall_intro` tactic.  Typing `forall_intro y` invokes ∀I by taking
+`fix` tactic.  Typing `fix y` invokes ∀I by taking
 $y$ to be an arbitrary element of the domain of discourse and changing
 the goal to proving that $p(y)$ is true.  (You can use whatever
-variable name you want instead of `y`.)  Try using `forall_intro` with
+variable name you want instead of `y`.)  Try using `fix` with
 the correct syntax to begin the proof.
 "
 
 /-- For all integers $n$, $n$ is less than $n+1$. -/
 Statement : ∀n:ℤ, n<n+1 := by
-  forall_intro y
+  fix y
   Hint "
   Observe that `{y}` has been added as a new object, and that the goal
   has changed to `{y} < {y} + 1`—`n` has been replaced with `{y}`.  To
@@ -48,7 +48,7 @@ Statement : ∀n:ℤ, n<n+1 := by
   "
   simp
 
-NewTactic forall_intro
+NewTactic fix
 Conclusion "
 If you haven’t noticed, we use the $∈$ symbol (`\\in`, read `in`) with
 $∀$ in convential math notation, but in Lean, we use a colon instead:

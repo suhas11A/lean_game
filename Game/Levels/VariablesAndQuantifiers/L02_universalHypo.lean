@@ -35,9 +35,9 @@ You’ll need to use `forall_elim` twice during this proof.
   -/
 Statement (p q : ℕ → Prop)
   : (∀ x : ℕ, p x) ∧ (∀ x : ℕ, q x) → (∀ x : ℕ, p x ∧ q x) := by
-  imp_intro h
+  assume h
   and_elim h into h1, h2
-  forall_intro x
+  fix x
   and_intro
   forall_elim h1 of x into h1'
   exact h1'

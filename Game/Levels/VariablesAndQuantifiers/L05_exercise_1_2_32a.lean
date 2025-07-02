@@ -22,7 +22,7 @@ proof strategies in that order: `forall_intro` and then
   For all integers $x$, there exists an integer $y$ such that $x+y=0$.
  -/
 Statement : ∀x:ℤ, ∃y:ℤ, x+y=0 := by
-  forall_intro x
+  fix x
   exists_intro -x
   apply Int.add_right_neg
 

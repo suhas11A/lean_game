@@ -236,7 +236,7 @@ TacticDoc or_elim
 
 -- Implies-introduction.  Works like intro, but checks that the variable
 -- being introduced is a proposition.
-elab "imp_intro" h:ident : tactic =>
+elab "assume" h:ident : tactic =>
   withMainContext $ liftMetaTactic λ goal => do
     let goalType ← goal.getType
     if let .forallE _ hypType _ _ ← whnf goalType then
@@ -244,57 +244,13 @@ elab "imp_intro" h:ident : tactic =>
         let ⟨_, goal⟩ ← goal.intro h.getId
         pure [goal]
       else
-        throwTacticEx `imp_intro goal m!"{hypType} is not a proposition"
+        throwTacticEx `assume goal m!"{hypType} is not a proposition"
     else
-      throwTacticEx `imp_intro goal m!"{goalType} is not an implication"
+      throwTacticEx `assume goal m!"{goalType} is not an implication"
 
 example (x : Nat) : x = 1 → x = 1 := by
-  imp_intro h
+  assume h
   exact h
-
-
--- Implies-elimination, applying one hypothesis with another.
-elab "imp_elim" imp:term "with" hyp:ident "into" conc:ident : tactic =>
-  withMainContext do
-    let imp ← elabTerm imp none
-    liftMetaTactic λ goal => do
-      if let some hyp := (← getLCtx).findFromUserName? (hyp.getId) then
-        if let .forallE _ hypType concType _ ← whnf (← inferType imp) then
-          if ← isDefEq hypType hyp.type then
-            let ⟨_, goal⟩ ← goal.assert conc.getId concType (.app imp (.fvar hyp.fvarId))
-                             >>= MVarId.intro1P
-            pure [goal]
-          else
-            throwTacticEx `imp_elim goal m!"the hypothesis of {← inferType imp} is not {hyp.type}"
-        else
-          throwTacticEx `imp_elim goal m!"{← inferType imp} is not an implication"
-      else
-        throwTacticEx `imp_elim goal m!"assumption {hyp} not found"
-
-example (x y : Nat) : (x = 1 → y = 2) → x = 1 → y = 2 := by
-  imp_intro imp
-  imp_intro x1
-  imp_elim imp with x1 into conc
-  exact conc
-
--- Implies-elimination, applying a hypothesis to the goal.
-elab "imp_elim" imp:term : tactic =>
-  withMainContext do
-    let imp ← elabTerm imp none
-    liftMetaTactic λ goal => do
-     if let .forallE _ _ goalType _ ← whnf (← inferType imp) then
-        if ← isDefEq goalType (← goal.getType) then
-          goal.apply imp
-        else
-          throwTacticEx `imp_elim goal m!"the conclusion of {← inferType imp} is not {← goal.getType}"
-      else
-        throwTacticEx `imp_elim goal m!"{← inferType imp} is not an implication"
-
-example (x y : Nat) : (x = 1 → y = 2) → x = 1 → y = 2 := by
-  imp_intro imp
-  imp_intro x1
-  imp_elim imp
-  exact x1
 
 
 -- Biconditional introduction; turns a goal of the form p ↔ q into a
@@ -319,9 +275,9 @@ elab "iff_intro" : tactic =>
 
 example : 1 = 1 ↔ 2 = 2 := by
   iff_intro
-  · imp_intro h
+  · assume h
     rfl
-  · imp_intro h
+  · assume h
     rfl
 
 
@@ -342,7 +298,7 @@ elab "iff_elim" iff:ident "into" fw:ident "," bw:ident : tactic =>
       throwTacticEx `iff_elim goal m!"assumption {iff} not found"
 
 example (p q : Prop) : (P ↔ Q) → (P → Q) ∧ (Q → P) := by
-  imp_intro h
+  assume h
   iff_elim h into h1, h2
   and_intro
   · exact h1
@@ -367,17 +323,17 @@ example {p : Prop} : p ∨ ¬ p := by
 
 
 -- Universal quantification introduction
-elab "forall_intro" var:ident : tactic =>
+elab "fix" var:ident : tactic =>
   withMainContext $ liftMetaTactic λ goal => do
     let goalType ← goal.getType
     if let .forallE _ hypType _ _ ← whnf goalType then
       if ← not <$> Expr.isProp <$> inferType hypType then
         let ⟨_, goal⟩ ← goal.intro var.getId
         return [goal]
-    throwTacticEx `imp_intro goal m!"{goalType} is not universally quantified"
+    throwTacticEx `fix goal m!"{goalType} is not universally quantified"
 
 example : ∀ (x : Nat), x = x := by
-  forall_intro y
+  fix y
   rfl
 
 
@@ -506,7 +462,7 @@ elab "by_contradiction" hyp:ident : tactic =>
 
 example (p : Prop) (h : ¬¬P) : P := by
   by_contradiction h'
-  imp_elim h
+  apply h
   exact h'
 
 /--

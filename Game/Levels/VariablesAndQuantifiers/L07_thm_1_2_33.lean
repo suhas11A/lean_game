@@ -36,8 +36,8 @@ is a proposition that references an `X` and a `Y`.
   holds.
   -/
 Statement (X Y : Type) (p : X → Y → Prop) : (∃ y : Y, ∀ x : X, p x y) → (∀ x : X, ∃ y : Y, p x y) := by
-  imp_intro h
-  forall_intro x'
+  assume h
+  fix x'
   exists_elim h into y', hy'
   forall_elim hy' of x' into h1
   exists_intro y'

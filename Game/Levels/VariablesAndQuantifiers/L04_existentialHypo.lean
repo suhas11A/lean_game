@@ -29,8 +29,8 @@ correct syntax to begin the proof.
   $n=4q$, then there exists an integer $p$ such that $n=2p$.
  -/
 Statement : ∀ n:ℤ, (∃q:ℤ, n=4*q) → ∃p:ℤ, n=2*p := by
-  forall_intro n
-  imp_intro h
+  fix n
+  assume h
   exists_elim h into q', hq'
   exists_intro 2*q'
   rewrite [hq']
