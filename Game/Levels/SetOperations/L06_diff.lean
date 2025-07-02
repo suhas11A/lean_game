@@ -49,9 +49,9 @@ Statement : Set.univ \ evens = odds := by
   Hint "n is obviously a member of `univ`, use `have` and `trivial` to get a new hypotheses `hj : n ∈ univ`."
   have hj : n ∈ univ := trivial
   Hint "we can now use imp_elim to show `n ∈ evens` from {h} and {hj}."
-  imp_elim h with hj into kl
+  apply h at hj
   Hint "Using `have` try to get 2 new hypotheses, `h1 : n % 2 = 0` and `h2 : n % 2 = 1`."
-  have h1 : n%2 =0 := kl
+  have h1 : n%2 =0 := hj
   have h2 : n%2 =1 := hn
   rw[h1] at h2
   trivial

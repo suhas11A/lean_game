@@ -23,8 +23,8 @@ open Set
 Statement (A : Set ℕ): A ⊆ A := by
   rw [subset_def]
   Hint "Recall the proof strategy needed when `∀` appears in the goal, which was introduced in \"Chapter 2: Variables and Quantifiers\"."
-  forall_intro x
-  imp_intro hx
+  fix x
+  assume hx
   exact hx
 
 Conclusion ""

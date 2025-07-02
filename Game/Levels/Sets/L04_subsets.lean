@@ -27,8 +27,8 @@ Statement (U : Type)(A B C : Set U)(ha : A ⊆ B)(hb : B ⊆ C): A ⊆ C := by
   forall_elim ha of x into h2
   forall_elim hb of x into h3
   Hint "We now know enough about implications and related tactics, you can take it from here."
-  imp_elim h2 with hx into conc1
-  imp_elim h3 with conc1 into conc2
-  exact conc2
+  apply h3
+  apply h2
+  exact hx
 
 Conclusion "We are now familiar with proof strategies to prove a goal of form `A ⊆ B` and to use a hypotheses of form `A ⊆ B`."

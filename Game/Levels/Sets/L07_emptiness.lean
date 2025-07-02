@@ -15,7 +15,7 @@ open Set
 /-- Let a,b ∈ R. Prove that [a, b] is empty if and only if a > b. -/
 Statement (a b : ℝ): Icc a b = ∅ ↔ a > b := by
   iff_intro
-  imp_intro h1
+  assume h1
   Hint "We use the strategy \"Proof by Contradiction\", to do this apply `by_contra` tactic."
   by_contra h
   Hint "`{h} : ¬a > b` is same as `{h} : a ≤ b`, to do this use the tactic `push_neg` at {h}."
@@ -36,7 +36,7 @@ Statement (a b : ℝ): Icc a b = ∅ ↔ a > b := by
   Hint "We have `{h1} : Icc a b = ∅` and `{hi} : {a} ∈ Icc a b`, which means `{a} ∈ ∅`. We know we can close any goal when we have a false hypotheses."
   rw[h1] at hi
   cases hi
-  imp_intro h
+  assume h
   apply Subset.antisymm
   intro x hx
   Hint "Rewrite the definition of Icc at {hx}."

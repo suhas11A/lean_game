@@ -31,17 +31,17 @@ Statement (a b c d : ℝ) (h1 : a < c) (h2 : d < b): Icc c d ⊆ Ioo a b := by
   Hint "If `a ∈ Ioo x y` it means two things, `a > x` and `a < y`. Similarly use theorem `mem_Ioo` to rewrite `x ∈ Ioo a b` to `a < x ∧ x < b`."
   rw [mem_Ioo]
   Hint "Use `and_elim to proceed further."
-  and_elim hx into h1, h2
+  and_elim hx into h3, h4
   Hint "When `a < b` and `b ≤ c`, it is obvious that `a < c`, but how does lean know that. Well there are theorems that we can use!"
   Hint "See theorems `lt_of_lt_of_le` and `lt_of_le_of_lt` and how to use them."
   Hint "Recall `have` from previous world, we use `have` to introduce a new hypotheses from known results and hypotheses.
    Theorem `lt_of_lt_of_le` says that `a < b → b ≤ c → a < c` which can be interpreted as `(a < b ∧ b ≤ c) → a < c`.
-   `have h_ax := lt_of_lt_of_le {ha} {h1}` will adds the hypotheses `h_ax : a < x` into our tactic state.
+   `have h_ax := lt_of_lt_of_le {h1} {h3}` will adds the hypotheses `h_ax : a < x` into our tactic state.
    Similarly try to show `x < b` using the same idea."
   and_intro
-  have h_ax := lt_of_lt_of_le ha h1
+  have h_ax := lt_of_lt_of_le h1 h3
   exact h_ax
-  have h_xb := lt_of_le_of_lt h2 hc
+  have h_xb := lt_of_le_of_lt h4 h2
   exact h_xb
 
 Conclusion ""
