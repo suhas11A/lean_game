@@ -31,11 +31,12 @@ Introduction ""
 
 Statement (n m : ℕ) : m*n > 64 → m > 8 ∨ n > 8 := by
   contrapose
-  simp -- simp does too much here
-  intros h1 h2
-  have hmn : m * n ≤ 8 * 8 := Nat.mul_le_mul h1 h2
-  apply le_trans hmn
-  rfl
+  simp only [gt_iff_lt, not_or, not_lt, and_imp]
+  intros hm hn
+  apply Nat.mul_le_mul at hn
+  apply hn at hm
+  rewrite [mul_comm]
+  exact hm
 
 NewTactic
 

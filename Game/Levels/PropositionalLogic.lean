@@ -10,7 +10,7 @@ import Game.Levels.PropositionalLogic.L09_negGoal
 import Game.Levels.PropositionalLogic.L10_negHypo
 
 World "PropositionalLogic"
-Title "Chapter 1: PropositionalLogic"
+Title "Chapter 1: Propositional Logic"
 
 Introduction "
 Consider the following two propositions:
