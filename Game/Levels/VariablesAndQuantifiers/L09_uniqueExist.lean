@@ -1,8 +1,6 @@
-/-
-not as important, ok to deemphasize
-skip discussion of how to use such asusmption, (also skipped in textbook)
-consider upgrading example from above
--/
+-- This exercise uses ring_nf to simplify expressions; we should
+-- introduce this earlier and give it a nicer name (simplify?).  We
+-- also need a tactic to do the work of apply congrArg more easily.
 
 import Game.Metadata
 import GameServer.Commands
@@ -11,17 +9,37 @@ World "VariablesAndQuantifiers"
 Level 9
 Title "Unique Existential Quantifier"
 
-/-
-∃! y : ℤ, x'+y=0
-unique_exists_intro
--/
+Introduction "
+The notation $∃!$ represents unique existential quantification.  The
+formula $∃!x∈X, p(x)$ is short for $∃x∈X, (p(x) ∧ ∀y∈X, p(y) → y=x)$;
+intuitively, this means that there is one, and only one, choice of
+$x∈X$ such that $y=x$.
 
-Introduction ""
+In Lean, we can unfold `ExistsUnique` to turn a formula with $∃!$ into
+a formula in terms of the quantifiers and logical operators you
+already know, but we can also use the `exists_unique_intro` and
+`exists_unique_elim` tactics to work with $∃!$ directly.
 
+The syntax for `exists_unique_intro` is `exists_unique_intro x`, where
+`x` is the choice of $x∈X$ that satisfies $p(x)$.  When you use it,
+the goal will change into two goals, one to show $p(x)$ and another to
+show $∀y∈X, p(y) → y=x$.
+
+This proof builds on level 5, but involves unique existential
+quantification.  Try using `exists_unique_intro` to prove it.
+"
+
+/--
+  For all integers $x$, there exists a unique integer $y$ such that $x+y=0$.
+ -/
 Statement : ∀ x : ℤ, ∃! y : ℤ, x+y=0 := by
-  forall_intro x'
-  unique_exists_intro
-
-NewTactic
+  fix x
+  exists_unique_intro -x
+  apply Int.add_right_neg
+  fix y
+  assume h
+  apply congrArg (λ a ↦ a - x) at h
+  ring_nf at h
+  exact h
 
 Conclusion ""
