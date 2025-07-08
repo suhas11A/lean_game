@@ -44,4 +44,4 @@ K suggested having variants of or_intro that work like left and right, so that s
 K was also confused by the naming schemes for the introduction/elimination rules
 Various comments on UI; frankly I’ll put them off for now since I want to focus on content but we can discuss them if you guys want to
 W liked having prepositions be part of the syntax for tactics, made them feel more natural
-Wynn seemed to go through the whole game without internalizing much, i.e. they did not know what some basic tactics did even after doing all of ch 1.1. (Although I would not expect someone to be fully comfortable at that point anyways).
+W seemed to go through the whole game without internalizing much, i.e. they did not know what some basic tactics did even after doing all of ch 1.1. (Although I would not expect someone to be fully comfortable at that point anyways).

@@ -42,4 +42,6 @@ So A \in P(Y)
 actionable items:
 - unfold subset defn in set world
 
+**July 7**
+
 
