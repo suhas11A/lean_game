@@ -1,7 +1,3 @@
--- This exercise uses ring_nf to simplify expressions; we should
--- introduce this earlier and give it a nicer name (simplify?).  We
--- also need a tactic to do the work of apply congrArg more easily.
-
 import Game.Metadata
 import GameServer.Commands
 
@@ -35,11 +31,11 @@ quantification.  Try using `exists_unique_intro` to prove it.
 Statement : ∀ x : ℤ, ∃! y : ℤ, x+y=0 := by
   fix x
   exists_unique_intro -x
-  apply Int.add_right_neg
+  simplify
   fix y
   assume h
-  apply congrArg (λ a ↦ a - x) at h
-  ring_nf at h
+  on_both_sides_of h, a becomes a-x
+  simplify at h
   exact h
 
 Conclusion ""

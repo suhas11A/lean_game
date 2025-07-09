@@ -3,6 +3,7 @@
 import Lean
 import GameServer.Commands
 import Mathlib.Init.Logic
+import Mathlib.Tactic
 
 open Lean Elab.Tactic Meta MonadLCtx
 
@@ -464,6 +465,30 @@ example (p : Prop) (h : ¬¬P) : P := by
   by_contradiction h'
   apply h
   exact h'
+
+
+-- elab "on_both_sides" e:ident "becomes" expr:term "at" hyp:ident : tactic =>
+--   withMainContext do
+--     let goal ← getMainGoal
+--     if let some hyp := (← getLCtx).findFromUserName? (hyp.getId) then
+--       if let .app (.app (.app (.const ``Eq _) α) _) _ ← whnf hyp.type then
+--         let f ← mkLambdaFVars #[.fvar ⟨e.getId⟩]
+--           (← withLocalDecl e.getId BinderInfo.default α λ f => elabTerm expr none)
+--       else
+--         throwTacticEx `on_both_sides goal m!""
+--     else
+--       throwTacticEx `on_both_sides goal m!""
+
+macro "on_both_sides_of" hyp:ident "," e:ident "becomes" expr:term : tactic =>
+  `(tactic| apply congrArg (fun $e => $expr) at $hyp)
+
+example (x y : Nat) (h : x = y) : x + 1 = y + 1 := by
+  on_both_sides_of h, e becomes e + 1
+  exact h
+
+macro "simplify" : tactic => `(tactic| ring_nf)
+macro "simplify" "at" hyp:Parser.Tactic.locationHyp : tactic => `(tactic| ring_nf at $hyp)
+
 
 /--
 Uses `checkColGt` to prevent
