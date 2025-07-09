@@ -7,16 +7,14 @@ World "Sets"
 Level 8
 Title "Triviality"
 
-Introduction "
-This example is inspired from Exercise 2.1.32 from infinite descent.
-"
+Introduction ""
 open Set
 /-- If p is proposition in x. Show that ∀ x ∈ ∅, p(x) is true. -/
 Statement (U : Type)(p : U → Prop): ∀ x ∈ (∅ : Set U), p x := by
   Hint "This is a simple proof, you are on your own. We believe in you, less gooo..."
   fix x
   assume h
-  cases h
+  contradiction
 
 Conclusion "
 This exercise is a logical technicality, which is counterintuitive for the same reason

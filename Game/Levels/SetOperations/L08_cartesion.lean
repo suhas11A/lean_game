@@ -24,9 +24,10 @@ Statement (U : Type)(X: Set U): X ×ˢ (∅ : Set U) = ∅ := by
   intro a ha
   Hint "Say {a} is a tuple of 2 members (x,y) then {a}.1 represents x and {a}.2 represents y. Theorem `mem_prod` can be used to rewrite `{a} ∈ A ×ˢ B` into `{a}.1 ∈ A ∧ {a}.2 ∈ B`."
   rw[mem_prod] at ha
-  cases ha.2
+  and_elim ha into j, k
+  contradiction
   intro a ha
-  cases ha
+  contradiction
 
 
 Conclusion "You should now be familiar with Sets, Move on to Next world to explore Functions."

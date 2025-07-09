@@ -17,9 +17,9 @@ To specify that an object `x` belongs to the set of Natural Numbers `ℕ`, we wr
 To specify that `A` is a set of objects from `ℕ`, we write `A : Set ℕ`.
 (The terminology used in Lean is that `x` has type `ℕ` and `A` has type `Set ℕ`).
 
-To say that `x` is an element of `A`, we write `x ∈ A`.
+To say that $x$ is an element of $A$, we write $x ∈ A$.
 
-The notation A ⊆ B means that A is a subset of B.
+The notation $A ⊆ B$ means that $A$ is a subset of $B$.
 
-Click on 'Start' below to get started.
+Click on \"Start\" below to get started.
 "

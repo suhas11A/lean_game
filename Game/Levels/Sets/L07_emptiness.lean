@@ -8,9 +8,7 @@ World "Sets"
 Level 7
 Title "A non trivial example"
 
-Introduction "
-This example is inspired from Exercise 2.1.31 from infinite descent.
-"
+Introduction ""
 open Set
 /-- Let a,b ∈ R. Prove that [a, b] is empty if and only if a > b. -/
 Statement (a b : ℝ): Icc a b = ∅ ↔ a > b := by
@@ -22,7 +20,7 @@ Statement (a b : ℝ): Icc a b = ∅ ↔ a > b := by
   push_neg at h
   Hint "we can prove this in many ways, we will go ahead by showing that if `a ≤ b` then `a ∈ Icc a b`.
    To do this we first need to show `a ≤ a ∧ a ≤ b`, we already have `a ≤ b` as one of our hypotheses, so we need to show `a ≤ a` i.e have a new hypotheses `haa : a ≤ a`.
-   Recall the tactic `have`. We know `have` needs to be given a new hypotheses to be introduced and a proof of that hypotheses in the same line. But we can also use have with just the hypotheses and give the proof of this later.
+   Recall the tactic `have`. We know `have` needs to be given a new hypotheses to be introduced and a proof of that hypotheses in the same line. But we can also use `have` with just the hypotheses and give the proof of this later.
    Try executing `have haa : a ≤ a`, this will first ask you to prove this hypotheses as a goal and after you prove, it then becomes a hypotheses that we can use in our proof."
   have haa : a ≤ a
   Hint "We can close this trivially using `trivial`."
@@ -35,7 +33,7 @@ Statement (a b : ℝ): Icc a b = ∅ ↔ a > b := by
   exact h
   Hint "We have `{h1} : Icc a b = ∅` and `{hi} : {a} ∈ Icc a b`, which means `{a} ∈ ∅`. We know we can close any goal when we have a false hypotheses."
   rw[h1] at hi
-  cases hi
+  contradiction
   assume h
   apply Subset.antisymm
   intro x hx
@@ -50,7 +48,7 @@ Statement (a b : ℝ): Icc a b = ∅ ↔ a > b := by
   exact hh
   contradiction
   intro x hx
-  cases hx
+  contradiction
 
 Conclusion ""
 
