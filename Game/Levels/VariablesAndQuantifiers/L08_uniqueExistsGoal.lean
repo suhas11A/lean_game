@@ -2,8 +2,8 @@ import Game.Metadata
 import GameServer.Commands
 
 World "VariablesAndQuantifiers"
-Level 9
-Title "Unique Existential Quantifier"
+Level 8
+Title "Proving uniquely existentially quantified statements"
 
 Introduction "
 The notation $∃!$ represents unique existential quantification.  The

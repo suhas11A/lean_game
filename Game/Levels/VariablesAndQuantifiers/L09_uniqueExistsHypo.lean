@@ -2,8 +2,8 @@ import Game.Metadata
 import GameServer.Commands
 
 World "VariablesAndQuantifiers"
-Level 10
-Title "Unique Existential Quantifier -- Elimination"
+Level 9
+Title "Using uniquely existentially quantified statements in proofs"
 
 Introduction "
 To use a uniquely existentially quantified assumption in our proof, we
@@ -55,3 +55,5 @@ Statement : ∀ n : ℤ, (∃! x : ℤ, n * x = 0) → n ≠ 0 := by
   contradiction
 
 Conclusion ""
+
+NewTactic «have»

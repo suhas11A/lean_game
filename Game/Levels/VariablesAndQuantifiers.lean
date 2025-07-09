@@ -5,8 +5,8 @@ import Game.Levels.VariablesAndQuantifiers.L04_existentialHypo
 import Game.Levels.VariablesAndQuantifiers.L05_exercise_1_2_32a
 import Game.Levels.VariablesAndQuantifiers.L06_exercise_1_2_32b
 import Game.Levels.VariablesAndQuantifiers.L07_thm_1_2_33
--- import Game.Levels.VariablesAndQuantifiers.L08_exercise
--- import Game.Levels.VariablesAndQuantifiers.L09_uniqueExist
+import Game.Levels.VariablesAndQuantifiers.L08_uniqueExistsGoal
+import Game.Levels.VariablesAndQuantifiers.L09_uniqueExistsHypo
 
 
 World "VariablesAndQuantifiers"
