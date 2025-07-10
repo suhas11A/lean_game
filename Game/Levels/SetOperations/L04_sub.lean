@@ -4,30 +4,23 @@ import Mathlib.Data.Real.Basic
 import Mathlib.Data.Set.Intervals.Basic
 import Mathlib.Order.Basic
 
-World "Set Operations"
+World "SetOperations"
 Level 4
 Title "Exercise involving Intersection and Iff"
 
 Introduction "
-This example is inspired from Exercise 2.2.30 from infinite descent.
-
 Here the goal is of form `↔`. First we need to split the goal into 2 sub-goals.
 "
 open Set
 /-- Let X and Y be sets. Prove that X ⊆ Y if and only if X∩Y=X. -/
 Statement (U : Type)(X Y : Set U): X ⊆ Y ↔ (X ∩ Y = X) := by
-  Hint "Recall which tactic is used to split an `↔` goal."
+  Hint "You will be using tactics and theorems you have previously learnt, go ahead and try to prove this on your own."
   iff_intro
-  Hint "To prove a result of type `p → q` we need to assume `p` and show `q`."
   assume h
-  Hint "To prove that 2 Sets are equal it suffices to show ..."
   apply Subset.antisymm
-  Hint "To show `A ⊆ B` it is enough to show ..."
   intro a a_1
-  Hint "Recall first level in this world"
   exact a_1.1
   intro a a_1
-  Hint "To prove `x ∈ A ∩ B` we need to show `x ∈ A` and `x ∈ B`. To rewrite the goal `{a} ∈ X ∩ Y` into `{a} ∈ X ∧ {a} ∈ Y` we use a theorem we have previously learned."
   rw[mem_inter_iff]
   and_intro
   exact a_1

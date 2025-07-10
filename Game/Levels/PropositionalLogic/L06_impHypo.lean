@@ -23,6 +23,6 @@ Statement (n:ℕ) (h1:n=1 → n+1=2) (h2:n=1) : n+1=2 := by
   Hint "Use the `exact` tactic to finish the proof."
   exact h2
 
-NewTactic imp_elim
+NewTactic apply
 
 Conclusion ""

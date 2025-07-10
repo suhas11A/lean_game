@@ -7,13 +7,11 @@ import Mathlib.Logic.Basic
 import Mathlib.Data.Nat.Parity
 import Mathlib.Data.Nat.Basic
 
-World "Set Operations"
+World "SetOperations"
 Level 8
 Title "Basic example in intervals"
 
 Introduction "
-Following along with Example 2.2.36 we'll learn the concept of Cartesian product.
-
 The cartesian product s ×ˢ t is the set of (a, b) such that a ∈ s and b ∈ t.
 "
 

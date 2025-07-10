@@ -7,12 +7,13 @@ import Mathlib.Logic.Basic
 import Mathlib.Data.Nat.Parity
 import Mathlib.Data.Nat.Basic
 
-World "Set Operations"
+World "SetOperations"
 Level 6
 Title "Basic example in intervals"
 
 Introduction "
-This example is inspired from Example 2.2.27, We use this exercise to understand the concept of relative complement(`\\`).
+We use this exercise to understand the concept of relative complement(`\\`)  
+$A \\ B$ is the set of all elements in $A$ that are not members of $B$.
 "
 def evens : Set ℕ := { n | n % 2 =0 }
 def odds : Set ℕ := { n | n % 2 = 1 }
@@ -22,11 +23,10 @@ open Set
 Statement : Set.univ \ evens = odds := by
   apply Subset.antisymm
   intro n hn
-  Hint "`A \\ B` is the set of all elements in A that are not members of B."
   Hint "Theorem `mem_diff` can be used to rewrite ` x ∈ A \\ B` into `x ∈ A ∧ x ∉ B`."
   rw[mem_diff] at hn
   Hint "Any Natural number is either odd or even, in other words `n % 2 = 0 ∨ n % 2 = 1`. Theorem `Nat.mod_two_eq_zero_or_one n` tells exactly that.
-   `have h := Nat.mod_two_eq_zero_or_one n` is used to create a new hypotheses saying that."
+   `have h := Nat.mod_two_eq_zero_or_one n` is used to create a new hypotheses `h : n % 2 = 0 ∨ n % 2 = 1`."
   have h := Nat.mod_two_eq_zero_or_one n
   Hint "Split `{h}` into two cases by using appropriate tactic (Hint :- It's `or_elim`)"
   or_elim h into h, h
@@ -48,7 +48,7 @@ Statement : Set.univ \ evens = odds := by
   push_neg at h
   Hint "n is obviously a member of `univ`, use `have` and `trivial` to get a new hypotheses `hj : n ∈ univ`."
   have hj : n ∈ univ := trivial
-  Hint "we can now use imp_elim to show `n ∈ evens` from {h} and {hj}."
+  Hint "we can now use `apply` to show `n ∈ evens` from {h} and {hj}."
   apply h at hj
   Hint "Using `have` try to get 2 new hypotheses, `h1 : n % 2 = 0` and `h2 : n % 2 = 1`."
   have h1 : n%2 =0 := hj

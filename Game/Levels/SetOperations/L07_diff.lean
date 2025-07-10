@@ -7,12 +7,12 @@ import Mathlib.Logic.Basic
 import Mathlib.Data.Nat.Parity
 import Mathlib.Data.Nat.Basic
 
-World "Set Operations"
+World "SetOperations"
 Level 7
 Title "Basic example in intervals"
 
 Introduction "
-Following along with Theorem 2.2.31, we will show one of the De Morgan's law for Sets.
+we will show one of the De Morgan's law for Sets.
 "
 
 open Set

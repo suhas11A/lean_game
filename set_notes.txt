@@ -1,6 +1,3 @@
-didn't write hints for sets-L07
-unfinished levels
-
 try to reduce `have` usage
 
 need - intro x hx, apply Subset.Antisymm, rw[\l stuff] in world zero, push_neg in 1.3,
