@@ -5,7 +5,7 @@ import Mathlib.Order.Basic
 import Mathlib.Data.Nat.Basic
 
 World "LogicalEquivalence"
-Level 1
+Level 2
 Title "Indirect Proof by Contradiction (Double Negation)"
 
 
