@@ -451,6 +451,20 @@ example (h : ∃! (x : Nat), 2 * x = 4) : ∃ (x : Nat), ∃ (y : Nat), x * y = 
   exists_intro x
   exact h
 
+/--
+  The `exists_unique_elim` tactic takes a hypothesis of the form `∃!
+  x : A, p x`, and splits it into a witness `x : A`, a proof that `p
+  x` holds, and a proof that `∀ y : A, p y → y = x`.
+
+  Usage: `exists_unique_elim (h) into (x), (hexists), (hunique)`
+
+  - `h` is the name of a unique-existentially quantified hypothesis.
+  - `x` will be the name of the witness.
+  - `hexists` will be the name of the assumption that `p x` holds.
+  - `hunique` will be the name of the assumption that `∀ y : A, p y → y = x`.
+  -/
+TacticDoc exists_unique_elim
+
 
 elab "by_contradiction" hyp:ident : tactic =>
   withMainContext $ liftMetaTactic λ goal ↦ do

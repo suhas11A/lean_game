@@ -39,3 +39,5 @@ Statement : ∀ x : ℤ, ∃! y : ℤ, x+y=0 := by
   exact h
 
 Conclusion ""
+
+NewTactic exists_unique_intro

@@ -56,4 +56,4 @@ Statement : ∀ n : ℤ, (∃! x : ℤ, n * x = 0) → n ≠ 0 := by
 
 Conclusion ""
 
-NewTactic «have»
+NewTactic exists_unique_elim «have»
