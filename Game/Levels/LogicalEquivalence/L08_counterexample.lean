@@ -6,12 +6,15 @@ Level 8
 Title "Proof by Counterexample"
 
 
-Introduction ""
+Introduction "Use the `push_neg` tactic to invoke deMorgan's laws and begin the proof."
 
+-- Statement : ¬(∀x:ℝ, x>3) := by
+--   push_neg
+--   use 3
 
-Statement : ¬(∀x:ℝ, x>3) := by
+Statement : ¬(∀ (a b : ℕ), a * b + a + b ≠ 11) := by
+  push_neg
+  use 5
+  use 1
 
-
--- ¬(∀x:ℝ, x > 3)
--- or
--- ¬(∀ a b : ℝ, (a b : ℕ) → ab+a+b ≠ 11)
+Conclusion ""

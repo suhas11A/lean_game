@@ -10,7 +10,4 @@ Introduction "
 Try this level on your own!
 "
 
-Statement :
-
--- motivate and define logical equivalence to make clear
--- why we need to study de Morgan's laws
+Statement : ¬∃n ∈ P, (n>2 ∧ (∃k ∈ ℤ, n = 2*k)) := by
