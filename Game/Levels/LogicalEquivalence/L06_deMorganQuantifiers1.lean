@@ -3,28 +3,26 @@ import GameServer.Commands
 
 World "LogicalEquivalence"
 Level 6
-Title "De Morgan's Law for Quantifiers"
+Title "De Morgan's Law for Quantifiers, Part 1"
 
 Introduction "Try proving De Morgan's Law for Quantifiers on your own!"
 
 Statement (p : X → Prop) : (∀(x:X), ¬(p x)) ↔ ¬(∃(x:X), p x) := by
   constructor
-  · intro h1
-    unfold Not
-    intro h2
-    exists_elim h2 into x', hx'
-    forall_elim h1 of x' into h1'
-    apply h1' at hx'
-    exact hx'
-
-  unfold Not
   intro h1
-  fix x'
-  intro px
+  unfold Not
+  intro h2
+  exists_elim h2 into x, h2
+  have h3 : ¬p x := by apply h1
+  contradiction
+  intro h
+  intro x
+  unfold Not
+  intro hp
+  have h1 : ∃x, p x := by use x
+  contradiction
 
-  have h : (∃x:X, p x)
 
+NewTactic use
 
-
-  apply h1 at h
-  exact h
+Conclusion ""

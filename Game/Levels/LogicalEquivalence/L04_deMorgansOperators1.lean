@@ -3,7 +3,7 @@ import GameServer.Commands
 
 World "LogicalEquivalence"
 Level 4
-Title "De Morgan's Law for Operators"
+Title "De Morgan's Law for Operators, Part 1"
 
 Introduction "Try beginning to prove De Morgan's Law for Operators!"
 
@@ -40,3 +40,4 @@ Statement (p q : Prop) : ¬(p ∧ q) ↔ ¬p ∨ ¬q := by
   exact hq
 
 NewTactic by_cases excluded_middle
+Conclusion ""

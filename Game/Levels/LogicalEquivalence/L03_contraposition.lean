@@ -4,40 +4,31 @@ import Mathlib.Data.Real.Basic
 import Mathlib.Order.Basic
 import Mathlib.Data.Nat.Basic
 
-/-
-(1) strat - indirect pf by contradiction (double negation)
-    a,b,c non-neg reals s.t. a^2+b^2=c^2
-    prove a+b \geq c
-(2) strat - proof by contraposition
-    fix naturals n, m. mn>64 \imp m > 8 or n > 8
-    (prove the contrapositive)
-(3) (deMorgan's laws for logical operators)
-(4) (deMorgan's laws for quantifiers)
-(5) strat - pf by counterexample (for quantifiers)
-    not every integer is divisible by a prime number
-    not every rational can be expressed as a/b, a even and b odd
-(6) strat - assuming tautologies
-
-exercises: proofs in natural numbers
--/
-
 World "LogicalEquivalence"
 Level 3
 Title "Proof by Contraposition"
 
-Introduction ""
+Introduction "A **contrapositive** of a proposition of the form
+p → q is the proposition ¬q → ¬p.The Law of Contraposition states
+if p and q are propositional variables, then p → q ≡ (¬q) → (¬p).
+Prove the following theorem using proof by contraposition, which is applied
+using the `contrapose` tactic."
 
--- fix naturals n, m. mn>64 → m > 8 or n > 8
 
 Statement (n m : ℕ) : m*n > 64 → m > 8 ∨ n > 8 := by
   contrapose
-  simp only [gt_iff_lt, not_or, not_lt, and_imp]
+  Hint "Take a look at theorems that may help complete the proof. Remember to
+  use `rw` or `rewrite` and `repeat rw` when a theorem needs to be applied multiple times."
+  rw [not_or]
+  repeat rw [not_lt]
+  rw [and_imp]
   intros hm hn
   apply Nat.mul_le_mul at hn
   apply hn at hm
   rewrite [mul_comm]
   exact hm
 
-NewTactic
+NewTactic contrapose
+NewTheorem not_or not_lt and_imp Nat.mul_le_mul mul_comm
 
 Conclusion ""
